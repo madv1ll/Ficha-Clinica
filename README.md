@@ -1,2 +1,4 @@
 # Ficha-Clinica
-Ficha medica para 
+Proyecto creado para la empresa Lion Master.
+
+Creado por: Team Odyssey

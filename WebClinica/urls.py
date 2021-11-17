@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from paciente.views import pacienteinicio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',pacienteinicio,name = 'index'),
 ]

@@ -20,7 +20,8 @@ class Medico(models.Model):
     sapellido = models.CharField('Segundo Apellido del Médico',max_length=45, null=True, blank=True)
     direccion = models.CharField('Direccion del Médico', max_length=200)
     especialidad = models.CharField('Especialidad del Médico', max_length=200)
-    created_date = models.DateTimeField('Fecha de ingreso', default=timezone.now)
+    created_date = models.DateTimeField('Fecha de ingreso', auto_now_add=True)
+    update_date = models.DateTimeField('Fecha actualizacion', auto_now=True)
     
     class meta:
         verbose_name = 'Médico'

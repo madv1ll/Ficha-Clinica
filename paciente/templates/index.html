@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="css/style.css">
+{% block cuerpo %}
+<h1>Lista de pacientes</h1>
+
+<table border = "2">
+    <thead>
+        <tr>
+            <th>Lugar de atencion</th>
+            <th>rut</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>direccion</th>
+            <th>Nombre del medico</th>
+            <th>Fecha de ingreso</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for paciente in pacientes %}
+        <tr>
+            <td>{{paciente.lugarAtencion}}</td>
+            <td>{{paciente.rut}}</td>
+            <td>{{paciente.Nombres}}</td>
+            <td>{{paciente.Apellidos}}</td>
+            <td>{{paciente.Direccion}}</td>
+            <td>{{paciente.nombreMedico}}</td>
+            <td>{{paciente.created_date}}</td>
+            <td> <a href="">Editar</a> <a href="">Eliminar</a></td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock cuerpo %}

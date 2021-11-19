@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from paciente.views import pacienteinicio
+from paciente.views import pacienteinicio, historial
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',pacienteinicio,name = 'index'),
+    path('historial/<str:rut>/', historial, name = 'historial_clinico'),
 ]

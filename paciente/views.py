@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Paciente
+from django.http import HttpResponse
 
 
 
@@ -11,8 +12,8 @@ def pacienteinicio(request):
     }
     return render(request, 'index.html', traspaso)
 
-def historial(request, Paciente):
-    pacientes = Paciente.objects.get(Paciente.rut)
+def historial(request, rut):
+    pacientes = rut
     datos = {
         'pacientes':pacientes
     }

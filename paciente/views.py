@@ -1,8 +1,5 @@
 from django.shortcuts import render
 from .models import Paciente
-from django.http import HttpResponse
-
-
 
 # Create your views here.
 def pacienteinicio(request):
@@ -13,7 +10,7 @@ def pacienteinicio(request):
     return render(request, 'index.html', traspaso)
 
 def historial(request, rut):
-    pacientes = rut
+    pacientes = Paciente.objects.filter(rut = rut)
     datos = {
         'pacientes':pacientes
     }

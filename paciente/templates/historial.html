@@ -1,6 +1,16 @@
 {%extends 'index.html' %}
 {%block titulo%}Historial clinico{%endblock titulo%}
 {% block cuerpo %}
-<p><span class="txt_negrita">rut:</span> <br> {{paciente.rut}}</p>
+
+{% for paciente in pacientes %}
+    <td><a href="historial/{{paciente.rut}}/">Historial clinico</a></td>
+    <td>{{paciente.lugarAtencion}}</td>
+    <td>{{paciente.rut}}</td>
+    <td>{{paciente.Nombres}}</td>
+    <td>{{paciente.Apellidos}}</td>
+    <td> <a href="">Editar</a> <a href="">Eliminar</a></td>
+
+{% endfor %}
+<p><span class="txt_negrita">rut:</span> <br> {{Paciente.rut}}</p>
 
 {% endblock cuerpo %}

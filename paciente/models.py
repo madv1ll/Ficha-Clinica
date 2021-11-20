@@ -30,6 +30,32 @@ class Medico(models.Model):
     def __str__(self):
         return self.nombre+' '+self.apellido
 
+
+class Registro(models.Model):
+    idregistro =  models.IntegerField('Numero de registro',primary_key=True)
+    fecha = models.DateTimeField('Fecha de ingreso', auto_now_add=True)
+    tipoAtencion = models.CharField('Tipo de Atencion', max_length=200)
+    Servicio = models.CharField('Servicio', max_length=200)
+    Diagnostico = models.CharField('Diagnostico', max_length=200)
+
+    class meta:
+        verbose_name = 'Registro'
+        verbose_name_plural = 'Registros'
+
+    def __str__(self):
+        return self.idregistro
+
+class Historial(models.Model):
+    idhistorial = models.IntegerField('Numero historial',primary_key=True)
+    idregistro = models.ForeignKey(Registro, on_delete=models.CASCADE)
+
+    class meta:
+        verbose_name = 'Historial'
+        verbose_name_plural = 'Historial'
+
+    def __str__(self):
+        return self.idhistorial
+
 class Paciente(models.Model):
     lugarAtencion = models.ForeignKey(LugarAtencion, on_delete=models.CASCADE)
     rut = models.CharField(primary_key=True, max_length=12)
@@ -38,6 +64,7 @@ class Paciente(models.Model):
     Direccion = models.CharField('Direccion del paciente', max_length=200)
     nombreMedico = models.ForeignKey(Medico, on_delete=models.CASCADE,verbose_name="Nombre Médico")
     created_date = models.DateTimeField('Fecha de ingreso', default=timezone.now)
+    id_historial = models.ForeignKey(Historial, on_delete=models.CASCADE)
     
     class meta:
         verbose_name = 'Paciente'

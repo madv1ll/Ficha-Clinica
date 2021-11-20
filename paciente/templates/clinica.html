@@ -1,0 +1,32 @@
+{%extends 'index.html' %}
+{%block titulo%}Historial clinico{%endblock titulo%}
+{% block cuerpo %}
+<section>
+    <div class="container-sm form_clinica">
+        <table class="table table-success table-striped">
+            <thead>
+                <tr>
+                    <th>Historial clinico</th>
+                    <th>Lugar de atencion</th>
+                    <th>rut</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for paciente in pacientes %}
+                <tr>
+                    <td><a href="historial/{{paciente.rut}}/">Historial clinico</a></td>
+                    <td>{{paciente.lugarAtencion}}</td>
+                    <td>{{paciente.rut}}</td>
+                    <td>{{paciente.Nombres}}</td>
+                    <td>{{paciente.Apellidos}}</td>
+                    <td> <a href="">Editar</a> <a href="">Eliminar</a></td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock cuerpo %}

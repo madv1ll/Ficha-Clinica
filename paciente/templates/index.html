@@ -24,11 +24,11 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="clinica">Clinica</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'clinica' %}">Clinica</a>
               </li>
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="domicilio">Domicilio</a>
+                  <a class="nav-link active" aria-current="page" href="{% url 'domicilio' %}">Domicilio</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -36,6 +36,11 @@
                 <a class="nav-link active" aria-current="page" href="{% url 'nuevoPaciente' %}">Nuevo Paciente</a>
               </li>
           </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Medico</a>
+            </li>
+        </ul>
           </div>
         </div>
       </nav>

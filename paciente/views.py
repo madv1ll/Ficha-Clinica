@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import LugarAtencion, Paciente
-from .forms import PacienteForm
+from .forms import MedicoForm, PacienteForm
 from django.shortcuts import redirect
 
 # Create your views here.
@@ -41,3 +41,13 @@ def nuevoPaciente(request):
     else:
         form = PacienteForm
     return render(request, 'nuevopaciente.html', {'form':form})
+
+def nuevoMedico(request):
+    if request.method == "POST":
+        form = MedicoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect (pacienteinicio)
+    else:
+        form = MedicoForm
+    return render(request, 'nuevomedico.html', {'form':form})

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from paciente.views import clinica, domicilio, pacienteinicio, historial
+from paciente.views import clinica, domicilio, nuevoPaciente, pacienteinicio, historial
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('historial/<str:rut>/', historial, name = 'historial_clinico'),
     path('clinica/', clinica, name= 'clinica'),
     path('domicilio/', domicilio, name= 'domicilio'),
+    path('paciente/nuevo',nuevoPaciente, name='nuevoPaciente'),
 ]

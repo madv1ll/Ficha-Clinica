@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import LugarAtencion, Paciente
 from .forms import MedicoForm, PacienteForm
 from django.shortcuts import redirect
@@ -51,3 +51,14 @@ def nuevoMedico(request):
     else:
         form = MedicoForm
     return render(request, 'nuevomedico.html', {'form':form})
+
+def editarPaciente(request, rut):
+    post = get_object_or_404(Paciente, rut=rut)
+    if request.method == "POST":
+        form = PacienteForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            # return redirect('editarPaciente', rut=Paciente.rut)
+    else:
+        form = PacienteForm(instance=post)
+    return render(request, 'editarpaciente.html', {'form': form})

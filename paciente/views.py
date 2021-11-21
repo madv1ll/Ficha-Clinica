@@ -58,7 +58,12 @@ def editarPaciente(request, rut):
         form = PacienteForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            # return redirect('editarPaciente', rut=Paciente.rut)
+            return redirect('index')
     else:
         form = PacienteForm(instance=post)
     return render(request, 'editarpaciente.html', {'form': form})
+
+def eliminarPaciente(request, rut):
+    paciente = Paciente.objects.get(rut=rut)
+    paciente.delete()
+    return redirect('index')

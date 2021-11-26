@@ -16,15 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from paciente.views import clinica, domicilio, nuevoMedico, nuevoPaciente, pacienteinicio, editarPaciente, eliminarPaciente, historial
-
+from usuario.views import Login, logoutUser
+from django.contrib.auth.decorators import login_required
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',pacienteinicio,name = 'index'),
     path('historial/<str:rut>/', historial, name = 'historial_clinico'),
-    path('clinica/', clinica, name= 'clinica'),
+    path('clinica/', login_required(clinica) , name= 'clinica'),
     path('domicilio/', domicilio, name= 'domicilio'),
     path('paciente/nuevo',nuevoPaciente, name='nuevoPaciente'),
     path('medico/nuevo',nuevoMedico, name='nuevoMedico'),
     path('editarpaciente/<str:rut>/', editarPaciente, name='editarpaciente'),
     path('eliminarpaciente/<str:rut>/', eliminarPaciente, name='eliminarpaciente'),
+    path('accounts/login/', Login.as_view(), name='login'),
+    path('logout/', login_required(logoutUser), name='logout'),
 ]

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'paciente.apps.PacienteConfig',
     'clear_cache',
+    'usuario',
 ]
 
 MIDDLEWARE = [

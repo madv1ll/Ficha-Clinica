@@ -2,14 +2,18 @@ from django.shortcuts import get_object_or_404, render
 from .models import LugarAtencion, Paciente
 from .forms import MedicoForm, PacienteForm
 from django.shortcuts import redirect
+from django.core.paginator import Paginator
 
 # Create your views here.
 def pacienteinicio(request):
-    pacientes = Paciente.objects.all()  #select * from paciente
+    pacientes = Paciente.objects.all().order_by('rut')
+    paginator = Paginator(pacientes, per_page=1)
+    page_number = request.GET.get('page') 
+    page_obj = paginator.get_page(page_number)
     traspaso = {
         'pacientes':pacientes
     }
-    return render(request, 'index.html', traspaso)
+    return render(request, 'index.html' ,traspaso, {'page_obj': page_obj})
 
 def historial(request, rut):
     pacientes = Paciente.objects.filter(rut = rut)

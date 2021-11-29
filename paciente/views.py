@@ -1,12 +1,13 @@
 from django.shortcuts import get_object_or_404, render
-from .models import LugarAtencion, Paciente
+from .models import LugarAtencion, Medico, Paciente
 from .forms import MedicoForm, PacienteForm
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
-# Create your views here.
 def pacienteinicio(request):
-    pacientes = Paciente.objects.all().order_by('rut')
+    pacientes = Paciente.objects.filter(nombreMedico_id = request.user)
     paginator = Paginator(pacientes, per_page=1)
     page_number = request.GET.get('page') 
     page_obj = paginator.get_page(page_number)
@@ -40,21 +41,13 @@ def nuevoPaciente(request):
     if request.method == "POST":
         form = PacienteForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect (pacienteinicio)
+            post = form.save(commit = False)
+            post.nombreMedico = request.user
+            post.save()
+            return redirect ('index')
     else:
         form = PacienteForm
     return render(request, 'nuevopaciente.html', {'form':form})
-
-def nuevoMedico(request):
-    if request.method == "POST":
-        form = MedicoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect (pacienteinicio)
-    else:
-        form = MedicoForm
-    return render(request, 'nuevomedico.html', {'form':form})
 
 def editarPaciente(request, rut):
     post = get_object_or_404(Paciente, rut=rut)
@@ -71,3 +64,10 @@ def eliminarPaciente(request, rut):
     paciente = Paciente.objects.get(rut=rut)
     paciente.delete()
     return redirect('index')
+
+class NuevoMedico(CreateView):
+    model = Medico
+    form_class = MedicoForm
+    template_name = 'nuevomedico.html'
+    success_url = reverse_lazy('index')
+

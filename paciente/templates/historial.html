@@ -20,8 +20,7 @@
                         <td>{{paciente.rut}}</td>
                         <td>{{paciente.Nombres}}</td>
                         <td>{{paciente.Apellidos}}</td>
-                        <td> <a href="">Editar</a> <a href="">Eliminar</a></td>
-                        
+                        <td><a href="/editarpaciente/{{paciente.rut}}">Editar</a> <a href="/eliminarpaciente/{{paciente.rut}}">Eliminar</a> <a href="/historialForm/nuevo">Nuevo Historial</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

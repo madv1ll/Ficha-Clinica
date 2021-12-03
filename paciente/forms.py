@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import fields
-from .models import Medico, Paciente, SignosVitales
+from .models import Historial, Medico, Paciente, SignosVitales
 from django.contrib.auth.forms import AuthenticationForm
 
 class PacienteForm(forms.ModelForm):
@@ -34,7 +34,14 @@ class MedicoForm(forms.ModelForm):
             user.save()
             return user
 
+
 class SignosForm(forms.ModelForm):
     class Meta:
         model = SignosVitales
         fields = ('__all__')
+
+class HistorialForm(forms.ModelForm):
+    class Meta:
+        model = Historial
+        fields = ('fecha','tipo_atencion','servicio','diagnostico','motivo_ingreso','enfermedad_actual','diagnostico_admision','diagnostico_clinico_final', 'fecha_alta_medica', 'fecha_alta_clinica')
+

@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractBaseUser, AbstractUser, BaseUserM
 
 class LugarAtencion(models.Model):
     idLugarAtencion = models.AutoField(primary_key=True)
-    descripcion = models.CharField('Lugar de atencion', max_length=20, null=False, blank=False)
+    descripcion     = models.CharField('Lugar de atencion', max_length=20, null=False, blank=False)
        
     class meta:
         verbose_name = 'lugarAtencion'
@@ -14,16 +14,17 @@ class LugarAtencion(models.Model):
     def __str__(self):
         return self.descripcion
 
+
 class MedicoManager(UserManager):
     def create_user(self,rut,nombre,snombre,apellido, sapellido, direccion, especialidad,username,password = None):
         usuario = self.model(
-            username = username,
-            rut=rut,
-            nombre = nombre,
-            snombre = snombre,
-            apellido = apellido,
-            sapellido = sapellido,
-            direccion = direccion,
+            username     = username,
+            rut          = rut,
+            nombre       = nombre,
+            snombre      = snombre,
+            apellido     = apellido,
+            sapellido    = sapellido,
+            direccion    = direccion,
             especialidad = especialidad
         )
         usuario.set_password(password)
@@ -32,18 +33,19 @@ class MedicoManager(UserManager):
 
     def create_superuser(self,rut,nombre,snombre,apellido, sapellido, direccion, especialidad,username,password):
         usuario = self.create_user(
-            username = username,
-            rut=rut,
-            nombre = nombre,
-            snombre = snombre,
-            apellido = apellido,
-            sapellido = sapellido,
-            direccion = direccion,
+            username     = username,
+            rut          = rut,
+            nombre       = nombre,
+            snombre      = snombre,
+            apellido     = apellido,
+            sapellido    = sapellido,
+            direccion    = direccion,
             especialidad = especialidad
         )
         usuario.usuario_administrador = True
         usuario.save()
         return usuario
+
 
 class Medico(AbstractUser):
     rut          = models.CharField(primary_key=True, max_length=12)
@@ -74,11 +76,11 @@ class Medico(AbstractUser):
 
 
 class Registro(models.Model):
-    idregistro =  models.IntegerField('Numero de registro',primary_key=True)
-    fecha = models.DateTimeField('Fecha de ingreso', auto_now_add=True)
+    idregistro   =  models.IntegerField('Numero de registro',primary_key=True)
+    fecha        = models.DateTimeField('Fecha de ingreso', auto_now_add=True)
     tipoAtencion = models.CharField('Tipo de Atencion', max_length=200)
-    Servicio = models.CharField('Servicio', max_length=200)
-    Diagnostico = models.CharField('Diagnostico', max_length=200)
+    Servicio     = models.CharField('Servicio', max_length=200)
+    Diagnostico  = models.CharField('Diagnostico', max_length=200)
 
     class meta:
         verbose_name = 'Registro'
@@ -89,15 +91,15 @@ class Registro(models.Model):
 
 
 class Paciente(models.Model):
-    lugarAtencion = models.ForeignKey(LugarAtencion, on_delete=models.CASCADE)
-    rut = models.CharField(primary_key=True, max_length=12)
-    Nombres = models.CharField('Nombres del paciente',max_length=30, null=False, blank=False)
-    Apellidos = models.CharField('Apellidos del paciente',max_length=45, null=False, blank=False)
-    Direccion = models.CharField('Direccion del paciente', max_length=200)
+    lugarAtencion    = models.ForeignKey(LugarAtencion, on_delete=models.CASCADE)
+    rut              = models.CharField(primary_key=True, max_length=12)
+    Nombres          = models.CharField('Nombres del paciente',max_length=30, null=False, blank=False)
+    Apellidos        = models.CharField('Apellidos del paciente',max_length=45, null=False, blank=False)
+    Direccion        = models.CharField('Direccion del paciente', max_length=200)
     fecha_nacimiento = models.DateTimeField('Fecha de Nacimiento', null=False)
-    nombreMedico = models.ForeignKey(Medico, on_delete=models.CASCADE,verbose_name="Nombre Médico" )
-    created_date = models.DateTimeField('Fecha de ingreso', default=timezone.now)
-    n_historial = models.IntegerField('Numero historial')
+    nombreMedico     = models.ForeignKey(Medico, on_delete=models.CASCADE,verbose_name="Nombre Médico" )
+    created_date     = models.DateTimeField('Fecha de ingreso', default=timezone.now)
+    n_historial      = models.IntegerField('Numero historial')
     
     class meta:
         verbose_name = 'Paciente'
@@ -106,10 +108,20 @@ class Paciente(models.Model):
     def __str__(self):
         return self.Nombres
 
+
 class Historial(models.Model):
-    idhistorial = models.AutoField('Id historial',primary_key=True)
-    idregistro  = models.ForeignKey(Registro, on_delete=models.CASCADE)
-    rut         = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    idhistorial               = models.AutoField('Id historial',primary_key=True)
+    fecha                     = models.DateTimeField('Fecha de registro', default=timezone.now)
+    tipo_atencion             = models.CharField('Tipo de atencion', max_length=50)
+    servicio                  = models.CharField('Servicio', max_length=30)
+    diagnostico               = models.CharField('Diagnostico', max_length=150)
+    motivo_ingreso            = models.CharField('Motivo de ingreso', max_length=150) 
+    enfermedad_actual         = models.CharField('Enfermedad actual', max_length=150) 
+    diagnostico_admision      = models.CharField('Diagnostico de admision', max_length=150)
+    diagnostico_clinico_final = models.CharField('Diagnostico clinico final', max_length=200)
+    fecha_alta_medica         = models.DateTimeField('Fecha alta Medica', null=False)
+    fecha_alta_clinica        = models.DateTimeField('Fecha alta clinica', null=False)
+    rut                       = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     class meta:
         verbose_name = 'Historial'
@@ -117,6 +129,7 @@ class Historial(models.Model):
 
     def __str__(self):
         return self.idhistorial
+
 
 
 class SignosVitales(models.Model):
@@ -148,3 +161,17 @@ class SignosVitales(models.Model):
 
     def __str__(self):
         return self.id_signosvitales
+      
+class evaluacion(models.Model):
+    idevaluacion     = models.AutoField('Id evaluacion', primary_key=True)
+    fecha_evaluacion = models.DateTimeField('Fecha de evaluacion', null=False)
+    descripcion      = models.CharField('Descripcion', max_length=200)
+    rut              = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+
+    class meta:
+        verbose_name = 'Evaluacion'
+        verbose_name_plural = 'Evaluaciones'
+
+    def __str__(self):
+        return self.idevaluacion
+

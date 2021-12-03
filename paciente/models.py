@@ -108,7 +108,16 @@ class Paciente(models.Model):
 
 class Historial(models.Model):
     idhistorial = models.AutoField('Id historial',primary_key=True)
-    idregistro  = models.ForeignKey(Registro, on_delete=models.CASCADE)
+    fecha = models.DateTimeField('Fecha de registro', default=timezone.now)
+    tipo_atencion = models.CharField('Tipo de atencion', max_length=50)
+    servicio = models.CharField('Servicio', max_length=30)
+    diagnostico = models.CharField('Diagnostico', max_length=150)
+    motivo_ingreso = models.CharField('Motivo de ingreso', max_length=150) 
+    enfermedad_actual = models.CharField('Enfermedad actual', max_length=150) 
+    diagnostico_admision = models.CharField('Diagnostico de admision', max_length=150)
+    diagnostico_clinico_final = models.CharField('Diagnostico clinico final', max_length=200)
+    fecha_alta_medica = models.DateTimeField('Fecha alta Medica', null=False)
+    fecha_alta_clinica = models.DateTimeField('Fecha alta clinica', null=False)
     rut         = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     class meta:
@@ -117,3 +126,17 @@ class Historial(models.Model):
 
     def __str__(self):
         return self.idhistorial
+
+class evaluacion(models.Model):
+    idevaluacion = models.AutoField('Id evaluacion', primary_key=True)
+    fecha_evaluacion = models.DateTimeField('Fecha de evaluacion', null=False)
+    descripcion = models.CharField('Descripcion', max_length=200)
+    rut = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+
+
+    class meta:
+        verbose_name = 'Evaluacion'
+        verbose_name_plural = 'Evaluaciones'
+
+    def __str__(self):
+        return self.idevaluacion

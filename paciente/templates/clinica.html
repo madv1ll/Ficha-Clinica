@@ -17,7 +17,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">odyssey</a>
+          <a class="navbar-brand" href="/">Home</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -40,6 +40,7 @@
             <table class="table table-success table-striped">
                 <thead>
                     <tr>
+                        <th>Historial clinico</th>
                         <th>Lugar de atencion</th>
                         <th>rut</th>
                         <th>Nombres</th>
@@ -50,11 +51,12 @@
                 <tbody>
                     {% for paciente in pacientes %}
                     <tr>
+                        <td><a href="/historial/{{paciente.rut}}/">Historial clinico</a></td>
                         <td>{{paciente.lugarAtencion}}</td>
                         <td>{{paciente.rut}}</td>
                         <td>{{paciente.Nombres}}</td>
                         <td>{{paciente.Apellidos}}</td>
-                        <td> <a href="">Editar</a> <a href="">Eliminar</a></td>
+                        <td><a href="/editarpaciente/{{paciente.rut}}">Editar</a> <a href="/eliminarpaciente/{{paciente.rut}}">Eliminar</a></td>
                         
                     </tr>
                     {% endfor %}

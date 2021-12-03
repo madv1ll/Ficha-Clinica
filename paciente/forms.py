@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import fields
-from .models import Medico, Paciente
+from .models import Medico, Paciente, SignosVitales
 from django.contrib.auth.forms import AuthenticationForm
 
 class PacienteForm(forms.ModelForm):
@@ -21,6 +21,8 @@ class MedicoForm(forms.ModelForm):
         model = Medico
         fields = ('rut', 'nombre', 'snombre', 'apellido', 'sapellido', 'direccion', 'especialidad','username',)
 
+
+
     def clean_password2(self):
         password = self.cleaned_data.get('password')
         return password
@@ -31,3 +33,8 @@ class MedicoForm(forms.ModelForm):
         if commit:
             user.save()
             return user
+
+class SignosForm(forms.ModelForm):
+    class Meta:
+        model = SignosVitales
+        fields = ('__all__')

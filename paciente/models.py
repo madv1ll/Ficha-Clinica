@@ -117,3 +117,34 @@ class Historial(models.Model):
 
     def __str__(self):
         return self.idhistorial
+
+
+class SignosVitales(models.Model):
+    id_signosvitales          = models.AutoField('id signos vitales', primary_key=True)
+    temperatura               = models.CharField('Temperatura', null=True, max_length=50)
+    respiracion               = models.CharField('Respiracion', null=True, max_length=50)
+    tension                   = models.CharField('Tension', null=True, max_length=50)
+    evaluacion                = models.CharField('Evaluacion', null=True, max_length=150)
+    miccion                   = models.CharField('Miccion', null=True, max_length=150)
+    vomito                    = models.CharField('Vomito', null=True, max_length=150)
+    gases                     = models.CharField('Gases', null=True, max_length=50)
+    dolor                     = models.CharField('Dolor', null=True, max_length=50)
+    transfusion_sangre        = models.CharField('Transfusion de Sangre', null=True, max_length=100)
+    frecuencia_cardiaca       = models.CharField('Frecuencia Cardiaca', null=True, max_length=50)
+    saturacion                = models.CharField('Saturacion', null=True, max_length=50)
+    presion_venosa_central    = models.CharField('Presión Venosa Central', null=True, max_length=50)
+    presion_arterial_media    = models.CharField('Presión Arterial Media', null=True, max_length=50)
+    peso                      = models.CharField('Peso', null=True, max_length=50)
+    talla                     = models.CharField('Talla', null=True, max_length=50)
+    Presion_Intracraneal      = models.CharField('Temperatura', null=True, max_length=50)
+    Presion_arterial_pulmonar = models.CharField('Temperatura', null=True, max_length=50)
+    observaciones             = models.CharField('Observaciones', null=True, max_length=50)
+    temperatura               = models.CharField('Temperatura', null=True, max_length=50)
+    paciente_rut              = models.ForeignKey(Paciente,on_delete=models.CASCADE)
+
+    class meta:
+        verbose_name = 'Signos Vitales'
+        verbose_name_plural = 'Signos Vitales'
+
+    def __str__(self):
+        return self.id_signosvitales

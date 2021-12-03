@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from paciente.views import clinica, domicilio, nuevoPaciente, pacienteinicio, editarPaciente, eliminarPaciente, historial, NuevoMedico
+from paciente.views import NuevoSignosVitales, SignosVitalesView, clinica, domicilio, nuevoPaciente, pacienteinicio, editarPaciente, eliminarPaciente, historial, NuevoMedico
 from usuario.views import Login, logoutUser
 from django.contrib.auth.decorators import login_required
 urlpatterns = [
@@ -15,4 +15,7 @@ urlpatterns = [
     path('eliminarpaciente/<str:rut>/',login_required(eliminarPaciente), name='eliminarpaciente'),
     path('accounts/login/', Login.as_view(), name='login'),
     path('logout/', login_required(logoutUser), name='logout'),
+    path('paciente/SignosVitales', SignosVitalesView.as_view(), name='signosVitales'),
+    path('paciente/NuevoSignosVitales', NuevoSignosVitales.as_view(), name='signosVtalesForm'),
+
 ]

@@ -1,6 +1,62 @@
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Guardar</button>
-</form>
+<head >
+    <style>
+#background{
+    background-color: #002e39;
+    color: aliceblue;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
 
+#main-container{
+    padding-top: 200px;
+    text-align: center;
+}
+.btn{
+    border-radius: 3px;
+    display: inline-block;
+    padding: 20px 15px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.3);
+}
+
+.btn-Green{
+    color: white;
+    background-color: #3CC93F;
+
+}
+.btn-Green:hover{
+    background-color: #37b839;
+}
+.btn-Green:active{
+    background-color: #29962A;
+}
+
+.btn-Red{
+    color: white;
+    background-color: red;
+
+}
+.btn-Red:hover{
+    background-color: #C21818;
+}
+.btn-Red:active{
+    background-color: #9C1414;
+}
+
+    </style>
+</head>
+<body id="background">
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+        
+        <div id="main-container">
+            <button type="submit" href="/" class="btn btn-Green">Guardar</button>
+            <a href="/" class="btn btn-Red">Volver</a>
+        </div>
+    </form>
+</body>
+
+    

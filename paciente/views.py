@@ -1,3 +1,5 @@
+from django.db.models import query
+from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from .models import LugarAtencion, Medico, Paciente
 from .forms import MedicoForm, PacienteForm
@@ -70,4 +72,7 @@ class NuevoMedico(CreateView):
     form_class = MedicoForm
     template_name = 'nuevomedico.html'
     success_url = reverse_lazy('index')
+
+
+
 

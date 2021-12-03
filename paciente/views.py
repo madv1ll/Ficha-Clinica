@@ -1,8 +1,8 @@
 from django.db.models import query
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
-from .models import LugarAtencion, Medico, Paciente
-from .forms import MedicoForm, PacienteForm
+from .models import Historial, LugarAtencion, Medico, Paciente
+from .forms import HistorialForm, MedicoForm, PacienteForm
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -73,6 +73,11 @@ class NuevoMedico(CreateView):
     template_name = 'nuevomedico.html'
     success_url = reverse_lazy('index')
 
+class NuevoHistorial(CreateView):
+    model = Historial
+    form_class = HistorialForm
+    template_name = 'HistorialForm.html'
+    success_url = reverse_lazy('historia;')
 
 
 

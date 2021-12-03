@@ -94,6 +94,7 @@ class Paciente(models.Model):
     Nombres = models.CharField('Nombres del paciente',max_length=30, null=False, blank=False)
     Apellidos = models.CharField('Apellidos del paciente',max_length=45, null=False, blank=False)
     Direccion = models.CharField('Direccion del paciente', max_length=200)
+    fecha_nacimiento = models.DateTimeField('Fecha de Nacimiento', null=False)
     nombreMedico = models.ForeignKey(Medico, on_delete=models.CASCADE,verbose_name="Nombre Médico" )
     created_date = models.DateTimeField('Fecha de ingreso', default=timezone.now)
     n_historial = models.IntegerField('Numero historial')

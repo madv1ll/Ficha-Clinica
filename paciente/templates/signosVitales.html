@@ -1,2 +1,25 @@
-signos vitales
-<a href="NuevoSignosVitales">pincha</a>
+{% extends "signosbase.html"%}
+{% block body %}
+<section>
+    <div class="container-sm paciente_signosvitales">
+
+        <table class="table table-success table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha creacion</th>
+                    <th>observaciones</th>
+                </tr>
+                {% for Signos in object_list %}
+                    <tr>
+                        <td>{{Signos.fecha_creacion}}</td>
+                        <td>{{Signos.observaciones}}</td>
+                    </tr>
+                {% endfor%}
+
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    
+</section>
+{% endblock %}

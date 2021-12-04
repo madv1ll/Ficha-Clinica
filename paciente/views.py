@@ -1,22 +1,30 @@
 from django.db.models import query
+from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from .models import Historial, LugarAtencion, Medico, Paciente, SignosVitales
 from .forms import HistorialForm, MedicoForm, PacienteForm,  SignosForm
 from django.shortcuts import redirect
-from django.core.paginator import Paginator
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 def pacienteinicio(request):
     pacientes = Paciente.objects.filter(nombreMedico_id = request.user)
-    paginator = Paginator(pacientes, per_page=1)
-    page_number = request.GET.get('page') 
-    page_obj = paginator.get_page(page_number)
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(pacientes, per_page=10)
+    try:
+        pacientes = paginator.page(page)
+    except PageNotAnInteger:
+        pacientes = paginator.page(10)
+    except EmptyPage:
+        pacientes = paginator.page(paginator.num_pages)
+
     traspaso = {
         'pacientes':pacientes
     }
-    return render(request, 'index.html' ,traspaso, {'page_obj': page_obj})
+    return render(request, 'index.html' ,traspaso,{ 'pacientes': pacientes })
 
 def historial(request, rut):
     pacientes = Paciente.objects.filter(rut = rut)
@@ -86,12 +94,19 @@ class NuevoSignosVitales(CreateView):
     template_name = 'signosVitalesForm.html'
     success_url = reverse_lazy('index')
 
+class SignosViews(ListView):
+    model = SignosVitales
+    template_name = 'signosVitales.html'
+    
+
+
+ 
 
 class NuevoHistorial(CreateView):
     model = Historial
     form_class = HistorialForm
     template_name = 'HistorialForm.html'
-    success_url = reverse_lazy('historia;')
+    success_url = reverse_lazy('historial')
 
 
 

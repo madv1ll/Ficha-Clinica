@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block cuerpo %}
+
+
+    {% block cuerpo %}
     <section>
         <div class="container-sm form_clinica">
             <table class="table table-success table-striped">
@@ -28,8 +30,33 @@
                     {% endfor %}
                 </tbody>
             </table>
-        
-    </section>
-    {% endblock %}
+            {% if pacientes.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ pacientes.previous_page_number }}">« Page anterior
+            {% if pacientes.number > 3 %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">1
+            {% if pacientes.number > 4 %}
+            <button class="btn btn-outline-info mb-4" disabled="">...</button>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            
+            {% for num in pacientes.paginator.page_range %}
+            {% if pacientes.number == num %}
+            <a class="btn btn-info mb-4" href="?page={{ num }}" id="4">{{ num }}
+            {% elif num > pacientes.number|add:'-3' and num < pacientes.number|add:'3' %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ num }}" id="5">{{ num }}
+            {% endif %}
+            {% endfor %}
+            
+            {% if pacientes.has_next %}
+            {% if pacientes.number < pacientes.paginator.num_pages|add:'-3' %}
+            <button class="btn btn-outline-info mb-4" disabled="">...</button>
+            <a class="btn btn-outline-info mb-4" href="?page={{ pacientes.paginator.num_pages }}" id="3">{{ pacientes.paginator.num_pages }}
+            {% elif pacientes.number < pacientes.paginator.num_pages|add:'-2' %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ pacientes.paginator.num_pages }}" id="2">{{ pacientes.paginator.num_pages }}
+            {% endif %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ pacientes.next_page_number }}" id="1">Pagina siguiente»
+            {% endif %}
+        {% endblock %}  
 
-
+    

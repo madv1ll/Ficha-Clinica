@@ -14,7 +14,7 @@
     <header style="text-align: center;">
         <h1>Fichas Clinicas</h1>
     </header>
-    <title>{% block titulo %}Fichas Clinicas{% endblock titulo %}</title>
+    <title>{% block titulo %}Signos vitales{% endblock titulo %}</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -25,26 +25,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'clinica' %}">Clinica   </a>
-            </li>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'domicilio' %}">Domicilio</a>
+            <li class="nav-item";">
+              <a class="nav-link active" aria-current="page" href="/paciente/NuevoSignosVitales">Nuevos signos vitales</a>
             </li>
           </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'nuevoPaciente' %}">Nuevo Paciente</a>
-            </li>
-          </ul>
-          {% if request.user.is_staff %}
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Medico</a>
-            </li>
-          </ul>
-          {% endif %}
           <ul class="navbar-nav">
             <li class="nav-item";">
               <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Cerrar sesion</a>
@@ -53,10 +37,10 @@
         </div>
       </div>
     </nav>
-  {% block cuerpo %}
-  {% endblock %}
-  {% block pagination %}
-  {% endblock %}
+{% block body %}
+{% endblock %}
+
+
 </div>
 </body>
 

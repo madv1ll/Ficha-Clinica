@@ -11,44 +11,15 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-
-def pacienteinicio(request):
-    pacientes = Paciente.objects.filter(nombreMedico_id = request.user)
-    page = request.GET.get('page', 1)
-
-    paginator = Paginator(pacientes, per_page=10)
-    try:
-        pacientes = paginator.page(page)
-    except PageNotAnInteger:
-        pacientes = paginator.page(10)
-    except EmptyPage:
-        pacientes = paginator.page(paginator.num_pages)
-
-    traspaso = {
-        'pacientes':pacientes
-    }
-    return render(request, 'index.html' ,traspaso,{ 'pacientes': pacientes })
+from django.contrib import messages
 
 def historial(request, rut):
-    pacientes = Paciente.objects.filter(rut = rut)
+    pacientes = Paciente.objects.get(rut = rut)
     datos = {
         'pacientes':pacientes
     }
     return render(request, 'historial.html',datos)
 
-def clinica(request):
-    pacientes = Paciente.objects.filter(lugarAtencion_id = 1)
-    datos = {
-        'pacientes':pacientes
-    }
-    return render(request, 'clinica.html', datos)
-
-def domicilio(request):
-    pacientes = Paciente.objects.filter(lugarAtencion_id = 2)
-    datos = {
-        'pacientes':pacientes
-    }
-    return render(request, 'domicilio.html', datos)
 
 def nuevoPaciente(request):
     if request.method == "POST":
@@ -68,7 +39,7 @@ def editarPaciente(request, rut):
         form = PacienteForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('index'), messages.success(request, 'El usuario se ha eliminado con exito')
     else:
         form = PacienteForm(instance=post)
     return render(request, 'editarpaciente.html', {'form': form})
@@ -76,6 +47,7 @@ def editarPaciente(request, rut):
 def eliminarPaciente(request, rut):
     paciente = Paciente.objects.get(rut=rut)
     paciente.delete()
+
     return redirect('index')
 
 class Index(CreateView):
@@ -89,8 +61,6 @@ class Index(CreateView):
         return super().dispatch(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
-        #data = {'hola':'holaaaa'}
-        #print( Paciente.objects.filter(lugarAtencion=request.POST['id']))
         data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
         return JsonResponse({'lugaratencion':data})
     

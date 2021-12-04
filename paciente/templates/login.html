@@ -8,17 +8,30 @@
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="{% static 'css/cs-skin-elastic.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+<!--===============================================================================================-->	
+    <link rel="icon" type="image/png" href="{% static path %}images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="{% static path %}login/css/main.css">
+<!--===============================================================================================-->
 </head>
-<body class="bg-dark">
+<!---<body class="bg-dark">
 
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
@@ -27,7 +40,7 @@
                     <form method="POST">
                       {% csrf_token %}
                         <div class="form-group">
-                            {% if request.method == 'POST' %} 
+                        {% if request.method == 'POST' %} 
                           {% if form.error_messages %}
                               <div class="alert alert-danger alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss = "alert" aria-label = "Close">
@@ -49,8 +62,87 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+<!-- kkkkkkkkkkkkkkkkkk -->
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form  method="POST" class="login100-form validate-form flex-sb flex-w">
+                {% csrf_token %}
+                {% if request.method == 'POST' %} 
+                    {% if form.error_messages %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss = "alert" aria-label = "Close">
+                            <span aria-hidden = "true">&times;</span>
+                        </button>
+                        <strong>Error: </strong> Credenciales incorrectas
+                        </div>
+                    {% endif %}
+                {% endif %}
 
+                <span class="login100-form-title p-b-51">
+                    Login
+                </span>
+
+                
+                <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+                    {{ form.username }}
+                    <span class="focus-input100"></span>
+                </div>
+                
+                
+                <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+                    {{ form.password }}
+                    <span class="focus-input100"></span>
+                </div>
+                
+                <!-- <div class="flex-sb-m w-full p-t-3 p-b-24">
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div>
+                        <a href="#" class="txt1">
+                            Forgot?
+                        </a>
+                    </div>
+                </div> -->
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn">
+                        Iniciar Sesi&oacute;n
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="{% static path %}login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static path %}login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static path %}login/vendor/bootstrap/js/popper.js"></script>
+	<script src="{% static path %}login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static path %}login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static path %}login/vendor/daterangepicker/moment.min.js"></script>
+	<script src="{% static path %}login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static path %}login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static path %}login/js/main.js"></script>
+
+    <!-- kkkkkkkkkkkkk -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -63,21 +155,6 @@
     {{ Paciente.full_name|upper }}<br>
      {% endfor %}
     <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
-    
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-    
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
     </div>
   {% endblock %}
 

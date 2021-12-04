@@ -149,10 +149,9 @@ class SignosVitales(models.Model):
     presion_arterial_media    = models.CharField('Presión Arterial Media', null=True, max_length=50)
     peso                      = models.CharField('Peso', null=True, max_length=50)
     talla                     = models.CharField('Talla', null=True, max_length=50)
-    Presion_Intracraneal      = models.CharField('Temperatura', null=True, max_length=50)
-    Presion_arterial_pulmonar = models.CharField('Temperatura', null=True, max_length=50)
+    Presion_Intracraneal      = models.CharField('Presion Intracraneal', null=True, max_length=50)
+    Presion_arterial_pulmonar = models.CharField('Presion Arterial Pulmonar', null=True, max_length=50)
     observaciones             = models.CharField('Observaciones', null=True, max_length=50)
-    temperatura               = models.CharField('Temperatura', null=True, max_length=50)
     paciente_rut              = models.ForeignKey(Paciente,on_delete=models.CASCADE)
     fecha_creacion            = models.DateTimeField('Fecha registro', default=timezone.now)
 

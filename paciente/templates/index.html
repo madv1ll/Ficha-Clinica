@@ -1,62 +1,135 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bootstrap4 %}
+{# CSS Bootstrap #}
+{% bootstrap_css %}
+{% block extrahead %}
+<link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="../static/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="../static/css/util.css">
+<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+{% endblock extrahead %}
+{% block cuerpo %}
+<br>
+<form id="form_lugarAtencion" method="POST">
+{% csrf_token %}
+  <div style="display: flex;justify-content: center;">
+    <select name="lugarAtencion" id="lugarAtencion" onchange="cambiaSelect()" style="width: 240px;">
+      <option value="0">Seleccione Lugar de Atenci&oacute;n</option>
+      <option value="1">Clinica</option>
+      <option value="2">Domicilio</option>
+    </select>
+  </div>
+</form>
+<section>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
 
+                <div class="table100 ver5 m-b-110">
+                    <div class="table100-head">
+                        <table>
+                            <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">Historial Cl&iacute;nico</th>
+                                    <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
+                                    <th class="cell100 column3">Rut</th>
+                                    <th class="cell100 column4">Nombres</th>
+                                    <th class="cell100 column5">Apellidos</th>
+                                    <th class="cell100 column6">Opciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
 
-    {% block cuerpo %}
-    <section>
-        <div class="container-sm form_clinica">
-            <table class="table table-success table-striped">
-                <thead>
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody id="cuerpoTabla">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPTS TABLA -->
+<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="../static/vendor/bootstrap/js/popper.js"></script>
+<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/vendor/select2/select2.min.js"></script>
+<script src="../static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<!-- FIN SCRIPTS TABLA -->
+<script>
+function getCookie(name) {
+let cookieValue = null;
+if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+        }
+    }
+}
+return cookieValue;
+}
+function cambiaSelect(){
+    var form = new FormData(document.getElementById("form_lugarAtencion"));
+    valorSelect = document.getElementById("lugarAtencion").value
+    var cuerpo = document.getElementById("cuerpoTabla")
+    if(valorSelect != '0'){
+        cuerpo.innerHTML = ""
+    }
+
+    $.ajax({
+        url: "/",
+        type: 'POST',
+        data: {id:valorSelect},
+        dataType: 'json'
+    }).done(function(data){
+        for (let i in data) {
+            for (let j in data[i]) {
+                if (data[i][j]) {
+                    var lugarAtencion 
+                    if (data[i][j].lugarAtencion_id == '1'){
+                        lugarAtencion = "Clínica"
+                    }
+                    if(data[i][j].lugarAtencion_id == '2'){
+                        lugarAtencion = "Domicilio"
+                    }
+
+                    cuerpo.innerHTML+=`
                     <tr>
-                        <th>Historial clinico</th>
-                        <th>Lugar de atencion</th>
-                        <th>rut</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for paciente in pacientes %}
-                    <tr>
-                        <td><a href="historial/{{paciente.rut}}/">Historial clinico</a></td>
-                        <td>{{paciente.lugarAtencion}}</td>
-                        <td>{{paciente.rut}}</td>
-                        <td>{{paciente.Nombres}}</td>
-                        <td>{{paciente.Apellidos}}</td>
-                        <td> <a href="editarpaciente/{{paciente.rut}}">Editar</a> <a href="eliminarpaciente/{{paciente.rut}}">Eliminar</a></td>
-                        
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% if pacientes.has_previous %}
-            <a class="btn btn-outline-info mb-4" href="?page={{ pacientes.previous_page_number }}">« Page anterior
-            {% if pacientes.number > 3 %}
-            <a class="btn btn-outline-info mb-4" href="?page=1">1
-            {% if pacientes.number > 4 %}
-            <button class="btn btn-outline-info mb-4" disabled="">...</button>
-            {% endif %}
-            {% endif %}
-            {% endif %}
-            
-            {% for num in pacientes.paginator.page_range %}
-            {% if pacientes.number == num %}
-            <a class="btn btn-info mb-4" href="?page={{ num }}" id="4">{{ num }}
-            {% elif num > pacientes.number|add:'-3' and num < pacientes.number|add:'3' %}
-            <a class="btn btn-outline-info mb-4" href="?page={{ num }}" id="5">{{ num }}
-            {% endif %}
-            {% endfor %}
-            
-            {% if pacientes.has_next %}
-            {% if pacientes.number < pacientes.paginator.num_pages|add:'-3' %}
-            <button class="btn btn-outline-info mb-4" disabled="">...</button>
-            <a class="btn btn-outline-info mb-4" href="?page={{ pacientes.paginator.num_pages }}" id="3">{{ pacientes.paginator.num_pages }}
-            {% elif pacientes.number < pacientes.paginator.num_pages|add:'-2' %}
-            <a class="btn btn-outline-info mb-4" href="?page={{ pacientes.paginator.num_pages }}" id="2">{{ pacientes.paginator.num_pages }}
-            {% endif %}
-            <a class="btn btn-outline-info mb-4" href="?page={{ pacientes.next_page_number }}" id="1">Pagina siguiente»
-            {% endif %}
-        {% endblock %}  
+                        <td class="cell100 column1"><button type="button" class="btn-historial"><a href="historial/`+data[i][j].rut+`/">Ver Historial</a></button></td>
+                        <td class="cell100 column2">`+lugarAtencion+`</td>
+                        <td class="cell100 column3">`+data[i][j].rut+`</td>
+                        <td class="cell100 column4">`+data[i][j].Nombres+`</td>
+                        <td class="cell100 column5">`+data[i][j].Apellidos+`</td>
+                        <td class="cell100 column6"><button type="button" class="btn-historial"><a href="editarpaciente/`+data[i][j].rut+`">Editar</a></button><button type="button" class="btn-historial"><a href="eliminarpaciente/`+data[i][j].rut+`">Eliminar</a></button></td>                 
+                    </tr>`
+                }
+            }
+        }
+    }).fail(function (data){
+        alert('error al cargar datos')
+    })
 
-    
+}
+
+$('.js-pscroll').each(function(){
+                var ps = new PerfectScrollbar(this);
+                $(window).on('resize', function(){
+                    ps.update();
+                })
+            });
+</script>
+<script src="../static/js/main.js"></script>
+{% endblock %}

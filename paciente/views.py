@@ -91,6 +91,8 @@ class NuevoSignosVitales(CreateView):
 class SignosViews(ListView):
     model = SignosVitales
     template_name = 'signosVitales.html'
+
+
     
 
 class NuevoHistorial(CreateView):

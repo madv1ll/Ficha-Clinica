@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 
 def historial(request, rut):
-    pacientes = Paciente.objects.get(rut = rut)
+    pacientes = Paciente.objects.filter(rut = rut)
     datos = {
         'pacientes':pacientes
     }

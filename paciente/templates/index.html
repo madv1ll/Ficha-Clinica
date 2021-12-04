@@ -1,35 +1,85 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block cuerpo %}
-    <section>
-        <div class="container-sm form_clinica">
-            <table class="table table-success table-striped">
-                <thead>
-                    <tr>
-                        <th>Historial clinico</th>
-                        <th>Lugar de atencion</th>
-                        <th>rut</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for paciente in pacientes %}
-                    <tr>
-                        <td><a href="historial/{{paciente.rut}}/">Historial clinico</a></td>
-                        <td>{{paciente.lugarAtencion}}</td>
-                        <td>{{paciente.rut}}</td>
-                        <td>{{paciente.Nombres}}</td>
-                        <td>{{paciente.Apellidos}}</td>
-                        <td> <a href="editarpaciente/{{paciente.rut}}">Editar</a> <a href="eliminarpaciente/{{paciente.rut}}">Eliminar</a></td>
-                        
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        
-    </section>
+<br>
+<form id="form_lugarAtencion" method="POST">
+{% csrf_token %}
+  <div style="display: flex;justify-content: center;">
+    <select name="lugarAtencion" id="lugarAtencion" onchange="cambiaSelect()" style="width: 240px;">
+      <option value="0">Seleccione Lugar de Atenci&oacute;n</option>
+      <option value="1">Clinica</option>
+      <option value="2">Domicilio</option>
+    </select>
+  </div>
+</form>
+<br><br>
+<section>
+  <div class="container-sm form_clinica">
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th>Historial clinico</th>
+          <th>Lugar de atencion</th>
+          <th>rut</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Opciones</th>
+       </tr>
+      </thead>
+      <tbody>
+      {% for paciente in object_list %}
+      <tr>
+        <td><a href="historial/{{paciente.rut}}/">Historial clinico</a></td>
+        <td>{{paciente.lugarAtencion}}</td>
+        <td>{{paciente.rut}}</td>
+        <td>{{paciente.Nombres}}</td>
+        <td>{{paciente.Apellidos}}</td>
+        <td> <a href="editarpaciente/{{paciente.rut}}">Editar</a> <a href="eliminarpaciente/{{paciente.rut}}">Eliminar</a></td>                 
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+function getCookie(name) {
+let cookieValue = null;
+if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+        }
+    }
+}
+return cookieValue;
+}
+function cambiaSelect(){
+    var form = new FormData(document.getElementById("form_lugarAtencion"));
+    valorSelect = document.getElementById("lugarAtencion").value
+
+    $.ajax({
+        url: "/",
+        type: 'POST',
+        data: {id:valorSelect},
+        dataType: 'json'
+    }).done(function(data){
+        for ( x in data) {
+            for(x in data[x]){
+                console.log(x)
+            }
+        }
+    }).fail(function (data){
+        alert('error')
+    })
+
+}
+
+</script>
     {% endblock %}
 
 

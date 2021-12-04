@@ -1,5 +1,6 @@
-from django.db.models import query
-from django.http.response import HttpResponse
+from django.db.models import fields
+from django.forms.models import model_to_dict
+from django.http import  JsonResponse
 from django.shortcuts import get_object_or_404, render
 from .models import Historial, LugarAtencion, Medico, Paciente, SignosVitales
 from .forms import HistorialForm, MedicoForm, PacienteForm,  SignosForm
@@ -7,6 +8,8 @@ from django.shortcuts import redirect
 from django.core.paginator import Paginator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 def pacienteinicio(request):
     pacientes = Paciente.objects.filter(nombreMedico_id = request.user)
@@ -67,6 +70,27 @@ def eliminarPaciente(request, rut):
     paciente.delete()
     return redirect('index')
 
+class Index(CreateView):
+    model = Paciente
+    fields = ('__all__')
+    template_name = 'index.html'
+    success_url = '.'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        #data = {'hola':'holaaaa'}
+        #print( Paciente.objects.filter(lugarAtencion=request.POST['id']))
+        data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
+        return JsonResponse({'lugaratencion':data})
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["lugarSeleccion"] = Paciente.objects.filter(lugarAtencion=1)
+        return context
+
 class NuevoMedico(CreateView):
     model = Medico
     form_class = MedicoForm
@@ -92,7 +116,3 @@ class NuevoHistorial(CreateView):
     form_class = HistorialForm
     template_name = 'HistorialForm.html'
     success_url = reverse_lazy('historia;')
-
-
-
-

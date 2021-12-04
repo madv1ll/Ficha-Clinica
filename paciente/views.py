@@ -123,9 +123,6 @@ class SignosViews(ListView):
     template_name = 'signosVitales.html'
     
 
-
- 
-
 class NuevoHistorial(CreateView):
     model = Historial
     form_class = HistorialForm

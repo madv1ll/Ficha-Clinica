@@ -42,7 +42,7 @@
                                     <th class="cell100 column3">Rut</th>
                                     <th class="cell100 column4">Nombres</th>
                                     <th class="cell100 column5">Apellidos</th>
-                                    <th class="cell100 column6">Opciones</th>
+                                    <th class="cell100 column8">Opciones</th>
                                 </tr>
                             </thead>
                         </table>
@@ -113,8 +113,8 @@ function cambiaSelect(){
                         <td class="cell100 column1"><button type="button" class="btn-historial"><a href="historial/`+data[i][j].rut+`/">Ver Historial</a></button></td>
                         <td class="cell100 column2">`+lugarAtencion+`</td>
                         <td class="cell100 column3">`+data[i][j].rut+`</td>
-                        <td class="cell100 column4">`+data[i][j].Nombres+`</td>
-                        <td class="cell100 column5">`+data[i][j].Apellidos+`</td>
+                        <td class="cell100 column4">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
+                        <td class="cell100 column5">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
                         <td class="cell100 column6"><button type="button" class="btn-historial"><a href="editarpaciente/`+data[i][j].rut+`">Editar</a></button><button type="button" class="btn-historial"><a href="eliminarpaciente/`+data[i][j].rut+`">Eliminar</a></button></td>                 
                     </tr>`
                 }

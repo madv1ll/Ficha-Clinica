@@ -8,7 +8,6 @@ class PacienteForm(forms.ModelForm):
         model = Paciente
         fields = ('n_historial','lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento')
 
-
 class MedicoForm(forms.ModelForm):
     password = forms.CharField(label= 'Contraseña', widget=forms.PasswordInput(
         attrs={

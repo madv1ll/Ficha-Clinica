@@ -2,6 +2,7 @@ from django.forms.models import model_to_dict
 from django.http import  JsonResponse
 from django.db.models import query
 from django.http import request
+from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from .models import Historial, LugarAtencion, Medico, Paciente, SignosVitales
 from .forms import HistorialForm, MedicoForm, PacienteForm,  SignosForm
@@ -15,8 +16,10 @@ from django.contrib import messages
 
 def historial(request, rut):
     pacientes = Paciente.objects.filter(rut = rut)
+    historial = Historial.objects.filter(rut = rut)
     datos = {
-        'pacientes':pacientes
+        'pacientes':pacientes,
+        'historial':historial
     }
     return render(request, 'historial.html',datos)
 
@@ -26,7 +29,8 @@ def nuevoPaciente(request):
         form = PacienteForm(request.POST)
         if form.is_valid():
             post = form.save(commit = False)
-            post.nombreMedico = request.user
+            post.nombreMedico = request.user.username
+            post.nombreMedicoAdmin = 'cuidador'
             post.save()
             return redirect ('index')
     else:
@@ -61,7 +65,10 @@ class Index(CreateView):
         return super().dispatch(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
-        data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
+        user = request.user.username
+        print('usuario: ',user)
+        #data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
+        data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).filter(nombreMedico=user).values())
         return JsonResponse({'lugaratencion':data})
     
     def get_context_data(self, **kwargs):
@@ -99,5 +106,11 @@ class NuevoHistorial(CreateView):
     success_url = reverse_lazy('historial')
 
 
-
-
+def pacienteinicio(request):
+    pacientes = Paciente.objects.filter(nombreMedico_id = request.user)
+    traspaso = {
+        'pacientes':pacientes
+    }
+    if request.method == "POST":
+        return HttpResponse(Paciente.objects.filter(nombreMedico_id = 1))
+    return render(request, 'index.html' ,traspaso)

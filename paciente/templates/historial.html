@@ -16,6 +16,7 @@
 {% block titulo %}Historial{% endblock titulo %}
 {% block h1 %}Historial{% endblock h1 %}
 {% block cuerpo %}
+<!-- TABLA CON DATOS DEL PACIENTE -->
 <section>
     <div class="limiter">
         <div class="container-table100">
@@ -64,7 +65,48 @@
             </div>
         </div>
     </div>
-
+</section>
+<!-- TABLA CON HISTORIAL DEL PACIENTE -->
+<section>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver5 m-b-110">
+                    <div class="table100-head">
+                        <table>
+                            <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">Fecha</th>
+                                    <th class="cell100 column2">Tipo de Atenci&oacute;n</th>
+                                    <th class="cell100 column3">Servicio</th>
+                                    <th class="cell100 column4">Diagn&oacute;stico</th>
+                                    <th class="cell100 column5">Acciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody>
+                                {% for hist in historial %}
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">{{hist.fecha}}</td>
+                                    <td class="cell100 column2">{{hist.tipo_atencion}}</td>
+                                    <td class="cell100 column3">Servicio</td>
+                                    <td class="cell100 column4">{{hist.diagnostico}}</td>
+                                    <td class="cell100 column5">
+                                        <button type="button" class="btn-historial"><a href="#">Ver Historial</a></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- SCRIPTS TABLA -->
 <script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>

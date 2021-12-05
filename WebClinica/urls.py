@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path
-from paciente.views import Index, NuevoSignosVitales, SignosViews, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, NuevoHistorial
+from paciente.views import Index, NuevoSignosVitales, SignosViews, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, NuevoHistorial, pacienteinicio
 from usuario.views import Login, logoutUser
 from django.contrib.auth.decorators import login_required
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',login_required(Index.as_view()),name = 'index'),
+    #path('',login_required(pacienteinicio),name = 'index'),
     path('historial/<str:rut>/', login_required(historial), name = 'historial_clinico'),
     path('historialForm/nuevo', NuevoHistorial.as_view(), name='nuevoHistorial'),
     path('paciente/nuevo',nuevoPaciente, name='nuevoPaciente'),

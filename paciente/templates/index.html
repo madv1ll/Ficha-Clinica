@@ -18,7 +18,7 @@
 {% block cuerpo %}
 <br>
 <form id="form_lugarAtencion" method="POST">
-{% csrf_token %}
+    {% csrf_token %}
   <div style="display: flex;justify-content: center;" >
     <select name="lugarAtencion" id="lugarAtencion" onchange="cambiaSelect()" style="width: 290px;"class="select-css">
       <option value="0">Seleccione Lugar de Atenci&oacute;n</option>
@@ -58,6 +58,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="user" id="user" value="{{ user.id}}">
 </section>
 
 <!-- SCRIPTS TABLA -->
@@ -90,11 +91,12 @@ function cambiaSelect(){
     if(valorSelect != '0'){
         cuerpo.innerHTML = ""
     }
-
+    document.getElementById("user").value
+    console.log(document.getElementById("user").value)
     $.ajax({
         url: "/",
         type: 'POST',
-        data: {id:valorSelect},
+        data: {id: valorSelect},
         dataType: 'json'
     }).done(function(data){
         console.log(data)

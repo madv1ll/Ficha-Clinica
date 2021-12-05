@@ -5,6 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block extrahead %}
+    {% endblock extrahead %}
     <!-- style -->
     <link rel="stylesheet" href="/static/paciente/css/style.css">
     <!-- Bootstrap CSS -->
@@ -24,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item";">
-              <a class="nav-link active" aria-current="page" href="/paciente/NuevoSignosVitales">Nuevos signos vitales</a>
+              <a class="nav-link active" aria-current="page" href="/paciente/NuevoSignosVitales">Nuevos Signos Vitales</a>
             </li>
           </ul>
           <ul class="navbar-nav">

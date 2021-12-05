@@ -31,39 +31,6 @@
 	<link rel="stylesheet" type="text/css" href="{% static path %}login/css/main.css">
 <!--===============================================================================================-->
 </head>
-<!---<body class="bg-dark">
-
-    <div class="sufee-login d-flex align-content-center flex-wrap">
-        <div class="container">
-            <div class="login-content">
-                <div class="login-form">
-                    <form method="POST">
-                      {% csrf_token %}
-                        <div class="form-group">
-                        {% if request.method == 'POST' %} 
-                          {% if form.error_messages %}
-                              <div class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss = "alert" aria-label = "Close">
-                                  <span aria-hidden = "true">&times;</span>
-                                </button>
-                                <strong>Advertencia: </strong> {{ form.get_invalid_login_error }}
-                              </div>
-                          {% endif %}
-                          {% endif %}
-                            <label>Nombre de usuario</label>
-                            {{ form.username }}
-                        </div>
-                        <div class="form-group">
-                            <label>Contraseña</label>
-                            {{ form.password }}
-                        </div>
-                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Iniciar Sesión</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
-<!-- kkkkkkkkkkkkkkkkkk -->
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-t-50 p-b-90">
@@ -81,7 +48,7 @@
                 {% endif %}
 
                 <span class="login100-form-title p-b-51">
-                    Login
+                    Bienvenid@
                 </span>
 
                 

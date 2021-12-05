@@ -63,3 +63,4 @@
 div.modalDialog div button.btn-historial{
     width:49%
 }
+#success_message{ display: none;}

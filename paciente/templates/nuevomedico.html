@@ -1,61 +1,152 @@
-<head >
-    <style>
-#background{
-    background-color: #002e39;
-    color: aliceblue;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
-}
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{# CSS Bootstrap #}
+{% bootstrap_css %}
+{% block extrahead %}
+	<title>Contact V10</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'nuevomedico/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
+<!--===============================================================================================-->
+{% endblock extrahead %}
+{% block titulo %}Nuevo Médico{% endblock titulo %}
+{% block h1 %}Nuevo Médico{% endblock h1 %}
+{% block cuerpo %}
+
+	<div class="container-contact100">
+
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Send Us A Message
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.rut}}
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your phone">
+					{{form.nombre}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.snombre}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.apellido}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.sapellido}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.direccion}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.especialidad}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.username}}
+					<span class="focus-input100"></span>
+				</div>
+					{{form.password}}
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							Guardar
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
 
 
-#main-container{
-    padding-top: 200px;
-    text-align: center;
-}
-.btn{
-    border-radius: 3px;
-    display: inline-block;
-    padding: 20px 15px;
-    text-decoration: none;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
-    box-shadow: rgba(0, 0, 0, 0.3);
-}
 
-.btn-Green{
-    color: white;
-    background-color: #3CC93F;
+	<div id="dropDownSelect1"></div>
+    paciente\static\vendor\jquery\jquery-3.2.1.min.js
+<!--===============================================================================================-->
+	<script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js"></script>
 
-}
-.btn-Green:hover{
-    background-color: #37b839;
-}
-.btn-Green:active{
-    background-color: #29962A;
-}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-.btn-Red{
-    color: white;
-    background-color: red;
+  gtag('config', 'UA-23581568-13');
+</script>
 
-}
-.btn-Red:hover{
-    background-color: #C21818;
-}
-.btn-Red:active{
-    background-color: #9C1414;
-}
-
-    </style>
-</head>
-<body id="background">
-
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        
-        
-        <div id="main-container">
-            <button type="submit" href="/" class="btn btn-Green">Guardar</button>
-            <a href="/" class="btn btn-Red">Volver</a>
-        </div>
-    </form>
 </body>
+<script>
+	document.getElementById('id_rut').setAttribute("class", "input100")
+	document.getElementById('id_rut').setAttribute("placeholder", "RUT")
+
+	document.getElementById('id_nombre').setAttribute("class", "input100")
+	document.getElementById('id_nombre').setAttribute("placeholder", "Primer Nombre")
+
+	document.getElementById('id_snombre').setAttribute("class", "input100")
+	document.getElementById('id_snombre').setAttribute("placeholder", "Segundo Nombre")
+
+	document.getElementById('id_apellido').setAttribute("class", "input100")
+	document.getElementById('id_apellido').setAttribute("placeholder", "Primer Apellido")
+
+	document.getElementById('id_sapellido').setAttribute("class", "input100")
+	document.getElementById('id_sapellido').setAttribute("placeholder", "Segundo Apellido")
+
+	document.getElementById('id_direccion').setAttribute("class", "input100")
+	document.getElementById('id_direccion').setAttribute("placeholder", "Dirección")
+
+	document.getElementById('id_especialidad').setAttribute("class", "input100")
+	document.getElementById('id_especialidad').setAttribute("placeholder", "Especialidad")
+
+	document.getElementById('id_username').setAttribute("class", "input100")
+	document.getElementById('id_username').setAttribute("placeholder", "Nombre de Usuario")
+
+	document.getElementById('password').setAttribute("class", "input100")
+	document.getElementById('password').setAttribute("placeholder", "Contraseña")
+
+</script>
+</html>
+{% endblock cuerpo %}

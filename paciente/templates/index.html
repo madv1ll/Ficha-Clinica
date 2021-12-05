@@ -13,6 +13,8 @@
 <link rel="stylesheet" type="text/css" href="../static/css/util.css">
 <link rel="stylesheet" type="text/css" href="../static/css/main.css">
 {% endblock extrahead %}
+{% block titulo %}Index{% endblock titulo %}
+{% block h1 %}Pagina Principal{% endblock h1 %}
 {% block cuerpo %}
 <br>
 <form id="form_lugarAtencion" method="POST">
@@ -95,6 +97,7 @@ function cambiaSelect(){
         data: {id:valorSelect},
         dataType: 'json'
     }).done(function(data){
+        console.log(data)
         for (let i in data) {
             for (let j in data[i]) {
                 if (data[i][j]) {
@@ -105,7 +108,6 @@ function cambiaSelect(){
                     if(data[i][j].lugarAtencion_id == '2'){
                         lugarAtencion = "Domicilio"
                     }
-
                     cuerpo.innerHTML+=`
                     <tr>
                         <td class="cell100 column1"><button type="button" class="btn-historial"><a href="historial/`+data[i][j].rut+`/">Ver Historial</a></button></td>

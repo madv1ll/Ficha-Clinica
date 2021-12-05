@@ -112,7 +112,7 @@ class Paciente(models.Model):
 class Historial(models.Model):
     idhistorial               = models.AutoField('Id historial',primary_key=True)
     fecha                     = models.DateTimeField('Fecha de registro', default=timezone.now)
-    tipo_atencion             = models.CharField('Tipo de atencion', max_length=50, null=True)
+    tipo_atencion             = models.CharField('Tipo de atencion', max_length=50, null=True, blank=False)
     servicio                  = models.CharField('Servicio', max_length=30, null=True)
     diagnostico               = models.CharField('Diagnostico', max_length=150, null=True)
     motivo_ingreso            = models.CharField('Motivo de ingreso', max_length=150, null=True) 

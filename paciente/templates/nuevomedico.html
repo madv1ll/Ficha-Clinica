@@ -20,6 +20,8 @@
 {% block titulo %}Nuevo Médico{% endblock titulo %}
 {% block h1 %}Nuevo Médico{% endblock h1 %}
 {% block cuerpo %}
+<form method="post">
+	{% csrf_token %}
 	<div class="container-contact100">
 
 		<div class="wrap-contact100">
@@ -71,7 +73,8 @@
 			</form>
 		</div>
 	</div>
-	<div id="dropDownSelect1"></div>
+</form>
+<div id="dropDownSelect1"></div>
 <script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
 <script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
 <script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>

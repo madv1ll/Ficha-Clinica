@@ -39,7 +39,7 @@ def editarPaciente(request, rut):
         form = PacienteForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('index'), messages.success(request, 'El usuario se ha eliminado con exito')
+            return redirect('index'), messages.success(request, 'El usuario se ha editado con exito')
     else:
         form = PacienteForm(instance=post)
     return render(request, 'editarpaciente.html', {'form': form})
@@ -48,7 +48,7 @@ def eliminarPaciente(request, rut):
     paciente = Paciente.objects.get(rut=rut)
     paciente.delete()
 
-    return redirect('index')
+    return redirect('index'), messages.success(request, 'El usuario se ha eliminado con exito')
 
 class Index(CreateView):
     model = Paciente

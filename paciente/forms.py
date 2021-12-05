@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 class PacienteForm(forms.ModelForm):
     class Meta:
         model = Paciente
-        fields = ('n_historial','lugarAtencion','rut','Nombres','Apellidos','Direccion','fecha_nacimiento')
+        fields = ('n_historial','lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento')
 
 
 class MedicoForm(forms.ModelForm):

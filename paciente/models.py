@@ -93,8 +93,10 @@ class Registro(models.Model):
 class Paciente(models.Model):
     lugarAtencion    = models.ForeignKey(LugarAtencion, on_delete=models.CASCADE)
     rut              = models.CharField(primary_key=True, max_length=12)
-    Nombres          = models.CharField('Nombres del paciente',max_length=30, null=False, blank=False)
-    Apellidos        = models.CharField('Apellidos del paciente',max_length=45, null=False, blank=False)
+    pnombre          = models.CharField('Primer nombre del paciente',max_length=30, null=False, blank=False)
+    snombre          = models.CharField('Segundo nombre del paciente',max_length=30, null=True, blank=True)
+    papellido        = models.CharField('Primer apellido del paciente',max_length=45, null=False, blank=False)
+    sapellido        = models.CharField('Segundo apellido del paciente',max_length=45, null=True, blank=True)
     Direccion        = models.CharField('Direccion del paciente', max_length=200)
     fecha_nacimiento = models.DateTimeField('Fecha de Nacimiento', null=False)
     nombreMedico     = models.ForeignKey(Medico, on_delete=models.CASCADE,verbose_name="Nombre Médico" )

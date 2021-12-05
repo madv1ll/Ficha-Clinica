@@ -1,4 +1,4 @@
-{% extends 'historialbase.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
 {# CSS Bootstrap #}
@@ -13,7 +13,9 @@
 <link rel="stylesheet" type="text/css" href="{% static path %}css/util.css">
 <link rel="stylesheet" type="text/css" href="{% static path %}css/main.css">
 {% endblock extrahead %}
-{% block historial %}
+{% block titulo %}Historial{% endblock titulo %}
+{% block h1 %}Historial{% endblock h1 %}
+{% block cuerpo %}
 <section>
     <div class="limiter">
         <div class="container-table100">
@@ -46,10 +48,10 @@
                                         <div id="openModal" class="modalDialog">
                                             <div>
                                                 <a href="#close" title="Cerrar" class="close">X</a>
-                                                <button type="button" class="btn-historial" style="background-color: #e7fde3;"><a href="/editarpaciente/{{paciente.rut}}">Editar Paciente</a></button>
+                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/editarpaciente/{{paciente.rut}}">Editar Paciente</a></button>
                                                 <button type="button" class="btn-historial" style="background-color: #fde3e3;"><a href="/eliminarpaciente/{{paciente.rut}}">Eliminar Paciente</a></button> 
-                                                <button type="button" class="btn-historial" style="background-color: #fde3e3;"><a href="/historialForm/nuevo">Nuevo Historial</a></button>
-                                                <button type="button" class="btn-historial" style="background-color: #fde3e3;"><a href="/SignosVitales/{{paciente.rut}}">Signos vitales</a></button>
+                                                <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/historialForm/nuevo">Nuevo Historial</a></button>
+                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/SignosVitales/{{paciente.rut}}">Signos vitales</a></button>
                                             </div>
                                         </div>
                                     </td>
@@ -80,5 +82,5 @@ $('.js-pscroll').each(function(){
 </script>
 <script src="../../static/js/main.js"></script>
 <!-- FIN SCRIPTS TABLA -->
-    {% endblock %}
+{% endblock %}
 

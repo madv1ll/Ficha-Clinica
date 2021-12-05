@@ -14,13 +14,13 @@
 <link rel="stylesheet" type="text/css" href="../static/css/main.css">
 {% endblock extrahead %}
 {% block titulo %}Index{% endblock titulo %}
-{% block h1 %}Pagina Principal{% endblock h1 %}
+{% block h1 %}Página Principal{% endblock h1 %}
 {% block cuerpo %}
 <br>
 <form id="form_lugarAtencion" method="POST">
 {% csrf_token %}
-  <div style="display: flex;justify-content: center;">
-    <select name="lugarAtencion" id="lugarAtencion" onchange="cambiaSelect()" style="width: 240px;">
+  <div style="display: flex;justify-content: center;" >
+    <select name="lugarAtencion" id="lugarAtencion" onchange="cambiaSelect()" style="width: 290px;"class="select-css">
       <option value="0">Seleccione Lugar de Atenci&oacute;n</option>
       <option value="1">Clinica</option>
       <option value="2">Domicilio</option>

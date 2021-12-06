@@ -76,6 +76,21 @@ class Index(CreateView):
         context["lugarSeleccion"] = Paciente.objects.filter(lugarAtencion=1)
         return context
 
+    #Nuevo Historial VBF
+    def nuevoHistorial(request):
+        if request.method == "POST":
+            form = HistorialForm(request.POST)
+            if form.is_valid():
+                post = form.save(commit = False)
+                # post.rut = 
+                post.nombreMedicoAdmin = 'cuidador'
+                post.save()
+            return redirect ('index')
+        else:
+            form = HistorialForm
+        return render(request, 'nuevopaciente.html', {'form':form})
+
+
 class NuevoMedico(CreateView):
     model = Medico
     form_class = MedicoForm

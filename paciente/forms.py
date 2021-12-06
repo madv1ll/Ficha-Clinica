@@ -42,5 +42,14 @@ class SignosForm(forms.ModelForm):
 class HistorialForm(forms.ModelForm):
     class Meta:
         model = Historial
-        fields = ('fecha','tipo_atencion','servicio','diagnostico','motivo_ingreso','enfermedad_actual','diagnostico_admision','diagnostico_clinico_final', 'fecha_alta_medica', 'fecha_alta_clinica')
+        fields = ('fecha',
+                  'tipo_atencion',
+                  'servicio',
+                  'diagnostico',
+                  'motivo_ingreso',
+                  'enfermedad_actual',
+                  'diagnostico_admision',
+                  'diagnostico_clinico_final', 
+                  'fecha_alta_medica', 
+                  'fecha_alta_clinica')
 

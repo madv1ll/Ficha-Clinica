@@ -70,7 +70,10 @@
 <!-- FIN SCRIPTS TABLA -->
 <script>
 function eliminarPaciente(id){
-    location.href="eliminarpaciente/"+id
+    if(confirm('¿Está seguro que desea eliminar?')){
+        location.href="eliminarpaciente/"+id
+    }
+
 }
 function getCookie(name) {
 let cookieValue = null;

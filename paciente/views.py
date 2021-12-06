@@ -48,8 +48,8 @@ def editarPaciente(request, rut):
         form = PacienteForm(instance=post)
     return render(request, 'editarpaciente.html', {'form': form})
 
-def eliminarPaciente(request, rut):
-    paciente = Paciente.objects.get(rut=rut)
+def eliminarPaciente(request,rut):
+    paciente = Paciente.objects.filter(rut=rut)
     paciente.delete()
 
     return redirect('index'), messages.success(request, 'El usuario se ha eliminado con exito')

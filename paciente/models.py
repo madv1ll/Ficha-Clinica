@@ -108,21 +108,21 @@ class Paciente(models.Model):
         verbose_name_plural = 'Pacientes'
 
     def __str__(self):
-        return self.Nombres
+        return self.rut
 
 
 class Historial(models.Model):
     idhistorial               = models.AutoField('Id historial',primary_key=True)
-    fecha                     = models.DateTimeField('Fecha de registro', default=timezone.now)
-    tipo_atencion             = models.CharField('Tipo de atencion', max_length=50, null=True, blank=False)
-    servicio                  = models.CharField('Servicio', max_length=30, null=True)
-    diagnostico               = models.CharField('Diagnostico', max_length=150, null=True)
-    motivo_ingreso            = models.CharField('Motivo de ingreso', max_length=150, null=True) 
-    enfermedad_actual         = models.CharField('Enfermedad actual', max_length=150, null=True) 
-    diagnostico_admision      = models.CharField('Diagnostico de admision', max_length=150, null=True)
-    diagnostico_clinico_final = models.CharField('Diagnostico clinico final', max_length=200, null=True)
-    fecha_alta_medica         = models.DateTimeField('Fecha alta Medica',  null=True)
-    fecha_alta_clinica        = models.DateTimeField('Fecha alta clinica',  null=True)
+    fecha                     = models.DateTimeField('Fecha de registro', auto_now=True)
+    tipo_atencion             = models.ForeignKey(LugarAtencion, on_delete=models.CASCADE)
+    servicio                  = models.CharField('Servicio', max_length=30, null=True, blank=True)
+    diagnostico               = models.CharField('Diagnostico', max_length=150, null=True, blank=True)
+    motivo_ingreso            = models.CharField('Motivo de ingreso', max_length=150, null=True, blank=True) 
+    enfermedad_actual         = models.CharField('Enfermedad actual', max_length=150, null=True, blank=True) 
+    diagnostico_admision      = models.CharField('Diagnostico de admision', max_length=150, null=True, blank=True)
+    diagnostico_clinico_final = models.CharField('Diagnostico clinico final', max_length=200, null=True, blank=True)
+    fecha_alta_medica         = models.DateTimeField('Fecha alta Medica',  null=True, blank=True)
+    fecha_alta_clinica        = models.DateTimeField('Fecha alta clinica',  null=True, blank=True)
     rut                       = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     class meta:
@@ -136,27 +136,26 @@ class Historial(models.Model):
 
 class SignosVitales(models.Model):
     id_signosvitales          = models.AutoField('id signos vitales', primary_key=True)
-    temperatura               = models.CharField('Temperatura', null=True, max_length=50)
-    respiracion               = models.CharField('Respiracion', null=True, max_length=50)
-    tension                   = models.CharField('Tension', null=True, max_length=50)
-    evaluacion                = models.CharField('Evaluacion', null=True, max_length=150)
-    miccion                   = models.CharField('Miccion', null=True, max_length=150)
-    vomito                    = models.CharField('Vomito', null=True, max_length=150)
-    gases                     = models.CharField('Gases', null=True, max_length=50)
-    dolor                     = models.CharField('Dolor', null=True, max_length=50)
-    transfusion_sangre        = models.CharField('Transfusion de Sangre', null=True, max_length=100)
-    frecuencia_cardiaca       = models.CharField('Frecuencia Cardiaca', null=True, max_length=50)
-    saturacion                = models.CharField('Saturacion', null=True, max_length=50)
-    presion_venosa_central    = models.CharField('Presión Venosa Central', null=True, max_length=50)
-    presion_arterial_media    = models.CharField('Presión Arterial Media', null=True, max_length=50)
-    peso                      = models.CharField('Peso', null=True, max_length=50)
-    talla                     = models.CharField('Talla', null=True, max_length=50)
-    Presion_Intracraneal      = models.CharField('Presion Intracraneal', null=True, max_length=50)
-    Presion_arterial_pulmonar = models.CharField('Presion Arterial Pulmonar', null=True, max_length=50)
-    observaciones             = models.CharField('Observaciones', null=True, max_length=50)
+    temperatura               = models.CharField('Temperatura', null=True, max_length=50, blank=True)
+    respiracion               = models.CharField('Respiracion', null=True, max_length=50, blank=True)
+    tension                   = models.CharField('Tension', null=True, max_length=50, blank=True)
+    evaluacion                = models.CharField('Evaluacion', null=True, max_length=150, blank=True)
+    miccion                   = models.CharField('Miccion', null=True, max_length=150, blank=True)
+    vomito                    = models.CharField('Vomito', null=True, max_length=150, blank=True)
+    gases                     = models.CharField('Gases', null=True, max_length=50, blank=True)
+    dolor                     = models.CharField('Dolor', null=True, max_length=50, blank=True)
+    transfusion_sangre        = models.CharField('Transfusion de Sangre', null=True, max_length=100, blank=True)
+    frecuencia_cardiaca       = models.CharField('Frecuencia Cardiaca', null=True, max_length=50, blank=True)
+    saturacion                = models.CharField('Saturacion', null=True, max_length=50, blank=True)
+    presion_venosa_central    = models.CharField('Presión Venosa Central', null=True, max_length=50, blank=True)
+    presion_arterial_media    = models.CharField('Presión Arterial Media', null=True, max_length=50, blank=True)
+    peso                      = models.CharField('Peso', null=True, max_length=50, blank=True)
+    talla                     = models.CharField('Talla', null=True, max_length=50, blank=True)
+    Presion_Intracraneal      = models.CharField('Presion Intracraneal', null=True, max_length=50, blank=True)
+    Presion_arterial_pulmonar = models.CharField('Presion Arterial Pulmonar', null=True, max_length=50, blank=True)
+    observaciones             = models.CharField('Observaciones', null=True, max_length=50, blank=True)
     paciente_rut              = models.ForeignKey(Paciente,on_delete=models.CASCADE)
-    fecha_creacion            = models.DateTimeField('Fecha registro', default=timezone.now)
-
+    fecha_creacion            = models.DateTimeField('Fecha registro', auto_now=True)
     class meta:
         verbose_name = 'Signos Vitales'
         verbose_name_plural = 'Signos Vitales'

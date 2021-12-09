@@ -1,61 +1,217 @@
-<head >
-    <style>
-#background{
-    background-color: #002e39;
-    color: aliceblue;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
-}
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{# CSS Bootstrap #}
+{% bootstrap_css %}
+{% block extrahead %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'nuevomedico/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
+<!--===============================================================================================-->
+{% endblock extrahead %}
+
+{% block titulo %}Nuevo Historial{% endblock titulo %}
+{% block h1 %}Nuevo Historial{% endblock h1 %}
+{% block cuerpo %}
+<form method="post">
+    {% csrf_token %}
+	<div class="container-contact100">
+
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+
+                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.temperatura}}
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.respiracion}}
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your phone">
+					{{form.tension}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.evaluacion}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.miccion}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.vomito}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.gases}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.dolor}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.transfusion_sangre}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.frecuencia_cardiaca}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.saturacion}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.presion_venosa_central}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.presion_arterial_media}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.peso}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.talla}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.Presion_Intracraneal}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.Presion_arterial_pulmonar}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.observaciones}}
+					<span class="focus-input100"></span>
+				</div>
+                
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
+						<span>
+							Guardar
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</form>
 
 
-#main-container{
-    padding-top: 200px;
-    text-align: center;
-}
-.btn{
-    border-radius: 3px;
-    display: inline-block;
-    padding: 20px 15px;
-    text-decoration: none;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
-    box-shadow: rgba(0, 0, 0, 0.3);
-}
+	<div id="dropDownSelect1"></div>
 
-.btn-Green{
-    color: white;
-    background-color: #3CC93F;
+	<script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
 
-}
-.btn-Green:hover{
-    background-color: #37b839;
-}
-.btn-Green:active{
-    background-color: #29962A;
-}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+//   window.dataLayer = window.dataLayer || [];
+//   function gtag(){dataLayer.push(arguments);}
+//   gtag('js', new Date());
 
-.btn-Red{
-    color: white;
-    background-color: red;
+//   gtag('config', 'UA-23581568-13');
+</script>
 
-}
-.btn-Red:hover{
-    background-color: #C21818;
-}
-.btn-Red:active{
-    background-color: #9C1414;
-}
-
-    </style>
-</head>
-<body id="background">
-
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        
-        
-        <div id="main-container">
-            <button type="submit" href="/" class="btn btn-Green">Guardar</button>
-            <a href="/paciente/SignosVitales" class="btn btn-Red">Volver</a>
-        </div>
-    </form>
 </body>
+<script>
+
+    document.getElementById('id_temperatura').setAttribute("class", "input100")
+	document.getElementById('id_temperatura').setAttribute("style", "height: 60px;")
+	document.getElementById('id_temperatura').setAttribute("placeholder", "Temperatura")
+
+	document.getElementById('id_respiracion').setAttribute("class", "input100")
+	document.getElementById('id_respiracion').setAttribute("placeholder", "Respiración")
+
+	document.getElementById('id_tension').setAttribute("class", "input100")
+	document.getElementById('id_tension').setAttribute("placeholder", "Tensión")
+
+	document.getElementById('id_evaluacion').setAttribute("class", "input100")
+	document.getElementById('id_evaluacion').setAttribute("placeholder", "Evaluacion")
+
+	document.getElementById('id_miccion').setAttribute("class", "input100")
+	document.getElementById('id_miccion').setAttribute("placeholder", "Miccion")
+
+	document.getElementById('id_vomito').setAttribute("class", "input100")
+	document.getElementById('id_vomito').setAttribute("placeholder", "Vómito")
+
+	document.getElementById('id_gases').setAttribute("class", "input100")
+	document.getElementById('id_gases').setAttribute("placeholder", "Gases")
+
+    document.getElementById('id_dolor').setAttribute("class", "input100")
+	document.getElementById('id_dolor').setAttribute("placeholder", "Dolor")
+
+    document.getElementById('id_transfusion_sangre').setAttribute("class", "input100")
+	document.getElementById('id_transfusion_sangre').setAttribute("placeholder", "Transfusion de Sangre")
+    
+    document.getElementById('id_frecuencia_cardiaca').setAttribute("class", "input100")
+	document.getElementById('id_frecuencia_cardiaca').setAttribute("placeholder", "Frecuencia Cardiaca")
+    
+    document.getElementById('id_saturacion').setAttribute("class", "input100")
+	document.getElementById('id_saturacion').setAttribute("placeholder", "Saturación")
+    
+    document.getElementById('id_presion_venosa_central').setAttribute("class", "input100")
+	document.getElementById('id_presion_venosa_central').setAttribute("placeholder", "Presión Venosa Central")
+    
+    document.getElementById('id_presion_arterial_media').setAttribute("class", "input100")
+	document.getElementById('id_presion_arterial_media').setAttribute("placeholder", "Presión Arterial Media")
+    
+    document.getElementById('id_peso').setAttribute("class", "input100")
+	document.getElementById('id_peso').setAttribute("placeholder", "Peso")
+    
+    document.getElementById('id_talla').setAttribute("class", "input100")
+	document.getElementById('id_talla').setAttribute("placeholder", "Talla")
+    
+    document.getElementById('id_Presion_Intracraneal').setAttribute("class", "input100")
+	document.getElementById('id_Presion_Intracraneal').setAttribute("placeholder", "Presión Intracraneal")
+    
+    document.getElementById('id_Presion_arterial_pulmonar').setAttribute("class", "input100")
+	document.getElementById('id_Presion_arterial_pulmonar').setAttribute("placeholder", "Presión Arterial Pulmonar")
+    
+    document.getElementById('id_observaciones').setAttribute("class", "input100")
+	document.getElementById('id_observaciones').setAttribute("placeholder", "Observaciones")
+
+</script>
+</html>
+{% endblock cuerpo %}

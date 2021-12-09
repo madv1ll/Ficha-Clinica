@@ -27,6 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
 <!--===============================================================================================-->
 {% endblock extrahead %}
+
 {% block titulo %}Nuevo Historial{% endblock titulo %}
 {% block h1 %}Nuevo Historial{% endblock h1 %}
 {% block cuerpo %}
@@ -36,18 +37,11 @@
 
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
-                
-				<!-- <div class="wrap-input100 validate-input" data-validate="Please enter your name">
-					<span class="focus-input100"></span>
-					{{form.fecha}}
-				</div> 
-            FECHA AUTOMATICA   -->
 
                 <div class="wrap-input100 validate-input" data-validate="Please enter your name">
 					<span class="focus-input100"></span>
 					{{form.tipo_atencion}}
 				</div>
-
 				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
 					<span class="focus-input100"></span>
 					{{form.servicio}}
@@ -96,7 +90,7 @@
 
 
 	<div id="dropDownSelect1"></div>
-<!--===============================================================================================-->
+
 	<script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
@@ -109,24 +103,25 @@
 	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
 	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'js/main.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+//   window.dataLayer = window.dataLayer || [];
+//   function gtag(){dataLayer.push(arguments);}
+//   gtag('js', new Date());
 
-  gtag('config', 'UA-23581568-13');
+//   gtag('config', 'UA-23581568-13');
 </script>
 
 </body>
 <script>
 
     document.getElementById('id_tipo_atencion').setAttribute("class", "input100")
+	document.getElementById('id_tipo_atencion').setAttribute("style", "height: 60px;")
 	document.getElementById('id_tipo_atencion').setAttribute("placeholder", "Tipo Atencion")
 
 	document.getElementById('id_servicio').setAttribute("class", "input100")

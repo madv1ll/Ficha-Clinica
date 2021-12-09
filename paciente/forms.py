@@ -37,13 +37,19 @@ class MedicoForm(forms.ModelForm):
 class SignosForm(forms.ModelForm):
     class Meta:
         model = SignosVitales
-        fields = ('__all__')
+        fields = ('temperatura','respiracion','tension','evaluacion','miccion','vomito','gases','dolor','transfusion_sangre','frecuencia_cardiaca','saturacion',
+                'presion_venosa_central',
+                'presion_arterial_media',
+                'peso',
+                'talla',
+                'Presion_Intracraneal',
+                'Presion_arterial_pulmonar',
+                'observaciones')
 
 class HistorialForm(forms.ModelForm):
     class Meta:
         model = Historial
-        fields = ('fecha',
-                  'tipo_atencion',
+        fields = ('tipo_atencion',
                   'servicio',
                   'diagnostico',
                   'motivo_ingreso',

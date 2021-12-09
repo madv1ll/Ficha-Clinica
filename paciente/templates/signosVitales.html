@@ -1,4 +1,4 @@
-{% extends "signosbase.html"%}
+{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
 {# CSS Bootstrap #}
@@ -13,58 +13,106 @@
 <link rel="stylesheet" type="text/css" href="{% static path %}css/util.css">
 <link rel="stylesheet" type="text/css" href="{% static path %}css/main.css">
 {% endblock extrahead %}
-{% block body %}
+{% block titulo %}Signos Vitales{% endblock titulo %}
+{% block h1 %}Signos Vitales{% endblock h1 %}
+{% block cuerpo %}
 <section>
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100 ver5 m-b-110">
-                    <div class="table100-head">
-                        <table>
-                            <thead>
-                                <tr class="row100 head">
-                                    <th class="cell100 column1">Fecha creaci&oacute;n</th>
-                                    <th class="cell100 column2">Observaciones</th>
-                                    <th class="cell100 column3">Acciones</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="table100-body js-pscroll">
-                        <table>
-                            <tbody>
-                            {% for Signos in object_list %}
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">{{Signos.fecha_creacion}}</td>
-                                    <td class="cell100 column2">{{Signos.observaciones}}</td>
-                                    <td class="cell100 column3">
-                                        <button type="button" class="btn-historial" style="background-color: #e7fde3;"><a href="">Ver Registro</a></button>
-                                    </td>
-                                </tr>
-                            {% endfor%}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+  <div class="limiter">
+      <div class="container-table100">
+          <div class="wrap-table100">
+              <div class="table100 ver5 m-b-110">
+                  <div class="table100-head">
+                      <table>
+                          <thead>
+                              <tr class="row100 head">
+                                  <th class="cell100 column1">Lugar de Atenci&oacute;n</th>
+                                  <th class="cell100 column2">Rut</th>
+                                  <th class="cell100 column3">Nombres</th>
+                                  <th class="cell100 column4">Apellidos</th>
+                                  <th class="cell100 column5">Acciones</th>
+                              </tr>
+                          </thead>
+                      </table>
+                  </div>
+                  <div class="table100-body js-pscroll">
+                      <table>
+                          <tbody>
+                              {% for paciente in pacientes %}
+                              <tr class="row100 body">
+                                  <td class="cell100 column1">{{paciente.lugarAtencion}}</td>
+                                  <td class="cell100 column2">{{paciente.rut}}</td>
+                                  <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
+                                  <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
+                                  <td class="cell100 column5">
+                                      <button type="button" class="btn-historial"><a href="NuevoSignosVitales">Agregar Signos Vitales</a></button>
+                                      <div id="openModal" class="modalDialog">
+                                          <div>
+                                              <a href="#close" title="Cerrar" class="close">X</a>
+                                              <!-- <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/editarpaciente/{{paciente.rut}}">Editar Paciente</a></button>
+                                              <button type="button" class="btn-historial" style="background-color: #fde3e3;"><a href="/eliminarpaciente/{{paciente.rut}}">Eliminar Paciente</a></button>  -->
+                                              <!-- <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/historialForm/nuevo/{{paciente.rut}}">Nuevo Historial</a></button>
+                                              <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/SignosVitales/{{paciente.rut}}">Signos vitales</a></button> -->
+                                          </div>
+                                      </div>
+                                  </td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </section>
-<!-- SCRIPTS TABLA -->
-<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="../../static/vendor/bootstrap/js/popper.js"></script>
-<script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../static/vendor/select2/select2.min.js"></script>
-<script src="../../static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script>
-$('.js-pscroll').each(function(){
-            var ps = new PerfectScrollbar(this);
-            $(window).on('resize', function(){
-                ps.update();
-            })
-        });
-</script>
-<script src="../../static/js/main.js"></script>
-<!-- FIN SCRIPTS TABLA -->
+<!-- TABLA CON HISTORIAL DEL PACIENTE -->
+<section>
+  <div class="limiter">
+      <div class="container-table100">
+          <div class="wrap-table100">
+              <div class="table100 ver5 m-b-110">
+                  <div class="table100-head">
+                      <table>
+                          <thead>
+                              <tr class="row100 head">
+                                  <th class="cell100 column1">Fecha</th>
+                                  <th class="cell100 column2">Tipo de Atenci&oacute;n</th>
+                                  <th class="cell100 column3">Servicio</th>
+                                  <th class="cell100 column4">Diagn&oacute;stico</th>
+                                  <th class="cell100 column5">Acciones</th>
+                              </tr>
+                          </thead>
+                      </table>
+                  </div>
+                  <div class="table100-body js-pscroll">
+                      <table>
+                          <tbody>
+                              {% for signos in signosVitales %}
+                              <tr class="row100 body">
+                                  <td class="cell100 column1">01/12/2012</td>
+                                  <td class="cell100 column2">{{signos.observaciones}}</td>
+                                  <td class="cell100 column3">Servicio</td>
+                                  <td class="cell100 column4">{{signos.diagnostico}}No tiene</td>
+                                  <td class="cell100 column5">
+                                      <button type="button" class="btn-historial"><a href="">Ver Registro</a></button>
+                                  </td>
+                              </tr>
+                              <tr class="row100 body">
+                                <td class="cell100 column1">02/12/2012</td>
+                                <td class="cell100 column2">{{signos.observaciones}} numero 2</td>
+                                <td class="cell100 column3">Servicio</td>
+                                <td class="cell100 column4">{{signos.diagnostico}} no hay</td>
+                                <td class="cell100 column5">
+                                    <button type="button" class="btn-historial"><a href="">Ver Registro</a></button>
+                                </td>
+                            </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
 {% endblock %}

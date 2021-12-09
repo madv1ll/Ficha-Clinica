@@ -92,7 +92,7 @@
 
 	<div id="dropDownSelect1"></div>
 <!--===============================================================================================-->
-	<script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
+	<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
 <!--===============================================================================================-->
@@ -104,9 +104,9 @@
 	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
 	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'js/main.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
@@ -145,6 +145,7 @@
 
     document.getElementById('id_fecha_nacimiento').setAttribute("class", "input100")
 	document.getElementById('id_fecha_nacimiento').setAttribute("placeholder", "Fecha nacimiento")
+	document.getElementById('id_fecha_nacimiento').setAttribute("type", "date")
 
 </script>
 </html>

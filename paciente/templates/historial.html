@@ -42,16 +42,16 @@
                                 <tr class="row100 body">
                                     <td class="cell100 column1">{{paciente.lugarAtencion}}</td>
                                     <td class="cell100 column2">{{paciente.rut}}</td>
-                                    <td class="cell100 column3">{{paciente.Nombres}}</td>
-                                    <td class="cell100 column4">{{paciente.Apellidos}}</td>
+                                    <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
+                                    <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
                                     <td class="cell100 column5">
                                         <button type="button" class="btn-historial"><a href="#openModal">Ver Acciones</a></button>
                                         <div id="openModal" class="modalDialog">
                                             <div>
                                                 <a href="#close" title="Cerrar" class="close">X</a>
-                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/editarpaciente/{{paciente.rut}}">Editar Paciente</a></button>
-                                                <button type="button" class="btn-historial" style="background-color: #fde3e3;"><a href="/eliminarpaciente/{{paciente.rut}}">Eliminar Paciente</a></button> 
-                                                <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/historialForm/nuevo">Nuevo Historial</a></button>
+                                                <!-- <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/editarpaciente/{{paciente.rut}}">Editar Paciente</a></button>
+                                                <button type="button" class="btn-historial" style="background-color: #fde3e3;"><a href="/eliminarpaciente/{{paciente.rut}}">Eliminar Paciente</a></button>  -->
+                                                <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/historialForm/nuevo/{{paciente.rut}}">Nuevo Historial</a></button>
                                                 <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/SignosVitales/{{paciente.rut}}">Signos vitales</a></button>
                                             </div>
                                         </div>
@@ -90,12 +90,22 @@
                             <tbody>
                                 {% for hist in historial %}
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">{{hist.fecha}}</td>
+                                    <td class="cell100 column1">01/12/2021</td>
                                     <td class="cell100 column2">{{hist.tipo_atencion}}</td>
                                     <td class="cell100 column3">Servicio</td>
                                     <td class="cell100 column4">{{hist.diagnostico}}</td>
                                     <td class="cell100 column5">
-                                        <button type="button" class="btn-historial"><a href="#">Ver Historial</a></button>
+                                        <button type="button" class="btn-historial"><a href="/historial/historialdetalle/{{ hist.idhistorial}}">Ver Historial</a></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">02/12/2021</td>
+                                    <td class="cell100 column2">{{hist.tipo_atencion}}</td>
+                                    <td class="cell100 column3">Servicio</td>
+                                    <td class="cell100 column4">{{hist.diagnostico}}</td>
+                                    <td class="cell100 column5">
+                                        <button type="button" class="btn-historial"><a href="/historial/historialdetalle/{{ hist.idhistorial}}">Ver Historial</a></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -125,4 +135,3 @@ $('.js-pscroll').each(function(){
 <script src="../../static/js/main.js"></script>
 <!-- FIN SCRIPTS TABLA -->
 {% endblock %}
-

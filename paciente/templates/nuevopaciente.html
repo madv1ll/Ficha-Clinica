@@ -36,14 +36,10 @@
 
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
-                
+				<div align="center"><strong>Lugar Atenci&oacute;n</strong></div>
 				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
 					<span class="focus-input100"></span>
-					{{form.n_historial}}
-				</div>
-
-                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
-					<span class="focus-input100"></span>
+					
 					{{form.lugarAtencion}}
 				</div>
 
@@ -96,7 +92,7 @@
 
 	<div id="dropDownSelect1"></div>
 <!--===============================================================================================-->
-	<script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
+	<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
 <!--===============================================================================================-->
@@ -108,9 +104,9 @@
 	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
 	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static 'js/main.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
@@ -124,10 +120,9 @@
 
 </body>
 <script>
-    document.getElementById('id_n_historial').setAttribute("class", "input100")
-	document.getElementById('id_n_historial').setAttribute("placeholder", "Numero historial")
 
     document.getElementById('id_lugarAtencion').setAttribute("class", "input100")
+	document.getElementById('id_lugarAtencion').setAttribute("style", "height: 60px;")
 	document.getElementById('id_lugarAtencion').setAttribute("placeholder", "Lugar de atencion")
 
 	document.getElementById('id_rut').setAttribute("class", "input100")
@@ -150,6 +145,7 @@
 
     document.getElementById('id_fecha_nacimiento').setAttribute("class", "input100")
 	document.getElementById('id_fecha_nacimiento').setAttribute("placeholder", "Fecha nacimiento")
+	document.getElementById('id_fecha_nacimiento').setAttribute("type", "date")
 
 </script>
 </html>

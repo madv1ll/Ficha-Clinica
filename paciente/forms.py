@@ -6,8 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 class PacienteForm(forms.ModelForm):
     class Meta:
         model = Paciente
-        fields = ('n_historial','lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento')
-
+        fields = ('lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento')
 
 class MedicoForm(forms.ModelForm):
     password = forms.CharField(label= 'Contraseña', widget=forms.PasswordInput(
@@ -38,10 +37,25 @@ class MedicoForm(forms.ModelForm):
 class SignosForm(forms.ModelForm):
     class Meta:
         model = SignosVitales
-        fields = ('__all__')
+        fields = ('temperatura','respiracion','tension','evaluacion','miccion','vomito','gases','dolor','transfusion_sangre','frecuencia_cardiaca','saturacion',
+                'presion_venosa_central',
+                'presion_arterial_media',
+                'peso',
+                'talla',
+                'Presion_Intracraneal',
+                'Presion_arterial_pulmonar',
+                'observaciones')
 
 class HistorialForm(forms.ModelForm):
     class Meta:
         model = Historial
-        fields = ('fecha','tipo_atencion','servicio','diagnostico','motivo_ingreso','enfermedad_actual','diagnostico_admision','diagnostico_clinico_final', 'fecha_alta_medica', 'fecha_alta_clinica')
+        fields = ('tipo_atencion',
+                  'servicio',
+                  'diagnostico',
+                  'motivo_ingreso',
+                  'enfermedad_actual',
+                  'diagnostico_admision',
+                  'diagnostico_clinico_final', 
+                  'fecha_alta_medica', 
+                  'fecha_alta_clinica')
 

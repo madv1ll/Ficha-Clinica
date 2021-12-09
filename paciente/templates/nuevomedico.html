@@ -85,45 +85,44 @@
 
 <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+window.dataLayer = window.dataLayer || [];
+function gtag(){
+	dataLayer.push(arguments);
+}
   gtag('js', new Date());
 
   gtag('config', 'UA-23581568-13');
-</script>
 
-</body>
-<script>
-	document.getElementById('id_rut').setAttribute("class", "input100")
-	document.getElementById('id_rut').setAttribute("placeholder", "RUT")
-	document.getElementById('id_rut').setAttribute("oninput", "checkRut(this)")
-	document.getElementById('id_rut').setAttribute("maxlength", "10")
+document.getElementById('id_rut').setAttribute("class", "input100")
+document.getElementById('id_rut').setAttribute("placeholder", "RUT")
+document.getElementById('id_rut').setAttribute("oninput", "checkRut(this)")
+document.getElementById('id_rut').setAttribute("maxlength", "10")
 
-	document.getElementById('id_nombre').setAttribute("class", "input100")
-	document.getElementById('id_nombre').setAttribute("placeholder", "Primer Nombre")
+document.getElementById('id_nombre').setAttribute("class", "input100")
+document.getElementById('id_nombre').setAttribute("placeholder", "Primer Nombre")
 
-	document.getElementById('id_snombre').setAttribute("class", "input100")
-	document.getElementById('id_snombre').setAttribute("placeholder", "Segundo Nombre")
+document.getElementById('id_snombre').setAttribute("class", "input100")
+document.getElementById('id_snombre').setAttribute("placeholder", "Segundo Nombre")
 
-	document.getElementById('id_apellido').setAttribute("class", "input100")
-	document.getElementById('id_apellido').setAttribute("placeholder", "Primer Apellido")
+document.getElementById('id_apellido').setAttribute("class", "input100")
+document.getElementById('id_apellido').setAttribute("placeholder", "Primer Apellido")
 
-	document.getElementById('id_sapellido').setAttribute("class", "input100")
-	document.getElementById('id_sapellido').setAttribute("placeholder", "Segundo Apellido")
+document.getElementById('id_sapellido').setAttribute("class", "input100")
+document.getElementById('id_sapellido').setAttribute("placeholder", "Segundo Apellido")
 
-	document.getElementById('id_direccion').setAttribute("class", "input100")
-	document.getElementById('id_direccion').setAttribute("placeholder", "Dirección")
+document.getElementById('id_direccion').setAttribute("class", "input100")
+document.getElementById('id_direccion').setAttribute("placeholder", "Dirección")
 
-	document.getElementById('id_especialidad').setAttribute("class", "input100")
-	document.getElementById('id_especialidad').setAttribute("placeholder", "Especialidad")
+document.getElementById('id_especialidad').setAttribute("class", "input100")
+document.getElementById('id_especialidad').setAttribute("placeholder", "Especialidad")
 
-	document.getElementById('id_username').setAttribute("class", "input100")
-	document.getElementById('id_username').setAttribute("placeholder", "Nombre de Usuario")
+document.getElementById('id_username').setAttribute("class", "input100")
+document.getElementById('id_username').setAttribute("placeholder", "Nombre de Usuario")
 
-	document.getElementById('password').setAttribute("class", "input100")
-	document.getElementById('password').setAttribute("placeholder", "Contraseña")
+document.getElementById('password').setAttribute("class", "input100")
+document.getElementById('password').setAttribute("placeholder", "Contraseña")
 
-	function checkRut(rut) {
+function checkRut(rut){
     // Despejar Puntos
     var valor = rut.value.replace('.','');
     // Despejar Guión
@@ -157,5 +156,6 @@
 }
 
 </script>
+</body>
 </html>
 {% endblock cuerpo %}

@@ -18,7 +18,7 @@
 {% block cuerpo %}
 <br>
 <form id="form_lugarAtencion" method="POST">
-{% csrf_token %}
+    {% csrf_token %}
   <div style="display: flex;justify-content: center;" >
     <select name="lugarAtencion" id="lugarAtencion" onchange="cambiaSelect()" style="width: 290px;"class="select-css">
       <option value="0">Seleccione Lugar de Atenci&oacute;n</option>
@@ -58,6 +58,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="user" id="user" value="{{ user.id}}">
 </section>
 
 <!-- SCRIPTS TABLA -->
@@ -68,6 +69,13 @@
 <script src="../static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <!-- FIN SCRIPTS TABLA -->
 <script>
+function eliminarPaciente(id){
+    if(confirm('¿Está seguro que desea eliminar?')){
+        alert("Paciente eliminado correctamente")
+        location.href="eliminarpaciente/"+id
+    }
+
+}
 function getCookie(name) {
 let cookieValue = null;
 if (document.cookie && document.cookie !== '') {
@@ -90,14 +98,12 @@ function cambiaSelect(){
     if(valorSelect != '0'){
         cuerpo.innerHTML = ""
     }
-
     $.ajax({
         url: "/",
         type: 'POST',
-        data: {id:valorSelect},
+        data: {id: valorSelect},
         dataType: 'json'
     }).done(function(data){
-        console.log(data)
         for (let i in data) {
             for (let j in data[i]) {
                 if (data[i][j]) {
@@ -115,7 +121,7 @@ function cambiaSelect(){
                         <td class="cell100 column3">`+data[i][j].rut+`</td>
                         <td class="cell100 column4">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
                         <td class="cell100 column5">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
-                        <td class="cell100 column6"><button type="button" class="btn-historial"><a href="editarpaciente/`+data[i][j].rut+`">Editar</a></button><button type="button" class="btn-historial"><a href="eliminarpaciente/`+data[i][j].rut+`">Eliminar</a></button></td>                 
+                        <td class="cell100 column6"><button type="button" style="width:100%" class="btn-historial"><a href="editarpaciente/`+data[i][j].rut+`">Editar</a></button><button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button></td>                 
                     </tr>`
                 }
             }

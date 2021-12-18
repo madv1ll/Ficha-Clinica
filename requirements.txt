@@ -1,2 +1,2 @@
 Django~=2.2.4
-bootstrap4~=21.1
+bootstrap4

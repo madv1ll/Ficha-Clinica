@@ -4,6 +4,7 @@ from django.db.models.fields.related import ForeignKey
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, AbstractUser, BaseUserManager, User, UserManager
 
+
 class LugarAtencion(models.Model):
     idLugarAtencion = models.AutoField(primary_key=True)
     descripcion     = models.CharField('Lugar de atencion', max_length=20, null=False, blank=False)

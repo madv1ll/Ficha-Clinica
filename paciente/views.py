@@ -13,7 +13,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
-from django.utils import timezone
+import datetime
 
 def historial(request, rut):
     pacientes = Paciente.objects.filter(rut = rut)
@@ -47,12 +47,14 @@ def nuevoPaciente(request):
 
     #Nuevo Historial VBF
 def nuevoHistorialf(request, rut):
-    obj = get_object_or_404(Paciente, rut=rut)
-    form = HistorialForm(request.POST, instance=obj)
+    form = HistorialForm(request.POST)
+    pac = Paciente.objects.filter(rut = rut)
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit = False)
-            post.rut = obj.rut
+            post.fecha = datetime.datetime.now().strftime ("%d-%m-%Y")
+            # post.rut = '1'
+            # print(post)
             post.save()
             return redirect ('historial_clinico',rut)
     else:

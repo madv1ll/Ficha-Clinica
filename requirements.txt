@@ -12,13 +12,11 @@ clear-cache==1.0.0
 click==7.1.2
 colorama==0.4.4
 crispy-forms-gds==0.2.2
-cx-Oracle==8.2.1
 distlib==0.3.1
 dj-database-url==0.5.0
 Django==2.2.24
 django-bootstrap4==21.1
 django-crispy-forms==1.11.2
-django-widget-tweaks==1.4.8
 filelock==3.0.12
 flatbuffers==1.12
 gast==0.4.0
@@ -55,11 +53,6 @@ rsa==4.7.2
 six==1.15.0
 soupsieve==2.2.1
 sqlparse==0.4.1
-tensorboard==2.5.0
-tensorboard-data-server==0.6.0
-tensorboard-plugin-wit==1.8.0
-tensorflow==2.5.0rc1
-tensorflow-estimator==2.5.0rc0
 termcolor==1.1.0
 toml==0.10.2
 tqdm==4.60.0

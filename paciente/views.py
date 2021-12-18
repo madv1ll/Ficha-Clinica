@@ -52,9 +52,9 @@ def nuevoHistorialf(request, rut):
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit = False)
-            post.fecha = datetime.datetime.now().strftime ("%d-%m-%Y")
-            # post.rut = '1'
+            post.rut_id = rut
             # print(post)
+            print(form)
             post.save()
             return redirect ('historial_clinico',rut)
     else:

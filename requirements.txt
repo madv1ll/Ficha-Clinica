@@ -60,5 +60,5 @@ typing-extensions==3.7.4.3
 urllib3==1.26.4
 virtualenv==20.4.4
 Werkzeug==1.0.1
-whitenoise==5.3.0
+whitenoise==3.3.1
 wrapt==1.12.1

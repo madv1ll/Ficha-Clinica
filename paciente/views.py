@@ -47,12 +47,11 @@ def nuevoPaciente(request):
 
     #Nuevo Historial VBF
 def nuevoHistorialf(request, rut):
-    obj = get_object_or_404(Paciente, rut=rut)
-    form = HistorialForm(request.POST, instance=obj)
+    form = HistorialForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit = False)
-            post.rut = obj.rut
+            post.rut_id = rut
             post.save()
             return redirect ('historial_clinico',rut)
     else:
@@ -96,12 +95,11 @@ def signosVitales(request, rut):
     return render(request, 'signosVitales.html',datos)
 
 def nuevoSignosVitales(request, rut):
-    obj = get_object_or_404(Paciente, rut=rut)
     form = SignosForm(request.POST, instance=obj)
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit = False)
-            post.paciente_rut = obj.rut
+            post.paciente_rut = rut
             post.save()
             return redirect ('signosVitales.html',rut)
     else:

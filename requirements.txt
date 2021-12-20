@@ -24,7 +24,11 @@ google-auth==1.29.0
 google-auth-oauthlib==0.4.4
 google-pasta==0.2.0
 grpcio==1.34.1
+<<<<<<< HEAD
+gunicorn==20.1.0
+=======
 gunicorn==19.9.0
+>>>>>>> 7b929db0578a170a39e0bfb5005a581df1d77d81
 h5py==3.1.0
 idna==2.10
 isort==5.7.0
@@ -40,11 +44,23 @@ oauthlib==3.1.0
 opt-einsum==3.3.0
 Pillow==8.2.0
 protobuf==3.15.8
+<<<<<<< HEAD
+<<<<<<< HEAD
 psycopg2-binary==2.8.6
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pylint==2.7.1
+python-decouple==3.5
+=======
+psycopg2-binary==2.7.4
+=======
+psycopg2-binary==2.8.6
+>>>>>>> 0dee86460c29af5e4ea888d7e05d925eb303b207
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pylint==2.7.1
 python-decouple==3.1
+>>>>>>> 7b929db0578a170a39e0bfb5005a581df1d77d81
 pytz==2021.1
 regex==2021.4.4
 requests==2.25.1
@@ -60,5 +76,9 @@ typing-extensions==3.7.4.3
 urllib3==1.26.4
 virtualenv==20.4.4
 Werkzeug==1.0.1
+<<<<<<< HEAD
+whitenoise==5.3.0
+=======
 whitenoise==4.1.2
+>>>>>>> 7b929db0578a170a39e0bfb5005a581df1d77d81
 wrapt==1.12.1

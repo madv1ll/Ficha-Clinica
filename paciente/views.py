@@ -31,7 +31,6 @@ def historialDetalle(request, id):
     }
     return render(request, 'historialdetalle.html',datos)
 
-
 def nuevoPaciente(request):
     if request.method == "POST":
         form = PacienteForm(request.POST)
@@ -95,7 +94,7 @@ def signosVitales(request, rut):
     return render(request, 'signosVitales.html',datos)
 
 def nuevoSignosVitales(request, rut):
-    form = SignosForm(request.POST, instance=obj)
+    form = SignosForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit = False)
@@ -106,6 +105,12 @@ def nuevoSignosVitales(request, rut):
         form = SignosForm
     return render(request, 'signosVitales.html', {'form':form})
 
+def signosDetalle(request, id):
+    signos = SignosVitales.objects.filter(id_signosvitales = id)
+    datos = {
+        'signos': signos
+    }
+    return render(request, 'signosdetalle.html',datos)
 
 class NuevoMedico(CreateView):
     model = Medico

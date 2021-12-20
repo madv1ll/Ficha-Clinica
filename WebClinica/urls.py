@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from paciente.views import Index,  NuevoSignosVitales, SignosViews, historialDetalle, nuevoHistorialf, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, pacienteinicio, signosVitales
+from paciente.views import Index,  NuevoSignosVitales, SignosViews, historialDetalle, nuevoHistorialf, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, pacienteinicio, signosDetalle, signosVitales
 from usuario.views import Login, logoutUser
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -21,4 +21,5 @@ urlpatterns = [
     path('logout/', login_required(logoutUser), name='logout'),
     path('SignosVitales/<str:rut>/', login_required(signosVitales), name='signosVitales'),
     path('SignosVitales/<str:rut>/NuevoSignosVitales', NuevoSignosVitales.as_view(), name='signosVtalesForm'),
+    path('SignosVitales/signosdetalle/<str:id>', signosDetalle, name='signosdetalle'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

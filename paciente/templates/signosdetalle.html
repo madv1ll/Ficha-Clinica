@@ -13,10 +13,9 @@
 <link rel="stylesheet" type="text/css" href="{% static path %}css/util.css">
 <link rel="stylesheet" type="text/css" href="{% static path %}css/main.css">
 {% endblock extrahead %}
-{% block titulo %}Detalle Historial{% endblock titulo %}
-{% block h1 %}Detalle Historial{% endblock h1 %}
+{% block titulo %}Detalle Signos Vitales{% endblock titulo %}
+{% block h1 %}Detalle Signos Vitales{% endblock h1 %}
 {% block cuerpo %}
-<!-- TABLA CON registros signos DEL PACIENTE -->
 <section>
     <div class="limiter">
         <div class="container-table100">
@@ -83,7 +82,6 @@
         </div>
     </div>
 </section>
-<!-- SCRIPTS TABLA -->
 <script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="../../static/vendor/bootstrap/js/popper.js"></script>
 <script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -98,5 +96,4 @@ $('.js-pscroll').each(function(){
         });
 </script>
 <script src="../../static/js/main.js"></script>
-<!-- FIN SCRIPTS TABLA -->
 {% endblock %}

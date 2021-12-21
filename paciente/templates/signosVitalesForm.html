@@ -4,32 +4,21 @@
 {# CSS Bootstrap #}
 {% bootstrap_css %}
 {% block extrahead %}
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="{% static 'nuevomedico/images/icons/favicon.ico' %}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/bootstrap/css/bootstrap.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animate/animate.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/css-hamburgers/hamburgers.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animsition/css/animsition.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/select2/select2.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/daterangepicker/daterangepicker.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
-<!--===============================================================================================-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="{% static 'nuevomedico/images/icons/favicon.ico' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animate/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/css-hamburgers/hamburgers.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animsition/css/animsition.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/select2/select2.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/daterangepicker/daterangepicker.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
 {% endblock extrahead %}
-
-{% block titulo %}Nuevo Historial{% endblock titulo %}
-{% block h1 %}Nuevo Historial{% endblock h1 %}
+{% block titulo %}Nuevo Signos Vitales{% endblock titulo %}
+{% block h1 %}Signos Vitales{% endblock h1 %}
 {% block cuerpo %}
 <form method="post">
     {% csrf_token %}
@@ -129,29 +118,16 @@
 	<div id="dropDownSelect1"></div>
 
 	<script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
 	<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
 	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
-<!--===============================================================================================-->
 	<script src="{% static 'js/main.js' %}"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
-//   window.dataLayer = window.dataLayer || [];
-//   function gtag(){dataLayer.push(arguments);}
-//   gtag('js', new Date());
-
-//   gtag('config', 'UA-23581568-13');
 </script>
 
 </body>

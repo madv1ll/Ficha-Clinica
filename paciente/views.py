@@ -13,7 +13,6 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
-from django.utils import timezone
 
 def historial(request, rut):
     pacientes = Paciente.objects.filter(rut = rut)
@@ -80,8 +79,6 @@ def pacienteinicio(request):
     traspaso = {
         'pacientes':pacientes
     }
-    # if request.method == "POST":
-    #     return HttpResponse(Paciente.objects.filter(nombreMedico_id = 1))
     return render(request, 'index.html' ,traspaso)
 
 def signosVitales(request, rut):

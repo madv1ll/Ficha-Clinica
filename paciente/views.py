@@ -135,6 +135,17 @@ def editarHistorial(request, id):
         form = HistorialForm(instance=post)
     return render(request, 'editarHistorial.html', {'form': form})
 
+def editarSignos(request, id):
+    post = get_object_or_404(SignosVitales, id_signosvitales=id)
+    if request.method == "POST":
+        form = SignosForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = SignosForm(instance=post)
+    return render(request, 'editarSignos.html', {'form': form})
+
 class Index(CreateView):
     model = Paciente
     fields = ('__all__')

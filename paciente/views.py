@@ -114,6 +114,12 @@ class NuevoMedico(CreateView):
     template_name = 'nuevomedico.html'
     success_url = reverse_lazy('index')
 
+class NuevoSignosVitales(CreateView):
+    model = SignosVitales
+    form_class = SignosForm
+    template_name = 'signosVitalesForm.html'
+    success_url = reverse_lazy('index')
+
 class SignosViews(ListView):
     model = SignosVitales
     template_name = 'signosVitales.html'

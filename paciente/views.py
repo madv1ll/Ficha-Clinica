@@ -97,10 +97,10 @@ def nuevoSignosVitales(request, rut):
             post = form.save(commit = False)
             post.paciente_rut = rut
             post.save()
-            return redirect ('signosVitales.html',rut)
+            return redirect ('signosVitales',rut)
     else:
         form = SignosForm
-    return render(request, 'signosVitales.html', {'form':form})
+    return render(request, 'signosVitalesForn.html', {'form':form})
 
 def signosDetalle(request, id):
     signos = SignosVitales.objects.filter(id_signosvitales = id)

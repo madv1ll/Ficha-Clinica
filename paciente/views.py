@@ -131,6 +131,16 @@ class SignosViews(ListView):
 #     form_class = HistorialForm
 #     template_name = 'HistorialForm.html'
 #     success_url = reverse_lazy('historial')
+def editarHistorial(request, id):
+    post = get_object_or_404(Historial, idhistorial=id)
+    if request.method == "POST":
+        form = HistorialForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = HistorialForm(instance=post)
+    return render(request, 'editarHistorial.html', {'form': form})
 
 class Index(CreateView):
     model = Paciente

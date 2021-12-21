@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{# CSS Bootstrap #}
+{% bootstrap_css %}
+{% block extrahead %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="{% static 'nuevomedico/images/icons/favicon.ico' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animate/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/css-hamburgers/hamburgers.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animsition/css/animsition.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/select2/select2.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/daterangepicker/daterangepicker.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
+{% endblock extrahead %}
+{% block titulo %}Editar Historial{% endblock titulo %}
+{% block h1 %}Editar Historial{% endblock h1 %}
+{% block cuerpo %}
+<form method="post">
+    {% csrf_token %}
+	<div class="container-contact100">
+
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+
+                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.tipo_atencion}}
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.servicio}}
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your phone">
+					{{form.diagnostico}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.motivo_ingreso}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.enfermedad_actual}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.diagnostico_admision}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.diagnostico_clinico_final}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.fecha_alta_medica}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.fecha_alta_clinica}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
+						<span>
+							Guardar
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</form>
+
+
+	<div id="dropDownSelect1"></div>
+
+	<script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
+	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
+	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
+	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+<script>
+
+    document.getElementById('id_tipo_atencion').setAttribute("class", "input100")
+	document.getElementById('id_tipo_atencion').setAttribute("style", "height: 60px;")
+	document.getElementById('id_tipo_atencion').setAttribute("placeholder", "Tipo Atencion")
+
+	document.getElementById('id_servicio').setAttribute("class", "input100")
+	document.getElementById('id_servicio').setAttribute("placeholder", "Servicio")
+
+	document.getElementById('id_diagnostico').setAttribute("class", "input100")
+	document.getElementById('id_diagnostico').setAttribute("placeholder", "Diagnóstico")
+
+	document.getElementById('id_motivo_ingreso').setAttribute("class", "input100")
+	document.getElementById('id_motivo_ingreso').setAttribute("placeholder", "Motivo de Ingreso")
+
+	document.getElementById('id_enfermedad_actual').setAttribute("class", "input100")
+	document.getElementById('id_enfermedad_actual').setAttribute("placeholder", "Enfermedad Actual")
+
+	document.getElementById('id_diagnostico_admision').setAttribute("class", "input100")
+	document.getElementById('id_diagnostico_admision').setAttribute("placeholder", "Diagnóstico de Adminsión")
+
+	document.getElementById('id_diagnostico_clinico_final').setAttribute("class", "input100")
+	document.getElementById('id_diagnostico_clinico_final').setAttribute("placeholder", "Diagnóstico clínico Final")
+
+    document.getElementById('id_fecha_alta_medica').setAttribute("class", "input100")
+    document.getElementById('id_fecha_alta_medica').setAttribute("type", "date")
+	document.getElementById('id_fecha_alta_medica').setAttribute("placeholder", "Fecha Alta Médico")
+
+    document.getElementById('id_fecha_alta_clinica').setAttribute("class", "input100")
+    document.getElementById('id_fecha_alta_clinica').setAttribute("type", "date")
+	document.getElementById('id_fecha_alta_clinica').setAttribute("placeholder", "Fecha Alta Administrativa")
+</script>
+</html>
+{% endblock cuerpo %}

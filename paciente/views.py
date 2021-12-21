@@ -43,7 +43,6 @@ def nuevoPaciente(request):
         form = PacienteForm
     return render(request, 'nuevopaciente.html', {'form':form})
 
-    #Nuevo Historial VBF
 def nuevoHistorialf(request, rut):
     form = HistorialForm(request.POST)
     if request.method == "POST":
@@ -115,29 +114,17 @@ class NuevoMedico(CreateView):
     template_name = 'nuevomedico.html'
     success_url = reverse_lazy('index')
 
-
-class NuevoSignosVitales(CreateView):
-    model = SignosVitales
-    form_class = SignosForm
-    template_name = 'signosVitalesForm.html'
-    success_url = reverse_lazy('index')
-
 class SignosViews(ListView):
     model = SignosVitales
     template_name = 'signosVitales.html'
 
-# class NuevoHistorial(CreateView):
-#     model = Historial
-#     form_class = HistorialForm
-#     template_name = 'HistorialForm.html'
-#     success_url = reverse_lazy('historial')
 def editarHistorial(request, id):
     post = get_object_or_404(Historial, idhistorial=id)
     if request.method == "POST":
         form = HistorialForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('historial_clinico')
+            return redirect('index')
     else:
         form = HistorialForm(instance=post)
     return render(request, 'editarHistorial.html', {'form': form})

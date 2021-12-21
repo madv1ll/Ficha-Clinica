@@ -137,7 +137,7 @@ def editarHistorial(request, id):
         form = HistorialForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('historial_clinico')
     else:
         form = HistorialForm(instance=post)
     return render(request, 'editarHistorial.html', {'form': form})

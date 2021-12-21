@@ -21,57 +21,87 @@
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table100 ver5 m-b-110">
-                    <div class="table100-head">
-                        <table>
-                            <thead>
-                                <tr class="row100 head">
-                                    <th class="cell100 column1">Fecha</th>
-                                    <th class="cell100 column2">Temperatura</th>
-                                    <th class="cell100 column3">Respiraci&oacute;n</th>
-                                    <th class="cell100 column4">Tensi&oacute;n</th>
-                                    <th class="cell100 column5">Evaluaci&oacute;n</th>
-                                    <th class="cell100 column6">Micci&oacute;n</th>
-                                    <th class="cell100 column7">V&oacute;mito</th>
-                                    <th class="cell100 column8">Gases</th>
-                                    <th class="cell100 column9">Dolor</th>
-                                    <th class="cell100 column10">Transfusi&oacute;n de Sangre</th>
-                                    <th class="cell100 column11">Frecuencia Cardiaca</th>
-                                    <th class="cell100 column12">Saturaci&oacute;n</th>
-                                    <th class="cell100 column13">Presi&oacute;n Venosa Central</th>
-                                    <th class="cell100 column14">Presi&oacute;n Arterial Media</th>
-                                    <th class="cell100 column15">Peso</th>
-                                    <th class="cell100 column16">Talla</th>
-                                    <th class="cell100 column17">Presi&oacute;n Intracraneal</th>
-                                    <th class="cell100 column18">Presi&oacute;n Arterial Pulmonar</th>
-                                    <th class="cell100 column19">Observaciones</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
                     <div class="table100-body js-pscroll">
                         <table>
                             <tbody>
                                 {% for sig in signos %}
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">{{sig.fecha_creacion}}</td>
-                                    <td class="cell100 column2">{{sig.temperatura}}</td>
-                                    <td class="cell100 column3">{{sig.respiracion}}</td>
-                                    <td class="cell100 column4">{{sig.tension}}</td>
-                                    <td class="cell100 column5">{{sig.evaluacion}}</td>
-                                    <td class="cell100 column6">{{sig.miccion}}</td>
-                                    <td class="cell100 column7">{{sig.vomito}}</td>
-                                    <td class="cell100 column8">{{sig.gases}}</td>
-                                    <td class="cell100 column9">{{sig.dolor}}</td>
-                                    <td class="cell100 column10">{{sig.transfusion_sangre}}</td>
-                                    <td class="cell100 column11">{{sig.frecuencia_cardiaca}}</td>
-                                    <td class="cell100 column12">{{sig.saturacion}}</td>
-                                    <td class="cell100 column13">{{sig.presion_venosa_central}}</td>
-                                    <td class="cell100 column14">{{sig.presion_arterial_media}}</td>
-                                    <td class="cell100 column15">{{sig.peso}}</td>
-                                    <td class="cell100 column16">{{sig.talla}}</td>
-                                    <td class="cell100 column17">{{sig.Presion_Intracraneal}}</td>
-                                    <td class="cell100 column18">{{sig.Presion_arterial_pulmonar}}</td>
-                                    <td class="cell100 column19">{{sig.observaciones}}</td>
+                                    <tr>
+                                        <th class="cell100 column1">Fecha</th>
+                                        <td class="cell100 column1">{{sig.fecha_creacion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column2">Temperatura</th>
+                                        <td class="cell100 column2">{{sig.temperatura}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column3">Respiraci&oacute;n</th>
+                                        <td class="cell100 column3">{{sig.respiracion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column4">Tensi&oacute;n</th>
+                                        <td class="cell100 column4">{{sig.tension}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column5">Evaluaci&oacute;n</th>
+                                        <td class="cell100 column5">{{sig.evaluacion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column6">Micci&oacute;n</th>
+                                        <td class="cell100 column6">{{sig.miccion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column7">V&oacute;mito</th>
+                                        <td class="cell100 column7">{{sig.vomito}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column8">Gases</th>
+                                        <td class="cell100 column8">{{sig.gases}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column9">Dolor</th>
+                                        <td class="cell100 column9">{{sig.dolor}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column10">Transfusi&oacute;n de Sangre</th>
+                                        <td class="cell100 column10">{{sig.transfusion_sangre}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column11">Frecuencia Cardiaca</th>
+                                        <td class="cell100 column11">{{sig.frecuencia_cardiaca}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column12">Saturaci&oacute;n</th>
+                                        <td class="cell100 column12">{{sig.saturacion}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column13">Presi&oacute;n Venosa Central</th>
+                                        <td class="cell100 column13">{{sig.presion_venosa_central}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column14">Presi&oacute;n Arterial Media</th>
+                                        <td class="cell100 column14">{{sig.presion_arterial_media}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column15">Peso</th>
+                                        <td class="cell100 column15">{{sig.peso}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column16">Talla</th>
+                                        <td class="cell100 column16">{{sig.talla}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column17">Presi&oacute;n Intracraneal</th>
+                                        <td class="cell100 column17">{{sig.Presion_Intracraneal}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column18">Presi&oacute;n Arterial Pulmonar</th>
+                                        <td class="cell100 column18">{{sig.Presion_arterial_pulmonar}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column19">Observaciones</th>
+                                        <td class="cell100 column19">{{sig.observaciones}}</td>
+                                    </tr>
                                 </tr>
                                 {% endfor %}
                             </tbody>

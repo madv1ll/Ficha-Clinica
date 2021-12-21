@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from paciente.views import Index,  NuevoSignosVitales, SignosViews, historialDetalle, nuevoHistorialf, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, nuevoSignosVitales, signosDetalle, signosVitales
+from paciente.views import Index,  NuevoSignosVitales, SignosViews, historialDetalle, nuevoHistorialf, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, nuevoSignosVitales, signosDetalle, signosVitales, editarHistorial
 from usuario.views import Login, logoutUser
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -12,6 +12,7 @@ urlpatterns = [
     path('historial/<str:rut>/', login_required(historial), name = 'historial_clinico'),
     path('historialForm/nuevo/<str:rut>', nuevoHistorialf, name='nuevoHistorial'),
     path('historial/historialdetalle/<str:id>', historialDetalle, name='historialdetalle'),
+    path('historial/editarHistorial/<str:id>', editarHistorial, name='EditarHistorial'),
     path('paciente/nuevo',nuevoPaciente, name='nuevoPaciente'),
     path('medico/nuevo', NuevoMedico.as_view(), name='nuevoMedico'),
     path('editarpaciente/<str:rut>/', login_required(editarPaciente), name='editarpaciente'),

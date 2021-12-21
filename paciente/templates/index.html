@@ -4,14 +4,14 @@
 {# CSS Bootstrap #}
 {% bootstrap_css %}
 {% block extrahead %}
-<link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
-<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
-<link rel="stylesheet" type="text/css" href="../static/vendor/perfect-scrollbar/perfect-scrollbar.css">
-<link rel="stylesheet" type="text/css" href="../static/css/util.css">
-<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+<link rel="icon" type="image/png" href="{% static path %}images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}css/util.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}css/main.css">
 {% endblock extrahead %}
 {% block titulo %}Index{% endblock titulo %}
 {% block h1 %}Página Principal{% endblock h1 %}
@@ -61,11 +61,11 @@
     <input type="hidden" name="user" id="user" value="{{ user.id}}">
 </section>
 
-<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="../static/vendor/bootstrap/js/popper.js"></script>
-<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../static/vendor/select2/select2.min.js"></script>
-<script src="../static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="{% static path %}vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/popper.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="{% static path %}vendor/select2/select2.min.js"></script>
+<script src="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
 function eliminarPaciente(id){
     if(confirm('¿Está seguro que desea eliminar?')){
@@ -119,7 +119,7 @@ function cambiaSelect(){
                         <td class="cell100 column3">`+data[i][j].rut+`</td>
                         <td class="cell100 column4">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
                         <td class="cell100 column5">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
-                        <td class="cell100 column6"><button type="button" style="width:100%" class="btn-historial"><a href="editarpaciente/`+data[i][j].rut+`">Editar</a></button><button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button></td>                 
+                        <td class="cell100 column6"><button type="button" style="width:100%" class="btn-historial"><a href="editarpaciente/`+data[i][j].rut+`">Editar</a></button>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>                 
                     </tr>`
                 }
             }

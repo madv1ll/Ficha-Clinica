@@ -95,7 +95,7 @@ def nuevoSignosVitales(request, rut):
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit = False)
-            post.paciente_rut = rut
+            post.paciente_rut_id = rut
             post.save()
             return redirect ('signosVitales',rut)
     else:

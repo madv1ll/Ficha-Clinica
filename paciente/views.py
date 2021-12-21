@@ -100,7 +100,7 @@ def nuevoSignosVitales(request, rut):
             return redirect ('signosVitales',rut)
     else:
         form = SignosForm
-    return render(request, 'signosVitalesForn.html', {'form':form})
+    return render(request, 'signosVitalesForm.html', {'form':form})
 
 def signosDetalle(request, id):
     signos = SignosVitales.objects.filter(id_signosvitales = id)

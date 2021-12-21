@@ -16,7 +16,6 @@
 {% block titulo %}Historial{% endblock titulo %}
 {% block h1 %}Historial{% endblock h1 %}
 {% block cuerpo %}
-<!-- TABLA CON DATOS DEL PACIENTE -->
 <section>
     <div class="limiter">
         <div class="container-table100">
@@ -49,8 +48,6 @@
                                         <div id="openModal" class="modalDialog">
                                             <div>
                                                 <a href="#close" title="Cerrar" class="close">X</a>
-                                                <!-- <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/editarpaciente/{{paciente.rut}}">Editar Paciente</a></button>
-                                                <button type="button" class="btn-historial" style="background-color: #fde3e3;"><a href="/eliminarpaciente/{{paciente.rut}}">Eliminar Paciente</a></button>  -->
                                                 <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/historialForm/nuevo/{{paciente.rut}}">Nuevo Historial</a></button>
                                                 <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/SignosVitales/{{paciente.rut}}">Signos vitales</a></button>
                                             </div>
@@ -66,7 +63,7 @@
         </div>
     </div>
 </section>
-<!-- TABLA CON HISTORIAL DEL PACIENTE -->
+
 <section>
     <div class="limiter">
         <div class="container-table100">
@@ -108,7 +105,6 @@
         </div>
     </div>
 </section>
-<!-- SCRIPTS TABLA -->
 <script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="../../static/vendor/bootstrap/js/popper.js"></script>
 <script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -123,5 +119,4 @@ $('.js-pscroll').each(function(){
         });
 </script>
 <script src="../../static/js/main.js"></script>
-<!-- FIN SCRIPTS TABLA -->
 {% endblock %}

@@ -46,13 +46,9 @@
                                   <td class="cell100 column5">
                                       <button type="button" class="btn-historial"><a href="NuevoSignosVitales">Agregar Signos Vitales</a></button>
                                       <div id="openModal" class="modalDialog">
-                                          <div>
-                                              <a href="#close" title="Cerrar" class="close">X</a>
-                                              <!-- <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/editarpaciente/{{paciente.rut}}">Editar Paciente</a></button>
-                                              <button type="button" class="btn-historial" style="background-color: #fde3e3;"><a href="/eliminarpaciente/{{paciente.rut}}">Eliminar Paciente</a></button>  -->
-                                              <!-- <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/historialForm/nuevo/{{paciente.rut}}">Nuevo Historial</a></button>
-                                              <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/SignosVitales/{{paciente.rut}}">Signos vitales</a></button> -->
-                                          </div>
+                                            <div>
+                                                <a href="#close" title="Cerrar" class="close">X</a>
+                                            </div>
                                       </div>
                                   </td>
                               </tr>
@@ -65,7 +61,6 @@
       </div>
   </div>
 </section>
-<!-- TABLA CON HISTORIAL DEL PACIENTE -->
 <section>
   <div class="limiter">
       <div class="container-table100">
@@ -94,7 +89,7 @@
                                   <td class="cell100 column3">{{signos.servicio}}</td>
                                   <td class="cell100 column4">{{signos.diagnostico}}</td>
                                   <td class="cell100 column5">
-                                      <button type="button" class="btn-historial"><a href="">Ver Registro</a></button>
+                                      <button type="button" class="btn-historial"><a href="SignosVitales/signosdetalle/{{signos.id_signosvitales}}">Ver Registro</a></button>
                                   </td>
                               {% endfor %}
                           </tbody>

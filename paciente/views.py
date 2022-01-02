@@ -174,7 +174,7 @@ def evolucion(request, rut):
         'pacientes':pacientes,
         'evolucion':evaluacion
     }
-    return render(request, 'eovlucion.html',datos)
+    return render(request, 'evolucion.html',datos)
 
 def nuevaEvolucion(request, rut):
     form = EvolucionForm(request.POST)

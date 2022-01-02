@@ -4,8 +4,8 @@ from django.db.models import query
 from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
-from .models import Historial, LugarAtencion, Medico, Paciente, SignosVitales
-from .forms import HistorialForm, MedicoForm, PacienteForm,  SignosForm
+from .models import Evaluacion, Historial, LugarAtencion, Medico, Paciente, SignosVitales
+from .forms import EvolucionForm, HistorialForm, MedicoForm, PacienteForm,  SignosForm
 from django.shortcuts import redirect
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -166,3 +166,24 @@ class Index(CreateView):
         context = super().get_context_data(**kwargs)
         context["lugarSeleccion"] = Paciente.objects.filter(lugarAtencion=1)
         return context
+
+def evolucion(request, rut):
+    pacientes = Paciente.objects.filter(rut = rut)
+    evaluacion = Evaluacion.objects.filter(rut = rut)
+    datos = {
+        'pacientes':pacientes,
+        'evolucion':evaluacion
+    }
+    return render(request, 'eovlucion.html',datos)
+
+def nuevaEvolucion(request, rut):
+    form = EvolucionForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.paciente_rut_id = rut
+            post.save()
+            return redirect ('evolucion',rut)
+    else:
+        form = EvolucionForm
+    return render(request, 'evolucionForm.html', {'form':form})

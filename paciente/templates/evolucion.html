@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{# CSS Bootstrap #}
+{% bootstrap_css %}
+{% block extrahead %}
+<link rel="icon" type="image/png" href="{% static path %}images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/animate/animate.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}css/util.css">
+<link rel="stylesheet" type="text/css" href="{% static path %}css/main.css">
+{% endblock extrahead %}
+{% block titulo %}Evoluci&oacute;n del Paciente{% endblock titulo %}
+{% block h1 %}Evoluci&oacute;n del Paciente{% endblock h1 %}
+{% block cuerpo %}
+<section>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver5 m-b-110">
+                    <div class="table100-head">
+                        <table>
+                            <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">Rut</th>
+                                    <th class="cell100 column2">Nombres</th>
+                                    <th class="cell100 column3">Apellidos</th>
+                                    <th class="cell100 column4">Acciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody>
+                                {% for paciente in pacientes %}
+                                <tr class="row100 body">
+                                    <td class="cell100 column2">{{paciente.rut}}</td>
+                                    <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
+                                    <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
+                                    <td class="cell100 column5">
+                                        <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/Evolucion/nuevaEvolucion/{{paciente.rut}}">Nuevo</a></button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver5 m-b-110">
+                    <div class="table100-head">
+                        <table>
+                            <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">Fecha</th>
+                                    <th class="cell100 column2">Hora</th>
+                                    <th class="cell100 column3">Cuidador</th>
+                                    <th class="cell100 column4">Descripcion</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody>
+                                {% for evo in evolucion %}
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">{{evo.fecha}}</td>
+                                    <td class="cell100 column2">11:11 PM</td>
+                                    <td class="cell100 column3">{{evo.ciudador}}</td>
+                                    <td class="cell100 column4">{{evo.descripcion}}</td>
+                                    </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="../../static/vendor/bootstrap/js/popper.js"></script>
+<script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../static/vendor/select2/select2.min.js"></script>
+<script src="../../static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+$('.js-pscroll').each(function(){
+            var ps = new PerfectScrollbar(this);
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+</script>
+<script src="../../static/js/main.js"></script>
+{% endblock %}

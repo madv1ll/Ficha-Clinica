@@ -164,10 +164,11 @@ class SignosVitales(models.Model):
     def __str__(self):
         return self.id_signosvitales
       
-class evaluacion(models.Model):
+class Evaluacion(models.Model):
     idevaluacion     = models.AutoField('Id evaluacion', primary_key=True)
     fecha_evaluacion = models.DateTimeField('Fecha de evaluacion', null=False)
     descripcion      = models.CharField('Descripcion', max_length=200)
+    cuidador         = models.CharField('Cuidador', max_length=30)
     rut              = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     class meta:

@@ -40,7 +40,11 @@
                                     </tr>
                                     <tr>
                                         <th class="cell100 column4">Tensi&oacute;n</th>
-                                        <td class="cell100 column4">{{sig.tension}}</td>
+                                        <td class="cell100 column4">{{sig.presion_arterial}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="cell100 column14">Presi&oacute;n Arterial Media</th>
+                                        <td class="cell100 column14">{{sig.presion_arterial_media}}</td>
                                     </tr>
                                     <tr>
                                         <th class="cell100 column5">Evaluaci&oacute;n</th>
@@ -56,7 +60,7 @@
                                     </tr>
                                     <tr>
                                         <th class="cell100 column8">Gases</th>
-                                        <td class="cell100 column8">{{sig.gases}}</td>
+                                        <td class="cell100 column8">{{sig.flatos}}</td>
                                     </tr>
                                     <tr>
                                         <th class="cell100 column9">Dolor</th>
@@ -64,7 +68,7 @@
                                     </tr>
                                     <tr>
                                         <th class="cell100 column10">Transfusi&oacute;n de Sangre</th>
-                                        <td class="cell100 column10">{{sig.transfusion_sangre}}</td>
+                                        <td class="cell100 column10">{{sig.estrennimiento}}</td>
                                     </tr>
                                     <tr>
                                         <th class="cell100 column11">Frecuencia Cardiaca</th>
@@ -76,11 +80,7 @@
                                     </tr>
                                     <tr>
                                         <th class="cell100 column13">Presi&oacute;n Venosa Central</th>
-                                        <td class="cell100 column13">{{sig.presion_venosa_central}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="cell100 column14">Presi&oacute;n Arterial Media</th>
-                                        <td class="cell100 column14">{{sig.presion_arterial_media}}</td>
+                                        <td class="cell100 column13">{{sig.suenno}}</td>
                                     </tr>
                                     <tr>
                                         <th class="cell100 column15">Peso</th>
@@ -92,11 +92,11 @@
                                     </tr>
                                     <tr>
                                         <th class="cell100 column17">Presi&oacute;n Intracraneal</th>
-                                        <td class="cell100 column17">{{sig.Presion_Intracraneal}}</td>
+                                        <td class="cell100 column17">{{sig.alimentacion}}</td>
                                     </tr>
                                     <tr>
                                         <th class="cell100 column18">Presi&oacute;n Arterial Pulmonar</th>
-                                        <td class="cell100 column18">{{sig.Presion_arterial_pulmonar}}</td>
+                                        <td class="cell100 column18">{{sig.higiene}}</td>
                                     </tr>
                                     <tr>
                                         <th class="cell100 column19">Observaciones</th>
@@ -112,11 +112,11 @@
         </div>
     </div>
 </section>
-<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="../../static/vendor/bootstrap/js/popper.js"></script>
-<script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../static/vendor/select2/select2.min.js"></script>
-<script src="../../static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="{% static path %}vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/popper.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="{% static path %}vendor/select2/select2.min.js"></script>
+<script src="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
 $('.js-pscroll').each(function(){
             var ps = new PerfectScrollbar(this);
@@ -125,5 +125,5 @@ $('.js-pscroll').each(function(){
             })
         });
 </script>
-<script src="../../static/js/main.js"></script>
+<script src="{% static path %}js/main.js"></script>
 {% endblock %}

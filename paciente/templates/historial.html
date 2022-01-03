@@ -44,14 +44,7 @@
                                     <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
                                     <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
                                     <td class="cell100 column5">
-                                        <button type="button" class="btn-historial"><a href="#openModal">Ver Acciones</a></button>
-                                        <div id="openModal" class="modalDialog">
-                                            <div>
-                                                <a href="#close" title="Cerrar" class="close">X</a>
-                                                <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/historialForm/nuevo/{{paciente.rut}}">Nuevo Historial</a></button>
-                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;"><a href="/SignosVitales/{{paciente.rut}}">Signos vitales</a></button>
-                                            </div>
-                                        </div>
+                                        <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/historialForm/nuevo/{{paciente.rut}}">Nuevo Historial</a></button>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -106,11 +99,12 @@
         </div>
     </div>
 </section>
-<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="../../static/vendor/bootstrap/js/popper.js"></script>
-<script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../static/vendor/select2/select2.min.js"></script>
-<script src="../../static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 <script>
 $('.js-pscroll').each(function(){
             var ps = new PerfectScrollbar(this);
@@ -119,5 +113,4 @@ $('.js-pscroll').each(function(){
             })
         });
 </script>
-<script src="../../static/js/main.js"></script>
 {% endblock %}

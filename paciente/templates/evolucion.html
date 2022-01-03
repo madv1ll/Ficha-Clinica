@@ -93,11 +93,11 @@
         </div>
     </div>
 </section>
-<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="../../static/vendor/bootstrap/js/popper.js"></script>
-<script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../static/vendor/select2/select2.min.js"></script>
-<script src="../../static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="{% static path %}vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/popper.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="{% static path %}vendor/select2/select2.min.js"></script>
+<script src="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
 $('.js-pscroll').each(function(){
             var ps = new PerfectScrollbar(this);
@@ -106,5 +106,5 @@ $('.js-pscroll').each(function(){
             })
         });
 </script>
-<script src="../../static/js/main.js"></script>
+<script src="{% static path %}js/main.js"></script>
 {% endblock %}

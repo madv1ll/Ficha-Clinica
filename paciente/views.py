@@ -7,12 +7,12 @@ from django.shortcuts import get_object_or_404, render
 from .models import Evaluacion, Historial, LugarAtencion, Medico, Paciente, SignosVitales
 from .forms import EvolucionForm, HistorialForm, MedicoForm, PacienteForm,  SignosForm
 from django.shortcuts import redirect
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
+from django.utils import timezone
 
 def historial(request, rut):
     pacientes = Paciente.objects.filter(rut = rut)
@@ -182,6 +182,9 @@ def nuevaEvolucion(request, rut):
         if form.is_valid():
             post = form.save(commit = False)
             post.rut_id = rut
+            fecha = timezone.now()
+            fechaFormato = fecha.strftime("%d/%m/%Y")
+            post.fecha_evaluacion = fechaFormato
             post.save()
             return redirect ('evolucion',rut)
     else:

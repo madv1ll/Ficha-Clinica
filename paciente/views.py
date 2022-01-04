@@ -173,7 +173,6 @@ def evolucion(request, rut):
     datos = {
         'pacientes':pacientes,
         'evolucion':evaluacion,
-        
     }
     return render(request, 'evolucion.html',datos)
 

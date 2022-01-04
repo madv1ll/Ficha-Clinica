@@ -172,7 +172,7 @@ def evolucion(request, rut):
     evaluacion = Evaluacion.objects.filter(rut = rut)
     datos = {
         'pacientes':pacientes,
-        'evolucion':evaluacion,
+        'evolucion':evaluacion
     }
     return render(request, 'evolucion.html',datos)
 
@@ -182,9 +182,8 @@ def nuevaEvolucion(request, rut):
         if form.is_valid():
             post = form.save(commit = False)
             post.rut_id = rut
-            fecha = timezone.now()
-            fechaFormato = fecha.strftime("%d-%m-%Y")
-            post.fecha_evaluacion = fechaFormato
+            post.fecha_evaluacion = timezone.now()
+            # post.hora = fecha.strftime("%d-%m-%Y")
             post.save()
             return redirect ('evolucion', rut)
     else:

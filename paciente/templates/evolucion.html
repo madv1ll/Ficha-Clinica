@@ -42,7 +42,7 @@
                                     <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
                                     <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
                                     <td class="cell100 column5">
-                                        <button type="button" class="btn-historial" style="background-color: #e4fde3;"><a href="/Evolucion/nuevaEvolucion/{{paciente.rut}}">Nuevo</a></button>
+                                        <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black;" onclick="window.location.href='/Evolucion/nuevaEvolucion/{{paciente.rut}}'">Nueva Evolución</button>
                                     </td>
                                 </tr>
                                 {% endfor %}

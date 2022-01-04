@@ -44,7 +44,7 @@
                                   <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
                                   <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
                                   <td class="cell100 column5">
-                                      <button type="button" class="btn-historial"><a href="NuevoSignosVitales">Agregar Signos Vitales</a></button>
+                                      <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black" onclick="window.location.href='NuevoSignosVitales'">Nuevo Signos Vitales</button>
                                       <div id="openModal" class="modalDialog">
                                             <div>
                                                 <a href="#close" title="Cerrar" class="close">X</a>
@@ -85,8 +85,8 @@
                                   <td class="cell100 column1">{{signos.fecha_creacion}}</td>
                                   <td class="cell100 column2">{{signos.observaciones}}</td>
                                   <td class="cell100 column3">
-                                      <button type="button" class="btn-historial"><a href="/SignosVitales/signosdetalle/{{signos.id_signosvitales}}">Ver Registro</a> </button>
-                                      <button type="button" class="btn-historial"><a href="/SignosVitales/editarSignos/{{signos.id_signosvitales}}">Editar</a> </button>
+                                      <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/SignosVitales/signosdetalle/{{signos.id_signosvitales}}'">Ver Registro</button>
+                                      <button type="button" class="btn-historial" style="color:black"  onclick="window.location.href='/SignosVitales/editarSignos/{{signos.id_signosvitales}}'">Editar</button>
                                   </td>
                               {% endfor %}
                           </tbody>

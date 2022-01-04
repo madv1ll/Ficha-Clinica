@@ -181,7 +181,7 @@ def nuevaEvolucion(request, rut):
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit = False)
-            post.paciente_rut_id = rut
+            post.rut_id = rut
             post.save()
             return redirect ('evolucion',rut)
     else:

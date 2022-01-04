@@ -182,8 +182,10 @@ def nuevaEvolucion(request, rut):
         if form.is_valid():
             post = form.save(commit = False)
             post.rut_id = rut
-            post.fecha_evaluacion = timezone.now()
-            # post.hora = fecha.strftime("%d-%m-%Y")
+            fecha = timezone.now()
+            fechaFormato = fecha.strftime("%d-%m-%Y")
+            post.fecha_evaluacion = fechaFormato
+            post.hora = fecha.strftime("%H:%M")
             post.save()
             return redirect ('evolucion', rut)
     else:

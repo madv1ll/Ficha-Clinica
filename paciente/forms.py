@@ -60,5 +60,5 @@ class HistorialForm(forms.ModelForm):
 class EvolucionForm(forms.ModelForm):
     class Meta:
         model = Evaluacion
-        fields = ('__all__')
+        fields = ('cuidador','descripcion')
 

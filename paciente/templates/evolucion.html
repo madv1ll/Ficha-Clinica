@@ -77,8 +77,8 @@
                             <tbody>
                                 {% for evo in evolucion %}
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">{{evo.fecha_evaluacion|date:'d-m-Y'}}</td>
-                                    <td class="cell100 column2">{{evo.fecha_evaluacion|date:'H:i'}</td>
+                                    <td class="cell100 column1">{{evo.fecha_evaluacion}</td>
+                                    <td class="cell100 column2">{{evo.hora}</td>
                                     <td class="cell100 column3">{{evo.cuidador}}</td>
                                     <td class="cell100 column4">{{evo.descripcion}}</td>
                                     </div>

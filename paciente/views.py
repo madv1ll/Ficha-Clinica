@@ -185,7 +185,8 @@ def nuevaEvolucion(request, rut):
             fecha = timezone.now()
             fechaFormato = fecha.strftime("%d-%m-%Y")
             post.fecha_evaluacion = fechaFormato
-            post.hora = fecha.strftime("%H:%M")
+            horaFormato = fecha.strftime("%H:%M")
+            post.hora = horaFormato
             post.save()
             return redirect ('evolucion', rut)
     else:

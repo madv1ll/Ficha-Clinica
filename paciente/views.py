@@ -172,7 +172,8 @@ def evolucion(request, rut):
     evaluacion = Evaluacion.objects.filter(rut = rut)
     datos = {
         'pacientes':pacientes,
-        'evolucion':evaluacion
+        'evolucion':evaluacion,
+        
     }
     return render(request, 'evolucion.html',datos)
 

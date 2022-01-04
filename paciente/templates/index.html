@@ -119,11 +119,11 @@ function cambiaSelect(){
                                         <div id="openModal" class="modalDialog">
                                             <div>
                                                 <a href="#close" title="Cerrar" class="close">X</a>
-                                                <button type="button" class="btn-historial" style="background-color: #e4fde3;" onclick="window.location.href=/historial/`+data[i][j].rut+`" >Historial</button>
-                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;" onclick="window.location.href=/SignosVitales/`+data[i][j].rut+`">Signos Vitales</button>
-                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;" onclick="window.location.href=/Evolucion/`+data[i][j].rut+`">Evolucion Cuidador</button>
+                                                <button type="button" class="btn-historial" style="background-color: #e4fde3;width:100%;" onclick="window.location.href='/historial/`+data[i][j].rut+`'" ><p style="color:black;">Historial</p></button>
+                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;width:100%;" onclick="window.location.href='/SignosVitales/`+data[i][j].rut+`'"><p style="color:black;">Signos Vitales<</p>/button>
+                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;width:100%;" onclick="window.location.href='/Evolucion/`+data[i][j].rut+`'"><p style="color:black;">Evolucion Cuidador</p></button>
                                             </div>
-                                        </div><button type="button" style="width:100%" class="btn-historial" onclick="window.location.href=editarpaciente/`+data[i][j].rut+`">Editar</button>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>                 
+                                        </div><button type="button" style="width:100%" class="btn-historial" onclick="window.location.href='editarpaciente/`+data[i][j].rut+`'"><p style="color:black;">Editar</p></button>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>                 
                     </tr>`
                 }
             }

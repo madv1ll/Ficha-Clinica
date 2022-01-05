@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{# CSS Bootstrap #}
+{% bootstrap_css %}
+{% block extrahead %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="{% static 'nuevomedico/images/icons/favicon.ico' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animate/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/css-hamburgers/hamburgers.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animsition/css/animsition.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/select2/select2.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/daterangepicker/daterangepicker.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
+{% endblock extrahead %}
+{% block titulo %}Nueva Evolucion{% endblock titulo %}
+{% block h1 %}Nueva Evolucion{% endblock h1 %}
+{% block cuerpo %}
+<form method="post">
+    {% csrf_token %}
+	<div class="container-contact100">
+
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+
+                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.cuidador}}
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.descripcion}}
+				</div>
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" type="submit">
+						<span>
+							Guardar
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</form>
+</body>
+<script>
+
+	document.getElementById('id_cuidador').setAttribute("class", "input100")
+	document.getElementById('id_cuidador').setAttribute("placeholder", "Nombre Ciudador")
+
+	document.getElementById('id_descripcion').setAttribute("class", "input100")
+	document.getElementById('id_descripcion').setAttribute("placeholder", "Descripción")
+
+</script>
+</html>
+{% endblock cuerpo %}

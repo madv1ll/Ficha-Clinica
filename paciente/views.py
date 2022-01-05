@@ -183,8 +183,7 @@ def nuevaEvolucion(request, rut):
             post = form.save(commit = False)
             post.rut_id = rut
             fecha = timezone.now()
-            partes = fecha.split("T")[0].split("-")
-            convertida = "/".join(reversed(partes))
+            convertida = fecha.strftime("%d-%m-%Y")
             post.fecha_evaluacion = convertida
             post.hora = fecha.strftime('%H:%M')
             post.save()

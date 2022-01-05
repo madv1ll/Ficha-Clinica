@@ -37,10 +37,13 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your phone">
-					{{form.tension}}
+					{{form.presion_arterial}}
 					<span class="focus-input100"></span>
 				</div>
-
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.presion_arterial_media}}
+					<span class="focus-input100"></span>
+				</div>
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
 					{{form.evaluacion}}
 					<span class="focus-input100"></span>
@@ -54,7 +57,7 @@
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.gases}}
+					{{form.flatos}}
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
@@ -62,7 +65,7 @@
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.transfusion_sangre}}
+					{{form.estrennimiento}}
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
@@ -74,11 +77,7 @@
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.presion_venosa_central}}
-					<span class="focus-input100"></span>
-				</div>
-                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.presion_arterial_media}}
+					{{form.suenno}}
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
@@ -90,11 +89,11 @@
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.Presion_Intracraneal}}
+					{{form.alimentacion}}
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.Presion_arterial_pulmonar}}
+					{{form.higiene}}
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
@@ -113,35 +112,24 @@
 		</div>
 	</div>
 </form>
-
-
-	<div id="dropDownSelect1"></div>
-
-	<script src="/paciente\static\vendor\jquery\jquery-3.2.1.min.js"></script>
-	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
-	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
-	<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
-	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
-	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
-	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
-	<script src="{% static 'js/main.js' %}"></script>
-
 <script>
 </script>
 
 </body>
 <script>
 
-    document.getElementById('id_temperatura').setAttribute("class", "input100")
+document.getElementById('id_temperatura').setAttribute("class", "input100")
 	document.getElementById('id_temperatura').setAttribute("style", "height: 60px;")
 	document.getElementById('id_temperatura').setAttribute("placeholder", "Temperatura")
 
 	document.getElementById('id_respiracion').setAttribute("class", "input100")
 	document.getElementById('id_respiracion').setAttribute("placeholder", "Respiración")
 
-	document.getElementById('id_tension').setAttribute("class", "input100")
-	document.getElementById('id_tension').setAttribute("placeholder", "Tensión")
+	document.getElementById('id_presion_arterial').setAttribute("class", "input100")
+	document.getElementById('id_presion_arterial').setAttribute("placeholder", "Presión Arterial")
+
+    document.getElementById('id_presion_arterial_media').setAttribute("class", "input100")
+	document.getElementById('id_presion_arterial_media').setAttribute("placeholder", "Presión Arterial Media")
 
 	document.getElementById('id_evaluacion').setAttribute("class", "input100")
 	document.getElementById('id_evaluacion').setAttribute("placeholder", "Evaluacion")
@@ -152,14 +140,14 @@
 	document.getElementById('id_vomito').setAttribute("class", "input100")
 	document.getElementById('id_vomito').setAttribute("placeholder", "Vómito")
 
-	document.getElementById('id_gases').setAttribute("class", "input100")
-	document.getElementById('id_gases').setAttribute("placeholder", "Gases")
+	document.getElementById('id_flatos').setAttribute("class", "input100")
+	document.getElementById('id_flatos').setAttribute("placeholder", "Flatos")
 
     document.getElementById('id_dolor').setAttribute("class", "input100")
 	document.getElementById('id_dolor').setAttribute("placeholder", "Dolor")
 
-    document.getElementById('id_transfusion_sangre').setAttribute("class", "input100")
-	document.getElementById('id_transfusion_sangre').setAttribute("placeholder", "Transfusion de Sangre")
+    document.getElementById('id_estrennimiento').setAttribute("class", "input100")
+	document.getElementById('id_estrennimiento').setAttribute("placeholder", "Estreñimiento")
     
     document.getElementById('id_frecuencia_cardiaca').setAttribute("class", "input100")
 	document.getElementById('id_frecuencia_cardiaca').setAttribute("placeholder", "Frecuencia Cardiaca")
@@ -167,11 +155,8 @@
     document.getElementById('id_saturacion').setAttribute("class", "input100")
 	document.getElementById('id_saturacion').setAttribute("placeholder", "Saturación")
     
-    document.getElementById('id_presion_venosa_central').setAttribute("class", "input100")
-	document.getElementById('id_presion_venosa_central').setAttribute("placeholder", "Presión Venosa Central")
-    
-    document.getElementById('id_presion_arterial_media').setAttribute("class", "input100")
-	document.getElementById('id_presion_arterial_media').setAttribute("placeholder", "Presión Arterial Media")
+    document.getElementById('id_suenno').setAttribute("class", "input100")
+	document.getElementById('id_suenno').setAttribute("placeholder", "Sueño")
     
     document.getElementById('id_peso').setAttribute("class", "input100")
 	document.getElementById('id_peso').setAttribute("placeholder", "Peso")
@@ -179,11 +164,11 @@
     document.getElementById('id_talla').setAttribute("class", "input100")
 	document.getElementById('id_talla').setAttribute("placeholder", "Talla")
     
-    document.getElementById('id_Presion_Intracraneal').setAttribute("class", "input100")
-	document.getElementById('id_Presion_Intracraneal').setAttribute("placeholder", "Presión Intracraneal")
+    document.getElementById('id_alimentacion').setAttribute("class", "input100")
+	document.getElementById('id_alimentacion').setAttribute("placeholder", "Alimentación")
     
-    document.getElementById('id_Presion_arterial_pulmonar').setAttribute("class", "input100")
-	document.getElementById('id_Presion_arterial_pulmonar').setAttribute("placeholder", "Presión Arterial Pulmonar")
+    document.getElementById('id_higiene').setAttribute("class", "input100")
+	document.getElementById('id_higiene').setAttribute("placeholder", "Higiene")
     
     document.getElementById('id_observaciones').setAttribute("class", "input100")
 	document.getElementById('id_observaciones').setAttribute("placeholder", "Observaciones")

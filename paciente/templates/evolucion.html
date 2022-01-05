@@ -13,8 +13,8 @@
 <link rel="stylesheet" type="text/css" href="{% static path %}css/util.css">
 <link rel="stylesheet" type="text/css" href="{% static path %}css/main.css">
 {% endblock extrahead %}
-{% block titulo %}Historial{% endblock titulo %}
-{% block h1 %}Historial{% endblock h1 %}
+{% block titulo %}Evoluci&oacute;n del Paciente{% endblock titulo %}
+{% block h1 %}Evoluci&oacute;n del Paciente{% endblock h1 %}
 {% block cuerpo %}
 <section>
     <div class="limiter">
@@ -25,11 +25,10 @@
                         <table>
                             <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
-                                    <th class="cell100 column3">Rut</th>
-                                    <th class="cell100 column4">Nombres</th>
-                                    <th class="cell100 column5">Apellidos</th>
-                                    <th class="cell100 column6">Acciones</th>
+                                    <th class="cell100 column1">Rut</th>
+                                    <th class="cell100 column2">Nombres</th>
+                                    <th class="cell100 column3">Apellidos</th>
+                                    <th class="cell100 column4">Acciones</th>
                                 </tr>
                             </thead>
                         </table>
@@ -39,12 +38,11 @@
                             <tbody>
                                 {% for paciente in pacientes %}
                                 <tr class="row100 body">
-                                    <td class="cell100 column2">{{paciente.lugarAtencion}}</td>
-                                    <td class="cell100 column3">{{paciente.rut}}</td>
-                                    <td class="cell100 column4">{{paciente.pnombre}} {{paciente.snombre}} </td>
-                                    <td class="cell100 column5">{{paciente.papellido}} {{paciente.sapellido}}</td>
-                                    <td class="cell100 column6">
-                                        <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black;" onclick="window.location.href='/historialForm/nuevo/{{paciente.rut}}'">Nuevo Historial</button>
+                                    <td class="cell100 column2">{{paciente.rut}}</td>
+                                    <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
+                                    <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
+                                    <td class="cell100 column5">
+                                        <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black;" onclick="window.location.href='/Evolucion/nuevaEvolucion/{{paciente.rut}}'">Nueva Evolución</button>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -67,10 +65,9 @@
                             <thead>
                                 <tr class="row100 head">
                                     <th class="cell100 column2">Fecha</th>
-                                    <th class="cell100 column3">Tipo de Atenci&oacute;n</th>
-                                    <th class="cell100 column4">Servicio</th>
-                                    <th class="cell100 column5">Diagn&oacute;stico</th>
-                                    <th class="cell100 column6">Acciones</th>
+                                    <th class="cell100 column3">Hora</th>
+                                    <th class="cell100 column4">Cuidador</th>
+                                    <th class="cell100 column1">Descripcion</th>
                                 </tr>
                             </thead>
                         </table>
@@ -78,15 +75,12 @@
                     <div class="table100-body js-pscroll">
                         <table>
                             <tbody>
-                                {% for hist in historial %}
+                                {% for evo in evolucion %}
                                 <tr class="row100 body">
-                                    <td class="cell100 column2">{{hist.fecha|date:'d-m-Y'}}</td>
-                                    <td class="cell100 column3">{{hist.tipo_atencion}}</td>
-                                    <td class="cell100 column4">{{hist.servicio}}</td>
-                                    <td class="cell100 column5">{{hist.diagnostico}}</td>
-                                    <td class="cell100 column6">
-                                        <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/historialdetalle/{{hist.idhistorial}}'">Ver Historial</button>
-                                        <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/editarHistorial/{{hist.idhistorial}}'">Editar</button>    
+                                    <td class="cell100 column2">{{evo.fecha_evaluacion|date:'d-m-Y'}}</td>
+                                    <td class="cell100 column3">{{evo.hora|date:'H:i'}}</td>
+                                    <td class="cell100 column4">{{evo.cuidador}}</td>
+                                    <td class="cell100 column1">{{evo.descripcion}}</td>
                                     </div>
                                     </td>
                                 </tr>
@@ -99,12 +93,11 @@
         </div>
     </div>
 </section>
-<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static path %}vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/popper.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="{% static path %}vendor/select2/select2.min.js"></script>
+<script src="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
 $('.js-pscroll').each(function(){
             var ps = new PerfectScrollbar(this);
@@ -113,4 +106,5 @@ $('.js-pscroll').each(function(){
             })
         });
 </script>
+<script src="{% static path %}js/main.js"></script>
 {% endblock %}

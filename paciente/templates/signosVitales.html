@@ -25,11 +25,11 @@
                       <table>
                           <thead>
                               <tr class="row100 head">
-                                  <th class="cell100 column1">Lugar de Atenci&oacute;n</th>
-                                  <th class="cell100 column2">Rut</th>
-                                  <th class="cell100 column3">Nombres</th>
-                                  <th class="cell100 column4">Apellidos</th>
-                                  <th class="cell100 column5">Acciones</th>
+                                  <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
+                                  <th class="cell100 column3">Rut</th>
+                                  <th class="cell100 column4">Nombres</th>
+                                  <th class="cell100 column5">Apellidos</th>
+                                  <th class="cell100 column6">Acciones</th>
                               </tr>
                           </thead>
                       </table>
@@ -39,12 +39,12 @@
                           <tbody>
                               {% for paciente in pacientes %}
                               <tr class="row100 body">
-                                  <td class="cell100 column1">{{paciente.lugarAtencion}}</td>
-                                  <td class="cell100 column2">{{paciente.rut}}</td>
-                                  <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
-                                  <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
-                                  <td class="cell100 column5">
-                                      <button type="button" class="btn-historial"><a href="NuevoSignosVitales">Agregar Signos Vitales</a></button>
+                                  <td class="cell100 column2">{{paciente.lugarAtencion}}</td>
+                                  <td class="cell100 column3">{{paciente.rut}}</td>
+                                  <td class="cell100 column4">{{paciente.pnombre}} {{paciente.snombre}} </td>
+                                  <td class="cell100 column5">{{paciente.papellido}} {{paciente.sapellido}}</td>
+                                  <td class="cell100 column6">
+                                      <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black" onclick="window.location.href='NuevoSignosVitales'">Nuevo Signos Vitales</button>
                                       <div id="openModal" class="modalDialog">
                                             <div>
                                                 <a href="#close" title="Cerrar" class="close">X</a>
@@ -70,9 +70,9 @@
                       <table>
                           <thead>
                               <tr class="row100 head">
-                                  <th class="cell100 column1">Fecha</th>
-                                  <th class="cell100 column2">Observaciones</th>
-                                  <th class="cell100 column3">Acciones</th>
+                                  <th class="cell100 column2">Fecha</th>
+                                  <th class="cell100 column3">Observaciones</th>
+                                  <th class="cell100 column4">Acciones</th>
                               </tr>
                           </thead>
                       </table>
@@ -82,11 +82,11 @@
                           <tbody>
                               {% for signos in signosVitales %}
                               <tr class="row100 body">
-                                  <td class="cell100 column1">{{signos.fecha_creacion}}</td>
-                                  <td class="cell100 column2">{{signos.observaciones}}</td>
-                                  <td class="cell100 column3">
-                                      <button type="button" class="btn-historial"><a href="/SignosVitales/signosdetalle/{{signos.id_signosvitales}}">Ver Registro</a> </button>
-                                      <button type="button" class="btn-historial"><a href="/SignosVitales/editarSignos/{{signos.id_signosvitales}}">Editar</a> </button>
+                                  <td class="cell100 column2">{{signos.fecha_creacion|date:'d-m-Y'}}</td>
+                                  <td class="cell100 column3">{{signos.observaciones}}</td>
+                                  <td class="cell100 column4">
+                                      <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/SignosVitales/signosdetalle/{{signos.id_signosvitales}}'">Ver Registro</button>
+                                      <button type="button" class="btn-historial" style="color:black"  onclick="window.location.href='/SignosVitales/editarSignos/{{signos.id_signosvitales}}'">Editar</button>
                                   </td>
                               {% endfor %}
                           </tbody>

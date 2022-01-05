@@ -37,12 +37,10 @@
                         <table>
                             <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column1">Historial Cl&iacute;nico</th>
-                                    <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
-                                    <th class="cell100 column3">Rut</th>
-                                    <th class="cell100 column4">Nombres</th>
-                                    <th class="cell100 column5">Apellidos</th>
-                                    <th class="cell100 column8">Opciones</th>
+                                    <th class="cell100 column2">Rut</th>
+                                    <th class="cell100 column3">Nombres</th>
+                                    <th class="cell100 column4">Apellidos</th>
+                                    <th class="cell100 column5">Opciones</th>
                                 </tr>
                             </thead>
                         </table>
@@ -114,12 +112,18 @@ function cambiaSelect(){
                     }
                     cuerpo.innerHTML+=`
                     <tr>
-                        <td class="cell100 column1"><button type="button" class="btn-historial"><a href="historial/`+data[i][j].rut+`/">Ver Historial</a></button></td>
-                        <td class="cell100 column2">`+lugarAtencion+`</td>
-                        <td class="cell100 column3">`+data[i][j].rut+`</td>
-                        <td class="cell100 column4">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
-                        <td class="cell100 column5">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
-                        <td class="cell100 column6"><button type="button" style="width:100%" class="btn-historial"><a href="editarpaciente/`+data[i][j].rut+`">Editar</a></button>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>                 
+                        <td class="cell100 column2">`+data[i][j].rut+`</td>
+                        <td class="cell100 column3">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
+                        <td class="cell100 column4">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
+                        <td class="cell100 column5"><button type="button" class="btn-historial" style="width:100%;"><a href="#openModal">Ver Acciones</a></button>
+                                        <div id="openModal" class="modalDialog">
+                                            <div>
+                                                <a href="#close" title="Cerrar" class="close">X</a>
+                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/historial/`+data[i][j].rut+`'">Historial</button>
+                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/SignosVitales/`+data[i][j].rut+`'">Signos Vitales</button>
+                                                <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/Evolucion/`+data[i][j].rut+`'">Evolucion Cuidador</button>
+                                            </div>
+                                        </div><button type="button" style="color:black;width:100%" class="btn-historial" onclick="window.location.href='editarpaciente/`+data[i][j].rut+`'">Editar</button>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>                 
                     </tr>`
                 }
             }

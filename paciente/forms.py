@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import fields
-from .models import Historial, Medico, Paciente, SignosVitales
+from .models import Evaluacion, Historial, Medico, Paciente, SignosVitales
 from django.contrib.auth.forms import AuthenticationForm
 
 class PacienteForm(forms.ModelForm):
@@ -20,8 +20,6 @@ class MedicoForm(forms.ModelForm):
         model = Medico
         fields = ('rut', 'nombre', 'snombre', 'apellido', 'sapellido', 'direccion', 'especialidad','username',)
 
-
-
     def clean_password2(self):
         password = self.cleaned_data.get('password')
         return password
@@ -37,13 +35,13 @@ class MedicoForm(forms.ModelForm):
 class SignosForm(forms.ModelForm):
     class Meta:
         model = SignosVitales
-        fields = ('temperatura','respiracion','tension','evaluacion','miccion','vomito','gases','dolor','transfusion_sangre','frecuencia_cardiaca','saturacion',
-                'presion_venosa_central',
+        fields = ('temperatura','respiracion','presion_arterial','evaluacion','miccion','vomito','flatos','dolor','estrennimiento','frecuencia_cardiaca','saturacion',
+                'suenno',
                 'presion_arterial_media',
                 'peso',
                 'talla',
-                'Presion_Intracraneal',
-                'Presion_arterial_pulmonar',
+                'alimentacion',
+                'higiene',
                 'observaciones')
 
 class HistorialForm(forms.ModelForm):
@@ -58,4 +56,9 @@ class HistorialForm(forms.ModelForm):
                   'diagnostico_clinico_final', 
                   'fecha_alta_medica', 
                   'fecha_alta_clinica')
+
+class EvolucionForm(forms.ModelForm):
+    class Meta:
+        model = Evaluacion
+        fields = ('cuidador','descripcion')
 

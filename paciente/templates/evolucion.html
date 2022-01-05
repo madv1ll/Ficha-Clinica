@@ -64,10 +64,10 @@
                         <table>
                             <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column1">Fecha</th>
-                                    <th class="cell100 column2">Hora</th>
-                                    <th class="cell100 column3">Cuidador</th>
-                                    <th class="cell100 column4">Descripcion</th>
+                                    <th class="cell100 column2">Fecha</th>
+                                    <th class="cell100 column3">Hora</th>
+                                    <th class="cell100 column4">Cuidador</th>
+                                    <th class="cell100 column1">Descripcion</th>
                                 </tr>
                             </thead>
                         </table>
@@ -77,10 +77,10 @@
                             <tbody>
                                 {% for evo in evolucion %}
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">{{evo.fecha_evaluacion}}</td>
-                                    <td class="cell100 column2">{{evo.hora|date:'H:i'}}</td>
-                                    <td class="cell100 column3">{{evo.cuidador}}</td>
-                                    <td class="cell100 column4">{{evo.descripcion}}</td>
+                                    <td class="cell100 column2">{{evo.fecha_evaluacion|date:'d-m-Y'}}</td>
+                                    <td class="cell100 column3">{{evo.hora|date:'H:i'}}</td>
+                                    <td class="cell100 column4">{{evo.cuidador}}</td>
+                                    <td class="cell100 column1">{{evo.descripcion}}</td>
                                     </div>
                                     </td>
                                 </tr>

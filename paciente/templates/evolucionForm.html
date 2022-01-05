@@ -51,19 +51,9 @@
 
 	document.getElementById('id_cuidador').setAttribute("class", "input100")
 	document.getElementById('id_cuidador').setAttribute("placeholder", "Nombre Ciudador")
-	document.getElementById('id_cuidador').setAttribute("onblur", "primeraLetraMayuscula()")
 
 	document.getElementById('id_descripcion').setAttribute("class", "input100")
 	document.getElementById('id_descripcion').setAttribute("placeholder", "Descripción")
-
-	document.getElementById('id_fecha_evaluacion').setAttribute("class", "input100")
-	document.getElementById('id_fecha_evaluacion').setAttribute("placeholder", "Fecha Evaluacion")
-
-function primeraLetraMayuscula(){
-	string = document.getElementById('id_cuidador').value
-	stringMayuscula = string.charAt(0).toUpperCase + string.slice(1);
-	document.getElementById("id_cuidador").value = stringMayuscula;
-}
 
 </script>
 </html>

@@ -186,7 +186,7 @@ def nuevaEvolucion(request, rut):
             partes = fecha.split("T")[0].split("-")
             convertida = "/".join(reversed(partes))
             post.fecha_evaluacion = convertida
-            post.hora = timezone.now()
+            post.hora = fecha
             post.save()
             return redirect ('evolucion', rut)
     else:

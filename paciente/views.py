@@ -159,7 +159,7 @@ class Index(CreateView):
     def post(self, request, *args, **kwargs):
         user = request.user.username
         print('usuario: ',user)
-        data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).filter(nombreMedico=user).values())
+        data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
         return JsonResponse({'lugaratencion':data})
     
     def get_context_data(self, **kwargs):

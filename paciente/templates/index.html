@@ -37,10 +37,10 @@
                         <table>
                             <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column1">Rut</th>
-                                    <th class="cell100 column2">Nombres</th>
-                                    <th class="cell100 column3">Apellidos</th>
-                                    <th class="cell100 column4">Opciones</th>
+                                    <th class="cell100 column2">Rut</th>
+                                    <th class="cell100 column3">Nombres</th>
+                                    <th class="cell100 column4">Apellidos</th>
+                                    <th class="cell100 column5">Opciones</th>
                                 </tr>
                             </thead>
                         </table>
@@ -112,10 +112,10 @@ function cambiaSelect(){
                     }
                     cuerpo.innerHTML+=`
                     <tr>
-                        <td class="cell100 column1">`+data[i][j].rut+`</td>
-                        <td class="cell100 column2">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
-                        <td class="cell100 column3">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
-                        <td class="cell100 column4"><button type="button" class="btn-historial" style="width:100%;"><a href="#openModal">Ver Acciones</a></button>
+                        <td class="cell100 column2">`+data[i][j].rut+`</td>
+                        <td class="cell100 column3">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
+                        <td class="cell100 column4">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
+                        <td class="cell100 column5"><button type="button" class="btn-historial" style="width:100%;"><a href="#openModal">Ver Acciones</a></button>
                                         <div id="openModal" class="modalDialog">
                                             <div>
                                                 <a href="#close" title="Cerrar" class="close">X</a>

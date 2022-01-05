@@ -25,11 +25,11 @@
                       <table>
                           <thead>
                               <tr class="row100 head">
-                                  <th class="cell100 column1">Lugar de Atenci&oacute;n</th>
-                                  <th class="cell100 column2">Rut</th>
-                                  <th class="cell100 column3">Nombres</th>
-                                  <th class="cell100 column4">Apellidos</th>
-                                  <th class="cell100 column5">Acciones</th>
+                                  <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
+                                  <th class="cell100 column3">Rut</th>
+                                  <th class="cell100 column4">Nombres</th>
+                                  <th class="cell100 column5">Apellidos</th>
+                                  <th class="cell100 column6">Acciones</th>
                               </tr>
                           </thead>
                       </table>
@@ -39,11 +39,11 @@
                           <tbody>
                               {% for paciente in pacientes %}
                               <tr class="row100 body">
-                                  <td class="cell100 column1">{{paciente.lugarAtencion}}</td>
-                                  <td class="cell100 column2">{{paciente.rut}}</td>
-                                  <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
-                                  <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
-                                  <td class="cell100 column5">
+                                  <td class="cell100 column2">{{paciente.lugarAtencion}}</td>
+                                  <td class="cell100 column3">{{paciente.rut}}</td>
+                                  <td class="cell100 column4">{{paciente.pnombre}} {{paciente.snombre}} </td>
+                                  <td class="cell100 column5">{{paciente.papellido}} {{paciente.sapellido}}</td>
+                                  <td class="cell100 column6">
                                       <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black" onclick="window.location.href='NuevoSignosVitales'">Nuevo Signos Vitales</button>
                                       <div id="openModal" class="modalDialog">
                                             <div>

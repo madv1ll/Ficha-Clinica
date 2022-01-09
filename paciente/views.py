@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.utils import timezone
+from django.db.models import Q
 
 def historial(request, rut):
     pacientes = Paciente.objects.filter(rut = rut)
@@ -158,8 +159,11 @@ class Index(CreateView):
     
     def post(self, request, *args, **kwargs):
         user = request.user.username
-        print('usuario: ',user)
-        data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
+        queryset = request.GET.get("buscar")
+        if queryset:
+             data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).filter(Q(rut=queryset) | Q(pnombre=queryset) | Q(papellido=queryset) ).distinct().values())
+        else:
+            data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
         return JsonResponse({'lugaratencion':data})
     
     def get_context_data(self, **kwargs):

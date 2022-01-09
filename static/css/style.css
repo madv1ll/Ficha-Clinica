@@ -128,3 +128,10 @@ body{
 .select-css option[selected] {
     background-color: orange;
 }
+
+.titulo-pagina{
+    position: fixed;
+    z-index: 1;
+    text-align: center;
+    left: 40%;
+}

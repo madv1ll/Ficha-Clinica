@@ -86,8 +86,7 @@
                                     <td class="cell100 column5">{{hist.diagnostico}}</td>
                                     <td class="cell100 column6">
                                         <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/historialdetalle/{{hist.idhistorial}}'">Ver Historial</button>
-                                        <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/editarHistorial/{{hist.idhistorial}}'">Editar</button>    
-                                    </div>
+                                        {% if request.user.is_staff %}<button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/editarHistorial/{{hist.idhistorial}}'">Editar</button>{% endif %}
                                     </td>
                                 </tr>
                                 {% endfor %}

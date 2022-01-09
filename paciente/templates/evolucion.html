@@ -25,10 +25,10 @@
                         <table>
                             <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column1">Rut</th>
+                                    <th class="cell100 column2">Rut</th>
                                     <th class="cell100 column2">Nombres</th>
-                                    <th class="cell100 column3">Apellidos</th>
-                                    <th class="cell100 column4">Acciones</th>
+                                    <th class="cell100 column2">Apellidos</th>
+                                    <th class="cell100 column2">Acciones</th>
                                 </tr>
                             </thead>
                         </table>
@@ -39,9 +39,9 @@
                                 {% for paciente in pacientes %}
                                 <tr class="row100 body">
                                     <td class="cell100 column2">{{paciente.rut}}</td>
-                                    <td class="cell100 column3">{{paciente.pnombre}} {{paciente.snombre}} </td>
-                                    <td class="cell100 column4">{{paciente.papellido}} {{paciente.sapellido}}</td>
-                                    <td class="cell100 column5">
+                                    <td class="cell100 column2">{{paciente.pnombre}} {{paciente.snombre}} </td>
+                                    <td class="cell100 column2">{{paciente.papellido}} {{paciente.sapellido}}</td>
+                                    <td class="cell100 column2">
                                         <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black;" onclick="window.location.href='/Evolucion/nuevaEvolucion/{{paciente.rut}}'">Nueva Evolución</button>
                                     </td>
                                 </tr>
@@ -65,8 +65,8 @@
                             <thead>
                                 <tr class="row100 head">
                                     <th class="cell100 column2">Fecha</th>
-                                    <th class="cell100 column3">Hora</th>
-                                    <th class="cell100 column4">Cuidador</th>
+                                    <th class="cell100 column2">Hora</th>
+                                    <th class="cell100 column2">Cuidador</th>
                                     <th class="cell100 column1">Descripcion</th>
                                 </tr>
                             </thead>
@@ -78,8 +78,8 @@
                                 {% for evo in evolucion %}
                                 <tr class="row100 body">
                                     <td class="cell100 column2">{{evo.fecha_evaluacion|date:'d-m-Y'}}</td>
-                                    <td class="cell100 column3">{{evo.hora|date:'H:i'}}</td>
-                                    <td class="cell100 column4">{{evo.cuidador}}</td>
+                                    <td class="cell100 column2">{{evo.hora|date:'H:i'}}</td>
+                                    <td class="cell100 column2">{{evo.cuidador}}</td>
                                     <td class="cell100 column1">{{evo.descripcion}}</td>
                                     </div>
                                     </td>

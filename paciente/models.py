@@ -168,7 +168,7 @@ class Evaluacion(models.Model):
     idevaluacion     = models.AutoField('Id evaluacion', primary_key=True)
     fecha_evaluacion = models.DateTimeField('Fecha de evaluacion', null=False, auto_now=True)
     hora             = models.DateTimeField('Hora evolucion', null=False, auto_now=True)
-    descripcion      = models.TextField('Descripcion', max_length=200)
+    descripcion      = models.TextField('Descripcion', max_length=2000)
     cuidador         = models.CharField('Cuidador', max_length=30)
     rut              = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 

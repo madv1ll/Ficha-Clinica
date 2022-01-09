@@ -26,10 +26,10 @@
                             <thead>
                                 <tr class="row100 head">
                                     <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
-                                    <th class="cell100 column3">Rut</th>
-                                    <th class="cell100 column4">Nombres</th>
-                                    <th class="cell100 column5">Apellidos</th>
-                                    <th class="cell100 column6">Acciones</th>
+                                    <th class="cell100 column2">Rut</th>
+                                    <th class="cell100 column2">Nombres</th>
+                                    <th class="cell100 column2">Apellidos</th>
+                                    <th class="cell100 column2">Acciones</th>
                                 </tr>
                             </thead>
                         </table>
@@ -40,10 +40,10 @@
                                 {% for paciente in pacientes %}
                                 <tr class="row100 body">
                                     <td class="cell100 column2">{{paciente.lugarAtencion}}</td>
-                                    <td class="cell100 column3">{{paciente.rut}}</td>
-                                    <td class="cell100 column4">{{paciente.pnombre}} {{paciente.snombre}} </td>
-                                    <td class="cell100 column5">{{paciente.papellido}} {{paciente.sapellido}}</td>
-                                    <td class="cell100 column6">
+                                    <td class="cell100 column2">{{paciente.rut}}</td>
+                                    <td class="cell100 column2">{{paciente.pnombre}} {{paciente.snombre}} </td>
+                                    <td class="cell100 column2">{{paciente.papellido}} {{paciente.sapellido}}</td>
+                                    <td class="cell100 column2">
                                         <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black;" onclick="window.location.href='/historialForm/nuevo/{{paciente.rut}}'">Nuevo Historial</button>
                                     </td>
                                 </tr>
@@ -67,10 +67,10 @@
                             <thead>
                                 <tr class="row100 head">
                                     <th class="cell100 column2">Fecha</th>
-                                    <th class="cell100 column3">Tipo de Atenci&oacute;n</th>
-                                    <th class="cell100 column4">Servicio</th>
-                                    <th class="cell100 column5">Diagn&oacute;stico</th>
-                                    <th class="cell100 column6">Acciones</th>
+                                    <th class="cell100 column2">Tipo de Atenci&oacute;n</th>
+                                    <th class="cell100 column2">Servicio</th>
+                                    <th class="cell100 column2">Diagn&oacute;stico</th>
+                                    <th class="cell100 column2">Acciones</th>
                                 </tr>
                             </thead>
                         </table>
@@ -81,13 +81,12 @@
                                 {% for hist in historial %}
                                 <tr class="row100 body">
                                     <td class="cell100 column2">{{hist.fecha|date:'d-m-Y'}}</td>
-                                    <td class="cell100 column3">{{hist.tipo_atencion}}</td>
-                                    <td class="cell100 column4">{{hist.servicio}}</td>
-                                    <td class="cell100 column5">{{hist.diagnostico}}</td>
-                                    <td class="cell100 column6">
+                                    <td class="cell100 column2">{{hist.tipo_atencion}}</td>
+                                    <td class="cell100 column2">{{hist.servicio}}</td>
+                                    <td class="cell100 column2">{{hist.diagnostico}}</td>
+                                    <td class="cell100 column2">
                                         <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/historialdetalle/{{hist.idhistorial}}'">Ver Historial</button>
-                                        <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/editarHistorial/{{hist.idhistorial}}'">Editar</button>    
-                                    </div>
+                                        {% if request.user.is_staff %}<button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/editarHistorial/{{hist.idhistorial}}'">Editar</button>{% endif %}
                                     </td>
                                 </tr>
                                 {% endfor %}

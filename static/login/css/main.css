@@ -425,3 +425,8 @@ iframe {
 
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
+.logo-login{
+  width: 100%;
+  display: block;
+  margin: auto;
+}

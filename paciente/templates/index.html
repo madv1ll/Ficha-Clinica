@@ -32,7 +32,7 @@
         <div class="col-md-12 search">
                 <div id="custom-search-input">
                     <div class="input-gorup col-md-12">
-                        <input type="text" class="form-control" placeholder="Buscar" id="name" name="buscar">
+                        <input type="text" class="form-control" placeholder="Buscar" id="buscar" name="buscar" oninput="cambiaSelect">
                         <span class="input-group-list">
                         </span>
                     </div>
@@ -40,7 +40,6 @@
         </div>
     </div>
 </div>
-
 </form>
 <section>
     <div class="limiter">
@@ -105,6 +104,7 @@ return cookieValue;
 function cambiaSelect(){
     var form = new FormData(document.getElementById("form_lugarAtencion"));
     valorSelect = document.getElementById("lugarAtencion").value
+    valorBuscar = document.getElementById("buscar").value
     var cuerpo = document.getElementById("cuerpoTabla")
     if(valorSelect != '0'){
         cuerpo.innerHTML = ""
@@ -112,7 +112,7 @@ function cambiaSelect(){
     $.ajax({
         url: "/",
         type: 'POST',
-        data: {id: valorSelect},
+        data: {id: valorSelect, buscar:valorBuscar},
         dataType: 'json'
     }).done(function(data){
         for (let i in data) {

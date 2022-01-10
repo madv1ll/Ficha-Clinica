@@ -79,6 +79,15 @@
 <script src="{% static path %}vendor/select2/select2.min.js"></script>
 <script src="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
+//script para prevenir enviar form con ENTER
+$("form").bind("keypress", function (e) {
+    if (e.keyCode == 13) {
+        $("#btnSearch").attr('value');
+        //add more buttons here
+        return false;
+    }
+});
+
 function eliminarPaciente(id){
     if(confirm('¿Está seguro que desea eliminar?')){
         alert("Paciente eliminado correctamente")
@@ -102,6 +111,7 @@ if (document.cookie && document.cookie !== '') {
 return cookieValue;
 }
 function cambiaSelect(){
+    cuerpo.innerHTML = ""
     var form = new FormData(document.getElementById("form_lugarAtencion"));
     valorSelect = document.getElementById("lugarAtencion").value
     valorBuscar = document.getElementById("buscar").value

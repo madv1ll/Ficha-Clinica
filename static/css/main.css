@@ -538,3 +538,14 @@ button a{
   text-decoration: none;
   color: black;
 }
+
+input#buscar{
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+.buscador{
+  display: block;
+  margin: auto;
+}

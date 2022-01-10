@@ -158,10 +158,9 @@ class Index(CreateView):
         return super().dispatch(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
-        user = request.user.username
-        queryset = request.GET.get("buscar")
+        queryset = request.POST["buscar"]
         if queryset:
-             data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).filter(Q(rut=queryset) | Q(pnombre=queryset) | Q(papellido=queryset) ).distinct().values())
+            data = list(Paciente.objects.filter(Q(rut__icontains=queryset) | Q(pnombre__icontains=queryset) | Q(papellido__icontains=queryset) ).distinct().values())
         else:
             data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
         return JsonResponse({'lugaratencion':data})

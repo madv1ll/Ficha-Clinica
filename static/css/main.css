@@ -548,4 +548,6 @@ input#buscar{
 .buscador{
   display: block;
   margin: auto;
+  width: 10%;
+  margin-top: 5px;
 }

@@ -26,23 +26,20 @@
       <option value="2">Domicilio</option>
     </select>
   </div>
-</form>
-<div class="container">
+
+  <div class="container">
     <div class="row">
         <div class="col-md-12 search">
-            <form method="get">
                 <div id="custom-search-input">
                     <div class="input-gorup col-md-12">
-                        <input type="text" class="form-control" placeholder="Buscar" id="name" name="buscar">
-                        <span class="input-group-list">
-                            <button type="submit" class="boton btn-succeess">Buscar</button>
-                        </span>
+                        <input type="text" class="form-control" placeholder="Buscar" id="buscar" name="buscar" >
+                        <button type="button" class="btn-historial buscador" onclick="cambiaSelect()">Buscar</button>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
 </div>
+</form>
 <section>
     <div class="limiter">
         <div class="container-table100">
@@ -81,6 +78,15 @@
 <script src="{% static path %}vendor/select2/select2.min.js"></script>
 <script src="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
+//script para prevenir enviar form con ENTER
+$("form").bind("keypress", function (e) {
+    if (e.keyCode == 13) {
+        $("#btnSearch").attr('value');
+        //add more buttons here
+        return false;
+    }
+});
+
 function eliminarPaciente(id){
     if(confirm('¿Está seguro que desea eliminar?')){
         alert("Paciente eliminado correctamente")
@@ -106,6 +112,7 @@ return cookieValue;
 function cambiaSelect(){
     var form = new FormData(document.getElementById("form_lugarAtencion"));
     valorSelect = document.getElementById("lugarAtencion").value
+    valorBuscar = document.getElementById("buscar").value
     var cuerpo = document.getElementById("cuerpoTabla")
     if(valorSelect != '0'){
         cuerpo.innerHTML = ""
@@ -113,7 +120,7 @@ function cambiaSelect(){
     $.ajax({
         url: "/",
         type: 'POST',
-        data: {id: valorSelect},
+        data: {id: valorSelect, buscar:valorBuscar},
         dataType: 'json'
     }).done(function(data){
         for (let i in data) {

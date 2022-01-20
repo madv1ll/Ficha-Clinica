@@ -19,23 +19,27 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-      <div class="collapse navbar-collapse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
         <div class="navbar-nav">
           <a class="navbar-brand" href="/">Home</a>
-          <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoPaciente' %}">Nuevo Paciente</a>
-          {% if request.user.is_staff %}
-          <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Cuidador</a>
-          {% endif %}
-          <a class="nav-item nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 40%" href="{% url 'logout' %}">Cerrar sesion</a>
-          <p class="nav-item nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 7%">{{ user.username.title }}</p>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoPaciente' %}">Nuevo Paciente</a>
+            {% if request.user.is_staff %}
+            <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Cuidador</a>
+            {% endif %}
+            <a class="nav-item nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 40%" href="{% url 'logout' %}">Cerrar sesion</a>
+            <p class="nav-item nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 7%">{{ user.username.title }}</p>
+          </div>
         </div>
-    </div>
     </nav>
     <div class="container">
       <div class="titulo-pagina text-center">
         <h1>{% block h1 %}{% endblock h1 %}</h1>
       </div>
     </div>
+    <br>
   {% block cuerpo %}
   {% endblock %}
   {% block pagination %}

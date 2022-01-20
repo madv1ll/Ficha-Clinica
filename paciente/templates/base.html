@@ -29,16 +29,15 @@
             {% if request.user.is_staff %}
             <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Cuidador</a>
             {% endif %}
-            <a class="nav-item nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 40%" href="{% url 'logout' %}">Cerrar sesion</a>
-            <p class="nav-item nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 7%">{{ user.username.title }}</p>
+            <a class="nav-item nav-link active" aria-current="page" href="{% url 'logout' %}">Cerrar sesion</a>
+            <p class="nav-item nav-link active" aria-current="page">{{ user.username.title }}</p>
           </div>
         </div>
     </nav>
-    <div class="container">
-      <div class="titulo-pagina text-center">
-        <h1>{% block h1 %}{% endblock h1 %}</h1>
-      </div>
+    <div class="container text-center">
+      <h1>{% block h1 %}{% endblock h1 %}</h1>
     </div>
+    <br>
     <br>
   {% block cuerpo %}
   {% endblock %}

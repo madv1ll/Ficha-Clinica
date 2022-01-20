@@ -47,12 +47,13 @@
               <p class="nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 7%">{{ user.username.title }}</p>
             </li>
           </ul>
-          <div class="titulo-pagina text-center">
-            <h1>{% block h1 %}{% endblock h1 %}</h1>
-          </div>
+
         </div>
       </div>
     </nav>
+    <div class="titulo-pagina text-center">
+      <h1>{% block h1 %}{% endblock h1 %}</h1>
+    </div>
   {% block cuerpo %}
   {% endblock %}
   {% block pagination %}

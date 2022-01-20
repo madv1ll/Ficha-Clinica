@@ -48,6 +48,9 @@
         <th class="cell100 column2">Opciones</th>
         <input type="hidden" name="user" id="user" value="{{user.id}}">
     </thead>
+    <tbody id="cuerpoTabla">
+    </tbody>
+</table>
 
 <script src="{% static path %}vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="{% static path %}vendor/bootstrap/js/popper.js"></script>
@@ -111,7 +114,6 @@ function cambiaSelect(){
                         lugarAtencion = "Domicilio"
                     }
                     cuerpo.innerHTML+=`
-                        <tbody>
                             <tr>
                                 <td class="cell100 column2">`+data[i][j].rut+`</td>
                                 <td class="cell100 column2">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
@@ -125,9 +127,7 @@ function cambiaSelect(){
                                         <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/Evolucion/`+data[i][j].rut+`'">Evolucion Cuidador</button>
                                     </div>
                                 </div>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" class="btn-historial" onclick="window.location.href='editarpaciente/`+data[i][j].rut+`'">Editar</button><button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>
-                            </tr>
-                        </tbody>
-                    </table>`
+                            </tr>`
                 }
             }
         }

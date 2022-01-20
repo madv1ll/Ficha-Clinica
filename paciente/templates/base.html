@@ -19,37 +19,17 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'nuevoPaciente' %}">Nuevo Paciente</a>
-            </li>
-          </ul>
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+          <a class="navbar-brand" href="/">Home</a>
+          <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoPaciente' %}">Nuevo Paciente</a>
           {% if request.user.is_staff %}
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Cuidador</a>
-            </li>
-          </ul>
+          <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Cuidador</a>
           {% endif %}
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 40%" href="{% url 'logout' %}">Cerrar sesion</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <p class="nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 7%">{{ user.username.title }}</p>
-            </li>
-          </ul>
-
+          <a class="nav-item nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 40%" href="{% url 'logout' %}">Cerrar sesion</a>
+          <p class="nav-item nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 7%">{{ user.username.title }}</p>
         </div>
-      </div>
+    </div>
     </nav>
     <div class="container">
       <div class="titulo-pagina text-center">

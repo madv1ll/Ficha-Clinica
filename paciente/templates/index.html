@@ -16,7 +16,6 @@
 {% block titulo %}Index{% endblock titulo %}
 {% block h1 %}Página Principal{% endblock h1 %}
 {% block cuerpo %}
-<br>
 <form id="form_lugarAtencion" method="POST">
     {% csrf_token %}
   <div style="display: flex;justify-content: center;" >
@@ -40,6 +39,7 @@
     </div>
   </div>
 </form>
+<br>
 <table class="table table-responsive table-striped">
     <thead>
         <tr>

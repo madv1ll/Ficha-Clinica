@@ -38,43 +38,28 @@
         {% endfor %}
     </tbody>
 </table>
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100 ver5 m-b-110">
-                    <div class="table100-head">
-                        <table>
-                            <thead>
-                                <tr class="row100 head">
-                                    <th class="cell100 column2">Fecha</th>
-                                    <th class="cell100 column2">Hora</th>
-                                    <th class="cell100 column2">Cuidador</th>
-                                    <th class="cell100 column1">Descripcion</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="table100-body js-pscroll">
-                        <table>
-                            <tbody>
-                                {% for evo in evolucion %}
-                                <tr class="row100 body">
-                                    <td class="cell100 column2">{{evo.fecha_evaluacion|date:'d-m-Y'}}</td>
-                                    <td class="cell100 column2">{{evo.hora|date:'H:i'}}</td>
-                                    <td class="cell100 column2">{{evo.cuidador}}</td>
-                                    <td class="cell100 column1">{{evo.descripcion}}</td>
-                                    </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th class="cell100 column2">Fecha</th>
+            <th class="cell100 column2">Hora</th>
+            <th class="cell100 column2">Cuidador</th>
+            <th class="cell100 column1">Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for evo in evolucion %}
+        <tr>
+            <td class="cell100 column2">{{evo.fecha_evaluacion|date:'d-m-Y'}}</td>
+            <td class="cell100 column2">{{evo.hora|date:'H:i'}}</td>
+            <td class="cell100 column2">{{evo.cuidador}}</td>
+            <td class="cell100 column1">{{evo.descripcion}}</td>
             </div>
-        </div>
-    </div>
-</section>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 <script src="{% static path %}vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="{% static path %}vendor/bootstrap/js/popper.js"></script>
 <script src="{% static path %}vendor/bootstrap/js/bootstrap.min.js"></script>

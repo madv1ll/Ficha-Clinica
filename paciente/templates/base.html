@@ -29,8 +29,16 @@
             {% if request.user.is_staff %}
             <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Cuidador</a>
             {% endif %}
-            <a class="nav-item nav-link active" aria-current="page" href="{% url 'logout' %}">Cerrar sesion</a>
-            <p class="nav-item nav-link active" aria-current="page">{{ user.username.title }}</p>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Usuario
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" aria-current="page" href="#">Nombre usuario: {{ user.username.title }}</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" aria-current="page" href="{% url 'logout' %}">Cerrar sesion</a>
+
+            </div>
+
           </div>
         </div>
     </nav>

@@ -16,88 +16,56 @@
 {% block titulo %}Historial{% endblock titulo %}
 {% block h1 %}Historial{% endblock h1 %}
 {% block cuerpo %}
-<section>
-    <div class="limiter">
-        <div class="container-table100" style="height: 200px">
-            <div class="wrap-table100">
-                <div class="table100 ver5 m-b-110">
-                    <div class="table100-head">
-                        <table>
-                            <thead>
-                                <tr class="row100 head">
-                                    <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
-                                    <th class="cell100 column2">Rut</th>
-                                    <th class="cell100 column2">Nombres</th>
-                                    <th class="cell100 column2">Apellidos</th>
-                                    <th class="cell100 column2">Acciones</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="table100-body js-pscroll">
-                        <table>
-                            <tbody>
-                                {% for paciente in pacientes %}
-                                <tr class="row100 body">
-                                    <td class="cell100 column2">{{paciente.lugarAtencion}}</td>
-                                    <td class="cell100 column2">{{paciente.rut}}</td>
-                                    <td class="cell100 column2">{{paciente.pnombre}} {{paciente.snombre}} </td>
-                                    <td class="cell100 column2">{{paciente.papellido}} {{paciente.sapellido}}</td>
-                                    <td class="cell100 column2">
-                                        <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black;" onclick="window.location.href='/historialForm/nuevo/{{paciente.rut}}'">Nuevo Historial</button>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr class="row100 head">
+            <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
+            <th class="cell100 column2">Rut</th>
+            <th class="cell100 column2">Nombres</th>
+            <th class="cell100 column2">Apellidos</th>
+            <th class="cell100 column2">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paciente in pacientes %}
+        <tr class="row100 body">
+            <td class="cell100 column2">{{paciente.lugarAtencion}}</td>
+            <td class="cell100 column2">{{paciente.rut}}</td>
+            <td class="cell100 column2">{{paciente.pnombre}} {{paciente.snombre}} </td>
+            <td class="cell100 column2">{{paciente.papellido}} {{paciente.sapellido}}</td>
+            <td class="cell100 column2">
+                <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black;" onclick="window.location.href='/historialForm/nuevo/{{paciente.rut}}'">Nuevo Historial</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-<section>
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100 ver5 m-b-110">
-                    <div class="table100-head">
-                        <table>
-                            <thead>
-                                <tr class="row100 head">
-                                    <th class="cell100 column2">Fecha</th>
-                                    <th class="cell100 column2">Tipo de Atenci&oacute;n</th>
-                                    <th class="cell100 column2">Servicio</th>
-                                    <th class="cell100 column2">Diagn&oacute;stico</th>
-                                    <th class="cell100 column2">Acciones</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="table100-body js-pscroll">
-                        <table>
-                            <tbody>
-                                {% for hist in historial %}
-                                <tr class="row100 body">
-                                    <td class="cell100 column2">{{hist.fecha|date:'d-m-Y'}}</td>
-                                    <td class="cell100 column2">{{hist.tipo_atencion}}</td>
-                                    <td class="cell100 column2">{{hist.servicio}}</td>
-                                    <td class="cell100 column2">{{hist.diagnostico}}</td>
-                                    <td class="cell100 column2">
-                                        <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/historialdetalle/{{hist.idhistorial}}'">Ver Historial</button>
-                                        {% if request.user.is_staff %}<button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/editarHistorial/{{hist.idhistorial}}'">Editar</button>{% endif %}
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<table>
+    <thead class="table table-responsive table-striped">
+        <tr>
+            <th class="cell100 column2">Fecha</th>
+            <th class="cell100 column2">Tipo de Atenci&oacute;n</th>
+            <th class="cell100 column2">Servicio</th>
+            <th class="cell100 column2">Diagn&oacute;stico</th>
+            <th class="cell100 column2">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hist in historial %}
+        <tr>
+            <td class="cell100 column2">{{hist.fecha|date:'d-m-Y'}}</td>
+            <td class="cell100 column2">{{hist.tipo_atencion}}</td>
+            <td class="cell100 column2">{{hist.servicio}}</td>
+            <td class="cell100 column2">{{hist.diagnostico}}</td>
+            <td class="cell100 column2">
+                <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/historialdetalle/{{hist.idhistorial}}'">Ver Historial</button>
+                {% if request.user.is_staff %}<button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/historial/editarHistorial/{{hist.idhistorial}}'">Editar</button>{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>

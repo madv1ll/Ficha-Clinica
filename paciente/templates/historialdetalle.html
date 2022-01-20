@@ -16,64 +16,52 @@
 {% block titulo %}Detalle Historial{% endblock titulo %}
 {% block h1 %}Detalle Historial{% endblock h1 %}
 {% block cuerpo %}
-<section>
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100 ver5 m-b-110">
-                    <div class="table100-body js-pscroll">
-                        <table>
-                            <tbody>
-                                {% for hist in historial %}
-                                <tr>
-                                    <th class="cell100 column1">Fecha</th>
-                                    <td class="cell100 column1">{{hist.fecha|date:'d-m-Y H:i'}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column2">Tipo de Atenci&oacute;n</th>
-                                    <td class="cell100 column2">{{hist.tipo_atencion}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column3">Servicio</th>
-                                    <td class="cell100 column3">{{hist.servicio}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column4">Diagn&oacute;stico</th>
-                                    <td class="cell100 column4">{{hist.diagnostico}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column5">Motivo Ingreso</th>
-                                    <td class="cell100 column5">{{hist.motivo_ingreso}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column6">Enfermedad actual</th>
-                                    <td class="cell100 column6">{{hist.enfermedad_actual}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column7">Diagnóstico de Admision</th>
-                                    <td class="cell100 column7">{{hist.diagnostico_admision}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column8">Diagnóstico Cl&iacute;nico Final</th>
-                                    <td class="cell100 column8">{{hist.diagnostico_clinico_final}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column9">Fecha alta M&eacute;dica</th>
-                                    <td class="cell100 column9">{{hist.fecha_alta_medica}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="cell100 column10">Fecha alta Cl&iacute;nica</th>
-                                    <td class="cell100 column10">{{hist.fecha_alta_clinica}}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<table class="table table-responsive table-striped">
+    <tbody>
+        {% for hist in historial %}
+        <tr>
+            <th class="cell100 column1">Fecha</th>
+            <td class="cell100 column1">{{hist.fecha|date:'d-m-Y H:i'}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column2">Tipo de Atenci&oacute;n</th>
+            <td class="cell100 column2">{{hist.tipo_atencion}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column3">Servicio</th>
+            <td class="cell100 column3">{{hist.servicio}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column4">Diagn&oacute;stico</th>
+            <td class="cell100 column4">{{hist.diagnostico}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column5">Motivo Ingreso</th>
+            <td class="cell100 column5">{{hist.motivo_ingreso}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column6">Enfermedad actual</th>
+            <td class="cell100 column6">{{hist.enfermedad_actual}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column7">Diagnóstico de Admision</th>
+            <td class="cell100 column7">{{hist.diagnostico_admision}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column8">Diagnóstico Cl&iacute;nico Final</th>
+            <td class="cell100 column8">{{hist.diagnostico_clinico_final}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column9">Fecha alta M&eacute;dica</th>
+            <td class="cell100 column9">{{hist.fecha_alta_medica}}</td>
+        </tr>
+        <tr>
+            <th class="cell100 column10">Fecha alta Cl&iacute;nica</th>
+            <td class="cell100 column10">{{hist.fecha_alta_clinica}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 <script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="../../static/vendor/bootstrap/js/popper.js"></script>
 <script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>

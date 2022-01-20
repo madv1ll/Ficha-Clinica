@@ -16,7 +16,6 @@
 {% block titulo %}Index{% endblock titulo %}
 {% block h1 %}Página Principal{% endblock h1 %}
 {% block cuerpo %}
-<br>
 <form id="form_lugarAtencion" method="POST">
     {% csrf_token %}
   <div style="display: flex;justify-content: center;" >
@@ -30,48 +29,30 @@
   <div class="container">
     <div class="row">
         <div class="col-md-12 search">
-                <div id="custom-search-input">
-                    <div class="input-gorup col-md-12">
-                        <input type="text" class="form-control" placeholder="Buscar" id="buscar" name="buscar" >
-                        <button type="button" class="btn-historial buscador" onclick="cambiaSelect()">Buscar</button>
-                    </div>
-                </div>
-        </div>
-    </div>
-</div>
-</form>
-<section>
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-
-                <div class="table100 ver5 m-b-110">
-                    <div class="table100-head">
-                        <table>
-                            <thead>
-                                <tr class="row100 head">
-                                    <th class="cell100 column2">Rut</th>
-                                    <th class="cell100 column2">Nombres</th>
-                                    <th class="cell100 column2">Apellidos</th>
-                                    <th class="cell100 column2">Opciones</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-
-                    <div class="table100-body js-pscroll">
-                        <table>
-                            <tbody id="cuerpoTabla">
-                            </tbody>
-                        </table>
-                    </div>
+            <div id="custom-search-input">
+                <div class="input-gorup col-md-12">
+                    <input type="text" class="form-control" placeholder="Buscar" id="buscar" name="buscar" >
+                    <button type="button" class="btn-historial buscador" onclick="cambiaSelect()">Buscar</button>
                 </div>
             </div>
         </div>
     </div>
-    <input type="hidden" name="user" id="user" value="{{ user.id}}">
-</section>
-
+  </div>
+</form>
+<br>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th class="cell100 column2">Rut</th>
+            <th class="cell100 column2">Nombres</th>
+            <th class="cell100 column2">Apellidos</th>
+            <th class="cell100 column2">Opciones</th>
+            <input type="hidden" name="user" id="user" value="{{user.id}}">
+        </tr>
+    </thead>
+    <tbody id="cuerpoTabla">
+    </tbody>
+</table>
 <script src="{% static path %}vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="{% static path %}vendor/bootstrap/js/popper.js"></script>
 <script src="{% static path %}vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -134,20 +115,20 @@ function cambiaSelect(){
                         lugarAtencion = "Domicilio"
                     }
                     cuerpo.innerHTML+=`
-                    <tr>
-                        <td class="cell100 column2">`+data[i][j].rut+`</td>
-                        <td class="cell100 column2">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
-                        <td class="cell100 column2">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
-                        <td class="cell100 column2"><button type="button" class="btn-historial" style="width:100%;"><a href="#openModal">Ver Acciones</a></button>
-                            <div id="openModal" class="modalDialog">
-                                <div>
-                                    <a href="#close" title="Cerrar" class="close">X</a>
-                                    <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/historial/`+data[i][j].rut+`'">Historial</button>
-                                    <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/SignosVitales/`+data[i][j].rut+`'">Signos Vitales</button>
-                                    <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/Evolucion/`+data[i][j].rut+`'">Evolucion Cuidador</button>
-                                </div>
-                            </div>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" class="btn-historial" onclick="window.location.href='editarpaciente/`+data[i][j].rut+`'">Editar</button><button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>
-                    </tr>`
+                            <tr>
+                                <td class="cell100 column2">`+data[i][j].rut+`</td>
+                                <td class="cell100 column2">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
+                                <td class="cell100 column2">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
+                                <td class="cell100 column2"><button type="button" onclick="window.location.href='#openModal'" class="btn-historial" style="width:100%;color:black;"> Ver Acciones</button>
+                                <div id="openModal" class="modalDialog">
+                                    <div>
+                                        <a href="#close" title="Cerrar" class="close">X</a>
+                                        <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/historial/`+data[i][j].rut+`'">Historial</button>
+                                        <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/SignosVitales/`+data[i][j].rut+`'">Signos Vitales</button>
+                                        <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/Evolucion/`+data[i][j].rut+`'">Evolucion Cuidador</button>
+                                    </div>
+                                </div>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" class="btn-historial" onclick="window.location.href='editarpaciente/`+data[i][j].rut+`'">Editar</button><button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>
+                            </tr>`
                 }
             }
         }

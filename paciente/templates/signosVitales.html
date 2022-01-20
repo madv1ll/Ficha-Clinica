@@ -16,85 +16,59 @@
 {% block titulo %}Signos Vitales{% endblock titulo %}
 {% block h1 %}Signos Vitales{% endblock h1 %}
 {% block cuerpo %}
-<section>
-  <div class="limiter">
-      <div class="container-table100">
-          <div class="wrap-table100">
-              <div class="table100 ver5 m-b-110">
-                  <div class="table100-head">
-                      <table>
-                          <thead>
-                              <tr class="row100 head">
-                                  <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
-                                  <th class="cell100 column2">Rut</th>
-                                  <th class="cell100 column2">Nombres</th>
-                                  <th class="cell100 column2">Apellidos</th>
-                                  <th class="cell100 column2">Acciones</th>
-                              </tr>
-                          </thead>
-                      </table>
-                  </div>
-                  <div class="table100-body js-pscroll">
-                      <table>
-                          <tbody>
-                              {% for paciente in pacientes %}
-                              <tr class="row100 body">
-                                  <td class="cell100 column2">{{paciente.lugarAtencion}}</td>
-                                  <td class="cell100 column2">{{paciente.rut}}</td>
-                                  <td class="cell100 column2">{{paciente.pnombre}} {{paciente.snombre}} </td>
-                                  <td class="cell100 column2">{{paciente.papellido}} {{paciente.sapellido}}</td>
-                                  <td class="cell100 column2">
-                                      <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black" onclick="window.location.href='NuevoSignosVitales'">Nuevo Signos Vitales</button>
-                                      <div id="openModal" class="modalDialog">
-                                            <div>
-                                                <a href="#close" title="Cerrar" class="close">X</a>
-                                            </div>
-                                      </div>
-                                  </td>
-                              </tr>
-                              {% endfor %}
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-<section>
-  <div class="limiter">
-      <div class="container-table100">
-          <div class="wrap-table100">
-              <div class="table100 ver5 m-b-110">
-                  <div class="table100-head">
-                      <table>
-                          <thead>
-                              <tr class="row100 head">
-                                  <th class="cell100 column2">Fecha</th>
-                                  <th class="cell100 column2">Observaciones</th>
-                                  <th class="cell100 column2">Acciones</th>
-                              </tr>
-                          </thead>
-                      </table>
-                  </div>
-                  <div class="table100-body js-pscroll">
-                      <table>
-                          <tbody>
-                              {% for signos in signosVitales %}
-                              <tr class="row100 body">
-                                  <td class="cell100 column2">{{signos.fecha_creacion|date:'d-m-Y'}}</td>
-                                  <td class="cell100 column2">{{signos.observaciones}}</td>
-                                  <td class="cell100 column2">
-                                      <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/SignosVitales/signosdetalle/{{signos.id_signosvitales}}'">Ver Registro</button>
-                                      {% if request.user.is_staff %}<button type="button" class="btn-historial" style="color:black"  onclick="window.location.href='/SignosVitales/editarSignos/{{signos.id_signosvitales}}'">Editar</button>{% endif %}
-                                  </td>
-                              {% endfor %}
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
+<div class="container-fluid text-left">
+    <h2>Datos del Paciente</h2>
+</div>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th class="cell100 column2">Lugar de Atenci&oacute;n</th>
+            <th class="cell100 column2">Rut</th>
+            <th class="cell100 column2">Nombres</th>
+            <th class="cell100 column2">Apellidos</th>
+            <th class="cell100 column2">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for paciente in pacientes %}
+        <tr>
+            <td class="cell100 column2">{{paciente.lugarAtencion}}</td>
+            <td class="cell100 column2">{{paciente.rut}}</td>
+            <td class="cell100 column2">{{paciente.pnombre}} {{paciente.snombre}} </td>
+            <td class="cell100 column2">{{paciente.papellido}} {{paciente.sapellido}}</td>
+            <td class="cell100 column2">
+                <button type="button" class="btn-historial" style="background-color: #e4fde3;color:black" onclick="window.location.href='NuevoSignosVitales'">Nuevo Signos Vitales</button>
+                <div id="openModal" class="modalDialog">
+                    <div>
+                        <a href="#close" title="Cerrar" class="close">X</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="container-fluid text-left">
+    <h2>Registros</h2>
+</div>
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th class="cell100 column2">Fecha</th>
+            <th class="cell100 column2">Observaciones</th>
+            <th class="cell100 column2">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for signos in signosVitales %}
+        <tr>
+            <td class="cell100 column2">{{signos.fecha_creacion|date:'d-m-Y'}}</td>
+            <td class="cell100 column2">{{signos.observaciones}}</td>
+            <td class="cell100 column2">
+                <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/SignosVitales/signosdetalle/{{signos.id_signosvitales}}'">Ver Registro</button>
+                {% if request.user.is_staff %}<button type="button" class="btn-historial" style="color:black"  onclick="window.location.href='/SignosVitales/editarSignos/{{signos.id_signosvitales}}'">Editar</button>{% endif %}
+            </td>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

@@ -130,8 +130,6 @@ body{
 }
 
 .titulo-pagina{
-    position: fixed;
+    position: absolute;
     z-index: 1;
-    text-align: center;
-    left: 40%;
 }

@@ -550,7 +550,7 @@ input#buscar{
 .buscador{
   display: block;
   margin: auto;
-  width: 10%;
+  width: 20%;
   margin-top: 5px;
   color: black;
 }

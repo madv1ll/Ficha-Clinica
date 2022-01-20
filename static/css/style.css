@@ -132,6 +132,4 @@ body{
 .titulo-pagina{
     position: absolute;
     z-index: 1;
-    text-align: center;
-    left: 40%;
 }

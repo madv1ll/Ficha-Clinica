@@ -123,16 +123,25 @@ function cambiaSelect(){
                     }
                     cuerpo.innerHTML+=`
                     <tr>
-                        <td class="cell100 column2">`+data[i][j].rut+`</td>
-                        <td class="cell100 column2">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
-                        <td class="cell100 column2">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
-                        <td class="cell100 column2"><button type="button" onclick="window.location.href='#openModal'" class="btn-historial" style="width:100%;color:black;"> Ver Acciones</button>
+                        <div class="container">
+                            <div class="row">
+                                <td class="cell100 column2">`+data[i][j].rut+`</td>
+                            </div>
+                            <div class="row">
+                                <td class="cell100 column2">`+data[i][j].pnombre+" "+ data[i][j].snombre+`</td>
+                            </div>
+                            <div class="row">
+                                <td class="cell100 column2">`+data[i][j].papellido+" "+ data[i][j].sapellido+`</td>
+                            </div>
+                                <td class="cell100 column2"><button type="button" onclick="window.location.href='#openModal'" class="btn-historial" style="width:100%;color:black;"> Ver Acciones</button>
                             <div id="openModal" class="modalDialog">
-                                <div>
-                                    <a href="#close" title="Cerrar" class="close">X</a>
-                                    <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/historial/`+data[i][j].rut+`'">Historial</button>
-                                    <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/SignosVitales/`+data[i][j].rut+`'">Signos Vitales</button>
-                                    <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/Evolucion/`+data[i][j].rut+`'">Evolucion Cuidador</button>
+                                <div class="row">
+                                    <div>
+                                        <a href="#close" title="Cerrar" class="close">X</a>
+                                        <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/historial/`+data[i][j].rut+`'">Historial</button>
+                                        <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/SignosVitales/`+data[i][j].rut+`'">Signos Vitales</button>
+                                        <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/Evolucion/`+data[i][j].rut+`'">Evolucion Cuidador</button>
+                                    </div>
                                 </div>
                             </div>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" class="btn-historial" onclick="window.location.href='editarpaciente/`+data[i][j].rut+`'">Editar</button><button type="button" style="color:black;width:100%" onclick="eliminarPaciente('`+data[i][j].rut+`')" class="btn-historial">Eliminar</button>{% endif %}</td>
                     </tr>`

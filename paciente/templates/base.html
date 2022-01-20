@@ -20,9 +20,6 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
       <div class="container-fluid">
-        <div class="titulo-pagina text-center">
-          <h1>{% block h1 %}{% endblock h1 %}</h1>
-        </div>
         <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -50,7 +47,9 @@
               <p class="nav-link active" aria-current="page" style="position: absolute; left: 85%; top: 7%">{{ user.username.title }}</p>
             </li>
           </ul>
-
+          <div class="titulo-pagina text-center">
+            <h1>{% block h1 %}{% endblock h1 %}</h1>
+          </div>
         </div>
       </div>
     </nav>

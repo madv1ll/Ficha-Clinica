@@ -26,22 +26,36 @@
 
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
-
-                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
-					<span class="focus-input100"></span>
-					{{form.temperatura}}
-				</div>
-				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
-					<span class="focus-input100"></span>
-					{{form.respiracion}}
-				</div>
-
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your phone">
 					{{form.presion_arterial}}
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
 					{{form.presion_arterial_media}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.respiracion}}
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.frecuencia_cardiaca}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.temperatura}}
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.saturacion}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.peso}}
+					<span class="focus-input100"></span>
+				</div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.talla}}
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
@@ -69,23 +83,7 @@
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.frecuencia_cardiaca}}
-					<span class="focus-input100"></span>
-				</div>
-                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.saturacion}}
-					<span class="focus-input100"></span>
-				</div>
-                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
 					{{form.suenno}}
-					<span class="focus-input100"></span>
-				</div>
-                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.peso}}
-					<span class="focus-input100"></span>
-				</div>
-                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
-					{{form.talla}}
 					<span class="focus-input100"></span>
 				</div>
                 <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
@@ -120,7 +118,7 @@
 	document.getElementById('id_temperatura').setAttribute("placeholder", "Temperatura")
 
 	document.getElementById('id_respiracion').setAttribute("class", "input100")
-	document.getElementById('id_respiracion').setAttribute("placeholder", "Respiración")
+	document.getElementById('id_respiracion').setAttribute("placeholder", "Frecuencia Respiratoria")
 
 	document.getElementById('id_presion_arterial').setAttribute("class", "input100")
 	document.getElementById('id_presion_arterial').setAttribute("placeholder", "Presión Arterial")
@@ -139,27 +137,34 @@
 
 	document.getElementById('id_flatos').setAttribute("class", "input100")
 	document.getElementById('id_flatos').setAttribute("placeholder", "Flatos")
+	document.getElementById('id_flatos').setAttribute("type", "number")
 
     document.getElementById('id_dolor').setAttribute("class", "input100")
 	document.getElementById('id_dolor').setAttribute("placeholder", "Dolor")
+	document.getElementById('id_dolor').setAttribute("type", "number")
 
     document.getElementById('id_estrennimiento').setAttribute("class", "input100")
 	document.getElementById('id_estrennimiento').setAttribute("placeholder", "Estreñimiento")
     
     document.getElementById('id_frecuencia_cardiaca').setAttribute("class", "input100")
 	document.getElementById('id_frecuencia_cardiaca').setAttribute("placeholder", "Frecuencia Cardiaca")
+	document.getElementById('id_frecuencia_cardiaca').setAttribute("type", "number")
     
     document.getElementById('id_saturacion').setAttribute("class", "input100")
-	document.getElementById('id_saturacion').setAttribute("placeholder", "Saturación")
+	document.getElementById('id_saturacion').setAttribute("placeholder", "Saturación de Oxígeno")
+	document.getElementById('id_saturacion').setAttribute("type", "number")
     
     document.getElementById('id_suenno').setAttribute("class", "input100")
 	document.getElementById('id_suenno').setAttribute("placeholder", "Sueño")
+	document.getElementById('id_suenno').setAttribute("type", "number")
     
     document.getElementById('id_peso').setAttribute("class", "input100")
 	document.getElementById('id_peso').setAttribute("placeholder", "Peso")
+	document.getElementById('id_peso').setAttribute("type", "number")
     
     document.getElementById('id_talla').setAttribute("class", "input100")
 	document.getElementById('id_talla').setAttribute("placeholder", "Talla")
+	document.getElementById('id_talla').setAttribute("type", "number")
     
     document.getElementById('id_alimentacion').setAttribute("class", "input100")
 	document.getElementById('id_alimentacion').setAttribute("placeholder", "Alimentación")

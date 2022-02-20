@@ -1,3 +1,4 @@
+from urllib import response
 from django.forms.models import model_to_dict
 from django.http import  JsonResponse
 from django.db.models import query
@@ -14,6 +15,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.utils import timezone
 from django.db.models import Q
+from django.views.generic.base import TemplateView
+from openpyxl import Workbook
+from openpyxl.styles import Alignment,Border,Font,PatternFill,Side
 
 def historial(request, rut):
     pacientes = Paciente.objects.filter(rut = rut)
@@ -194,3 +198,23 @@ def nuevaEvolucion(request, rut):
     else:
         form = EvolucionForm
     return render(request, 'evolucionForm.html', {'form':form})
+
+class ReporteExcel(TemplateView):
+    def get(self, request, *args, **kwargs):
+        query = Paciente.objects.all()
+        wb = Workbook
+        bandera = True
+        cont = 1
+        for q in query:
+            if bandera:
+                ws = wb.active
+                bandera = False
+            else:
+                ws = wb.create_sheet('Hoja'+str(cont))
+            cont += 1
+        nombre_archivo = "ReporteExcel.xlsx"
+        response = HttpResponse(content_type = "application/ms-excel")
+        contenido = "attachment; filename = {0}".format(nombre_archivo)
+        response["Content-Disposition"] = contenido
+        wb.sabe(response)
+        return response

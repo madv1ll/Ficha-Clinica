@@ -208,6 +208,7 @@ class ReporteExcel(TemplateView):
         for q in query:
             if bandera:
                 ws = wb.active
+                ws.title = 'Hoja'+str(cont)
                 bandera = False
             else:
                 ws = wb.create_sheet('Hoja'+str(cont))

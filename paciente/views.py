@@ -1,4 +1,3 @@
-from tkinter import CENTER
 from urllib import response
 from django.forms.models import model_to_dict
 from django.http import  JsonResponse
@@ -6,7 +5,6 @@ from django.db.models import query
 from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
-from numpy import size
 from .models import Evaluacion, Historial, LugarAtencion, Medico, Paciente, SignosVitales
 from .forms import EvolucionForm, HistorialForm, MedicoForm, PacienteForm,  SignosForm
 from django.shortcuts import redirect
@@ -216,7 +214,7 @@ class ReporteExcel(TemplateView):
                 ws = wb.create_sheet('Hoja'+str(cont))
             # ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
             # ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-            #                          top  = Side(border_style= "thin"), bottom= Side(border_style= "thin"))
+            #                          top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
             # ws['B1'].fill = PatternFill(start_color= '66FFCC', end_color= '66FFCC', fill_type= "solid")
             # ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
             # ws['B1'] = 'Reporte Excel'

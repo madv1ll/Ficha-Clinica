@@ -200,9 +200,9 @@ def nuevaEvolucion(request, rut):
     return render(request, 'evolucionForm.html', {'form':form})
 
 class ReporteExcel(TemplateView):
-    def get(self, rut, request, *args, **kwargs):
-        query = Paciente.objects.filter(rut = rut)
-        wb = Workbook
+    def get(self, request, *args, **kwargs):
+        query = Paciente.objects.all()
+        wb = Workbook()
         bandera = True
         cont = 1
         for q in query:

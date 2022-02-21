@@ -216,5 +216,5 @@ class ReporteExcel(TemplateView):
         response = HttpResponse(content_type = "application/ms-excel")
         contenido = "attachment; filename = {0}".format(nombre_archivo)
         response["Content-Disposition"] = contenido
-        wb.sabe(response)
+        wb.save(response)
         return response

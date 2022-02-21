@@ -48,6 +48,7 @@
             <th class="cell100 column2">Apellidos</th>
             <th class="cell100 column2">Opciones</th>
             <input type="hidden" name="user" id="user" value="{{user.id}}">
+            <a href="%url 'reporte'%">reporte excel</a>
         </tr>
     </thead>
     <tbody id="cuerpoTabla">
@@ -127,7 +128,6 @@ function cambiaSelect(){
                                         <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/historial/`+data[i][j].rut+`'">Historial</button>
                                         <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/SignosVitales/`+data[i][j].rut+`'">Signos Vitales</button>
                                         <button type="button" class="btn-historial" style="background-color: #e3f2fd;color:black;" onclick="window.location.href='/Evolucion/`+data[i][j].rut+`'">Evolucion Cuidador</button>
-                                        <a href="%url 'reporte'%">reporte excel</a>
                                     </div>
                                 </div>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" class="btn-historial" onclick="window.location.href='editarpaciente/`+data[i][j].rut+`'">Editar</button>{% endif %}</td>
                             </tr>`

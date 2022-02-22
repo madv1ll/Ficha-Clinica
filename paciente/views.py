@@ -250,11 +250,11 @@ class ReporteExcel(TemplateView):
 
 
             #tabla dinamica con los datos
-            # ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
-            # ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-            #                                                       top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-            # ws.cell(row = controlador, column= 2).font = Font(name = 'Calibri', size = 10)
-            # ws.cell(row = controlador, column= 2).value = q.Nombres
+            ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
+            ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                  top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws.cell(row = controlador, column= 2).font = Font(name = 'Calibri', size = 10)
+            ws.cell(row = controlador, column= 2).value = q.rut
             cont += 1
         nombre_archivo = "ReporteExcel.xlsx"
         response = HttpResponse(content_type = "application/ms-excel")

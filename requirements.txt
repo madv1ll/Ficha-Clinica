@@ -34,7 +34,6 @@ Keras-Preprocessing==1.1.2
 lazy-object-proxy==1.5.2
 Markdown==3.3.4
 mccabe==0.6.1
-nltk==3.6.2
 oauthlib==3.1.0
 opt-einsum==3.3.0
 Pillow==8.2.0

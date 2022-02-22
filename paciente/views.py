@@ -218,6 +218,12 @@ class ReporteExcel(TemplateView):
             ws['B1'].fill = PatternFill(start_color= '66FFCC', end_color= '66FFCC', fill_type= "solid")
             ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
             ws['B1'] = 'Reporte Excel'
+
+            ws.merge_cells('B1:E1')
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['C'].width = 20
+            ws.column_dimensions['D'].width = 20
+            ws.column_dimensions['E'].width = 20
             cont += 1
         nombre_archivo = "ReporteExcel.xlsx"
         response = HttpResponse(content_type = "application/ms-excel")

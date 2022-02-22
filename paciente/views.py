@@ -205,6 +205,7 @@ class ReporteExcel(TemplateView):
         wb = Workbook()
         bandera = True
         cont = 1
+        controlador = 4
         for q in query:
             if bandera:
                 ws = wb.active
@@ -219,11 +220,39 @@ class ReporteExcel(TemplateView):
             ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
             ws['B1'] = 'Reporte Excel'
 
-            ws.merge_cells('B1:E1')
+            ws['B3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['B3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['B3'].fill = PatternFill(start_color= '66FFCC', end_color= '66FFCC', fill_type= "solid")
+            ws['B3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['B3'] = 'Rut'
+
+            ws['C3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['C3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['C3'].fill = PatternFill(start_color= '66FFCC', end_color= '66FFCC', fill_type= "solid")
+            ws['C3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['C3'] = 'Nombres'
+
+            ws['D3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['D3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['D3'].fill = PatternFill(start_color= '66FFCC', end_color= '66FFCC', fill_type= "solid")
+            ws['D3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['D3'] = 'Apellidos'
+
+            #dimesiones de la tabla 
+            ws.merge_cells('B1:D1')
             ws.column_dimensions['B'].width = 20
             ws.column_dimensions['C'].width = 20
             ws.column_dimensions['D'].width = 20
-            ws.column_dimensions['E'].width = 20
+
+            #tabla dinamica con los datos
+            ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
+            ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                  top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws.cell(row = controlador, column= 2).font = Font(name = 'Calibri', size = 10)
+            ws.cell(row = controlador, column= 2).value = q.Nombre
             cont += 1
         nombre_archivo = "ReporteExcel.xlsx"
         response = HttpResponse(content_type = "application/ms-excel")

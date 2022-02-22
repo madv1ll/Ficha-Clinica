@@ -212,12 +212,12 @@ class ReporteExcel(TemplateView):
                 bandera = False
             else:
                 ws = wb.create_sheet('Hoja'+str(cont))
-            # ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
-            # ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-            #                          top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-            # ws['B1'].fill = PatternFill(start_color= '66FFCC', end_color= '66FFCC', fill_type= "solid")
-            # ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
-            # ws['B1'] = 'Reporte Excel'
+            ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['B1'].fill = PatternFill(start_color= '66FFCC', end_color= '66FFCC', fill_type= "solid")
+            ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
+            ws['B1'] = 'Reporte Excel'
             cont += 1
         nombre_archivo = "ReporteExcel.xlsx"
         response = HttpResponse(content_type = "application/ms-excel")

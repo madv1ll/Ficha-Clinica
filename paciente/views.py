@@ -220,6 +220,13 @@ class ReporteExcel(TemplateView):
             ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
             ws['B1'] = 'Reporte Excel'
 
+            #dimesiones de la tabla 
+            ws.merge_cells('B1:D1')
+            ws.row_dimensions[1].height = 25
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['C'].width = 20
+            ws.column_dimensions['D'].width = 20
+
             ws['B3'].alignment = Alignment(horizontal= "center", vertical= "center")
             ws['B3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                      top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
@@ -241,11 +248,6 @@ class ReporteExcel(TemplateView):
             ws['D3'].font = Font(name = 'Calibri', size = 10, bold= True)
             ws['D3'] = 'Apellidos'
 
-            #dimesiones de la tabla 
-            ws.merge_cells('B1:D1')
-            ws.column_dimensions['B'].width = 20
-            ws.column_dimensions['C'].width = 20
-            ws.column_dimensions['D'].width = 20
 
             #tabla dinamica con los datos
             ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")

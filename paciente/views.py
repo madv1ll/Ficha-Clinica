@@ -255,6 +255,18 @@ class ReporteExcel(TemplateView):
                                                                   top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
             ws.cell(row = controlador, column= 2).font = Font(name = 'Calibri', size = 10)
             ws.cell(row = controlador, column= 2).value = q.rut
+
+            ws.cell(row = controlador, column= 3).alignment = Alignment(horizontal = "center")
+            ws.cell(row = controlador, column= 3).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                  top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws.cell(row = controlador, column= 3).font = Font(name = 'Calibri', size = 10)
+            ws.cell(row = controlador, column= 3).value = q.pnombre + q.snombre
+
+            # ws.cell(row = controlador, column= 4).alignment = Alignment(horizontal = "center")
+            # ws.cell(row = controlador, column= 4).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+            #                                                       top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            # ws.cell(row = controlador, column= 4).font = Font(name = 'Calibri', size = 10)
+            # ws.cell(row = controlador, column= 4).value = q.A
             cont += 1
         nombre_archivo = "ReporteExcel.xlsx"
         response = HttpResponse(content_type = "application/ms-excel")

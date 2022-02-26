@@ -274,7 +274,7 @@ class ReporteExcel(TemplateView):
             ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
             ws['B1'] = 'Historial del paciente'
 
-            ws.merge_cells('B1:K1')
+            ws.merge_cells('B1:G1')
             ws.row_dimensions[1].height = 25
             ws.column_dimensions['B'].width = 20
             ws.column_dimensions['C'].width = 20
@@ -282,15 +282,6 @@ class ReporteExcel(TemplateView):
             ws.column_dimensions['E'].width = 20
             ws.column_dimensions['F'].width = 20
             ws.column_dimensions['G'].width = 20
-
-
-
-            # ws['B3'].alignment = Alignment(horizontal= "center", vertical= "center")
-            # ws['B3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-            #                         top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-            # ws['B3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-            # ws['B3'].font = Font(name = 'Calibri', size = 10, bold= True)
-            # ws['B3'] = 'Fecha'
 
             ws['B3'].alignment = Alignment(horizontal= "center", vertical= "center")
             ws['B3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
@@ -334,27 +325,9 @@ class ReporteExcel(TemplateView):
             ws['G3'].font = Font(name = 'Calibri', size = 10, bold= True)
             ws['G3'] = 'Diagnostico clinico final'   
 
-            # ws['I3'].alignment = Alignment(horizontal= "center", vertical= "center")
-            # ws['I3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-            #                         top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-            # ws['I3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-            # ws['I3'].font = Font(name = 'Calibri', size = 10, bold= True)
-            # ws['I3'] = 'Fecha alta medica'  
-
-            # ws['J3'].alignment = Alignment(horizontal= "center", vertical= "center")
-            # ws['J3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-            #                         top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-            # ws['J3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-            # ws['J3'].font = Font(name = 'Calibri', size = 10, bold= True)
-            # ws['J3'] = 'Fecha alta clinica'  
 
             for hist in historial: 
                 #tabla dinamica con los datos
-                # ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
-                # ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                #                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                # ws.cell(row = controlador, column= 2).font = Font(name = 'Calibri', size = 10)
-                # ws.cell(row = controlador, column= 2).value = hist.fecha
 
                 ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
                 ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
@@ -391,18 +364,8 @@ class ReporteExcel(TemplateView):
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 7).font = Font(name = 'Calibri', size = 10)
                 ws.cell(row = controlador, column= 7).value = hist.diagnostico_clinico_final
+                controlador+=1
 
-                # ws.cell(row = controlador, column= 9).alignment = Alignment(horizontal = "center")
-                # ws.cell(row = controlador, column= 9).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                #                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                # ws.cell(row = controlador, column= 9).font = Font(name = 'Calibri', size = 10)
-                # ws.cell(row = controlador, column= 9).value = hist.fecha_alta_medica
-
-                # ws.cell(row = controlador, column= 10).alignment = Alignment(horizontal = "center")
-                # ws.cell(row = controlador, column= 10).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                #                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                # ws.cell(row = controlador, column= 10).font = Font(name = 'Calibri', size = 10)
-                # ws.cell(row = controlador, column= 10).value = hist.fecha_alta_clinica 
 
 
         nombre_archivo = "ReporteExcel.xlsx"

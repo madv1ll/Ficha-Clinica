@@ -201,7 +201,7 @@ def nuevaEvolucion(request, rut):
 
 class ReporteExcel(TemplateView):
     def get(self, request, *args, **kwargs):
-        query = Paciente.objects.filter(request.GET["rut"])
+        query = Paciente.objects.filter(rut = request.GET["rut"])
         wb = Workbook()
         bandera = True
         cont = 1

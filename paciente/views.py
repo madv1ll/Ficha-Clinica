@@ -267,98 +267,97 @@ class ReporteExcel(TemplateView):
 
             #Nueva hoja
             ws = wb.create_sheet('Historial')
-            for hist in historial:
-                ws = wb.active
-                ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+            ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                         top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['B1'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
-                ws['B1'] = 'Historial del paciente'
+            ws['B1'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
+            ws['B1'] = 'Historial del paciente'
 
-                ws.merge_cells('B1:K1')
-                ws.row_dimensions[1].height = 25
-                ws.column_dimensions['B'].width = 20
-                ws.column_dimensions['C'].width = 20
-                ws.column_dimensions['D'].width = 20
-                ws.column_dimensions['E'].width = 20
-                ws.column_dimensions['F'].width = 20
-                ws.column_dimensions['G'].width = 20
-                ws.column_dimensions['H'].width = 20
-                ws.column_dimensions['I'].width = 20
-                ws.column_dimensions['J'].width = 20
-                ws.column_dimensions['K'].width = 20
+            ws.merge_cells('B1:K1')
+            ws.row_dimensions[1].height = 25
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['C'].width = 20
+            ws.column_dimensions['D'].width = 20
+            ws.column_dimensions['E'].width = 20
+            ws.column_dimensions['F'].width = 20
+            ws.column_dimensions['G'].width = 20
+            ws.column_dimensions['H'].width = 20
+            ws.column_dimensions['I'].width = 20
+            ws.column_dimensions['J'].width = 20
+            ws.column_dimensions['K'].width = 20
 
-                ws['B3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['B3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['B3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['B3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['B3'] = 'Fecha'
+            ws['B3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['B3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['B3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['B3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['B3'] = 'Fecha'
 
-                ws['C3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['C3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['C3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['C3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['C3'] = 'Lugar atencion'
+            ws['C3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['C3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['C3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['C3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['C3'] = 'Lugar atencion'
 
-                ws['D3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['D3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['D3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['D3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['D3'] = 'Servicio'
+            ws['D3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['D3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['D3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['D3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['D3'] = 'Servicio'
 
-                ws['E3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['E3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['E3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['E3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['E3'] = 'Diagnostico'
+            ws['E3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['E3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['E3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['E3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['E3'] = 'Diagnostico'
 
-                ws['F3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['F3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['F3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['F3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['F3'] = 'Motivo de ingreso' 
+            ws['F3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['F3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['F3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['F3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['F3'] = 'Motivo de ingreso' 
 
-                ws['G3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['G3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['G3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['G3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['G3'] = 'Enfermedad actual'
+            ws['G3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['G3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['G3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['G3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['G3'] = 'Enfermedad actual'
 
-                ws['H3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['H3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['H3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['H3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['H3'] = 'Diagnostico de admision' 
+            ws['H3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['H3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['H3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['H3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['H3'] = 'Diagnostico de admision' 
 
-                ws['I3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['I3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['I3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['I3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['I3'] = 'Diagnostico clinico final'   
+            ws['I3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['I3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['I3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['I3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['I3'] = 'Diagnostico clinico final'   
 
-                ws['J3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['J3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['J3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['J3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['J3'] = 'Fecha alta medica'  
+            ws['J3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['J3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['J3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['J3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['J3'] = 'Fecha alta medica'  
 
-                ws['K3'].alignment = Alignment(horizontal= "center", vertical= "center")
-                ws['K3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
-                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws['K3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
-                ws['K3'].font = Font(name = 'Calibri', size = 10, bold= True)
-                ws['K3'] = 'Fecha alta clinica'  
-
+            ws['K3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['K3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['K3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['K3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['K3'] = 'Fecha alta clinica'  
+            
+            for hist in historial: 
                 #tabla dinamica con los datos
                 ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
                 ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
@@ -419,7 +418,7 @@ class ReporteExcel(TemplateView):
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 4).font = Font(name = 'Calibri', size = 10)
                 ws.cell(row = controlador, column= 4).value = hist.fecha_alta_clinica 
-                print('hola')
+
 
         nombre_archivo = "ReporteExcel.xlsx"
         response = HttpResponse(content_type = "application/ms-excel")

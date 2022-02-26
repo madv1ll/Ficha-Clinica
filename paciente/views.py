@@ -358,7 +358,6 @@ class ReporteExcel(TemplateView):
             ws['K3'] = 'Fecha alta clinica'  
 
             print(hist)
-            print(hist.fecha, 'aaa')
             # #tabla dinamica con los datos
             # ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
             # ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),

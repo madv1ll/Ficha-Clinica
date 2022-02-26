@@ -205,6 +205,7 @@ class ReporteExcel(TemplateView):
         rut = self.kwargs['rut']
         query = Paciente.objects.filter(rut = rut)
         historial = Historial.objects.filter(rut = rut)
+        signosvitales = SignosVitales.objects.filter(rut = rut)
         wb = Workbook()
         controlador = 4
         for q in query:
@@ -364,6 +365,290 @@ class ReporteExcel(TemplateView):
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 7).font = Font(name = 'Calibri', size = 10)
                 ws.cell(row = controlador, column= 7).value = hist.diagnostico_clinico_final
+                controlador+=1
+
+
+            ws = wb.create_sheet('Signos vitales')
+            ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['B1'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
+            ws['B1'] = 'Signos del paciente'
+
+            ws.merge_cells('B1:S1')
+            ws.row_dimensions[1].height = 25
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['C'].width = 20
+            ws.column_dimensions['D'].width = 20
+            ws.column_dimensions['E'].width = 20
+            ws.column_dimensions['F'].width = 20
+            ws.column_dimensions['G'].width = 20
+            ws.column_dimensions['H'].width = 20
+            ws.column_dimensions['I'].width = 20
+            ws.column_dimensions['J'].width = 20
+            ws.column_dimensions['K'].width = 20
+            ws.column_dimensions['L'].width = 20
+            ws.column_dimensions['M'].width = 20
+            ws.column_dimensions['N'].width = 20
+            ws.column_dimensions['O'].width = 20
+            ws.column_dimensions['P'].width = 20
+            ws.column_dimensions['Q'].width = 20
+            ws.column_dimensions['R'].width = 20
+            ws.column_dimensions['S'].width = 20
+            ws.column_dimensions['T'].width = 20
+            controlador = 4
+
+
+            ws['B3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['B3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['B3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['B3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['B3'] = 'temperatura'
+
+            ws['C3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['C3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['C3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['C3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['C3'] = 'respiracion'
+
+            ws['D3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['D3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['D3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['D3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['D3'] = 'presion_arterial' 
+
+            ws['E3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['E3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['E3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['E3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['E3'] = 'evaluacion'
+
+            ws['F3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['F3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['F3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['F3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['F3'] = 'miccion' 
+
+            ws['G3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['G3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['G3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['G3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['G3'] = 'vomito'
+
+            ws['H3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['H3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['H3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['H3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['H3'] = 'flatos'
+
+            ws['I3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['I3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['I3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['I3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['I3'] = 'dolor '
+
+            ws['J3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['J3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['J3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['J3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['J3'] = 'estrennimiento ' 
+
+            ws['K3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['K3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['K3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['K3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['K3'] = 'frecuencia_cardiaca  '
+
+            ws['L3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['L3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['L3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['L3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['L3'] = 'saturacion ' 
+
+            ws['M3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['M3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['M3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['M3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['M3'] = 'suenno '  
+
+            ws['N3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['N3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['N3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['N3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['N3'] = 'presion_arterial_media'
+
+            ws['O3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['O3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['O3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['O3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['O3'] = 'peso'
+
+            ws['P3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['P3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['P3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['P3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['P3'] = 'talla' 
+
+            ws['Q3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['Q3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['Q3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['Q3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['Q3'] = 'alimentacion'
+
+            ws['R3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['R3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['R3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['R3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['R3'] = 'higiene' 
+
+            ws['S3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['S3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['S3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['S3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['S3'] = 'observaciones'  
+
+            ws['T3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['T3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['T3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['T3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['T3'] = 'Fecha de creacion' 
+
+            for sig in signosvitales:
+                #tabla dinamica con los datos
+
+                ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 2).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 2).value = sig.temperatura
+
+                ws.cell(row = controlador, column= 3).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 3).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 3).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 3).value = sig.respiracion
+
+                ws.cell(row = controlador, column= 4).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 4).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 4).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 4).value = sig.presion_arterial
+
+                ws.cell(row = controlador, column= 5).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 5).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 5).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 5).value = sig.evaluacion
+
+                ws.cell(row = controlador, column= 6).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 6).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 6).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 6).value = sig.miccion
+
+                ws.cell(row = controlador, column= 7).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 7).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 7).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 7).value = sig.vomito
+
+                ws.cell(row = controlador, column= 8).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 8).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 8).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 8).value = sig.flatos
+
+                ws.cell(row = controlador, column= 9).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 9).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 9).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 9).value = sig.dolor
+
+                ws.cell(row = controlador, column= 10).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 10).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 10).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 10).value = sig.estrennimiento
+
+                ws.cell(row = controlador, column= 11).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 11).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 11).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 11).value = sig.frecuencia_cardiaca
+
+                ws.cell(row = controlador, column= 12).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 12).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 12).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 12).value = sig.saturacion
+
+                ws.cell(row = controlador, column= 13).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 13).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 13).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 13).value = sig.suenno
+
+                ws.cell(row = controlador, column= 14).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 14).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 14).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 14).value = sig.presion_arterial_media
+
+                ws.cell(row = controlador, column= 15).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 15).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 15).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 15).value = sig.peso
+
+                ws.cell(row = controlador, column= 16).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 16).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 16).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 16).value = sig.talla
+
+                ws.cell(row = controlador, column= 17).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 17).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 17).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 17).value = sig.alimentacion
+
+                ws.cell(row = controlador, column= 18).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 18).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 18).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 18).value = sig.higiene
+
+                ws.cell(row = controlador, column= 19).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 19).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 19).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 19).value = sig.observaciones
+
+                ws.cell(row = controlador, column= 19).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 19).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 19).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 19).value = sig.fecha_creacion.strftime('%d/%m/%Y')
                 controlador+=1
 
 

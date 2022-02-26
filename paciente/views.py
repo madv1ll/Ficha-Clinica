@@ -206,6 +206,7 @@ class ReporteExcel(TemplateView):
         query = Paciente.objects.filter(rut = rut)
         historial = Historial.objects.filter(rut = rut)
         signosvitales = SignosVitales.objects.filter(paciente_rut = rut)
+        evolucion = Evaluacion.objects.filter(rut = rut)
         wb = Workbook()
         controlador = 4
         for q in query:
@@ -417,7 +418,7 @@ class ReporteExcel(TemplateView):
             ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
             ws['B1'] = 'Signos del paciente'
 
-            ws.merge_cells('B1:S1')
+            ws.merge_cells('B1:T1')
             ws.row_dimensions[1].height = 25
             ws.column_dimensions['B'].width = 20
             ws.column_dimensions['C'].width = 20
@@ -690,6 +691,77 @@ class ReporteExcel(TemplateView):
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 20).font = Font(name = 'Calibri', size = 10)
                 ws.cell(row = controlador, column= 20).value = sig.fecha_creacion.strftime('%d/%m/%Y')
+                controlador+=1
+
+            ws = wb.create_sheet('Evolucion')
+            ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                        top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['B1'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['B1'].font = Font(name = 'Calibri', size = 12, bold= True)
+            ws['B1'] = 'Evolucion del cuidador'
+
+            ws.merge_cells('B1:E1')
+            ws.row_dimensions[1].height = 25
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['C'].width = 20
+            ws.column_dimensions['D'].width = 20
+            ws.column_dimensions['E'].width = 20
+            controlador = 4
+
+            ws['B3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['B3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['B3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['B3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['B3'] = 'fecha_evaluacion'
+
+            ws['C3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['C3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['C3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['C3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['C3'] = 'hora'
+
+            ws['D3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['D3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['D3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['D3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['D3'] = 'cuidador' 
+
+            ws['E3'].alignment = Alignment(horizontal= "center", vertical= "center")
+            ws['E3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+            ws['E3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
+            ws['E3'].font = Font(name = 'Calibri', size = 10, bold= True)
+            ws['E3'] = 'descripcion'
+
+            for ev in evolucion:
+
+                ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 2).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 2).value = ev.fecha_evaluacion
+
+                ws.cell(row = controlador, column= 3).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 3).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 3).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 3).value = ev.hora
+
+                ws.cell(row = controlador, column= 4).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 4).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 4).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 4).value = ev.cuidador
+
+                ws.cell(row = controlador, column= 5).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 5).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                                                                    top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
+                ws.cell(row = controlador, column= 5).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 5).value = ev.descripcion
                 controlador+=1
 
 

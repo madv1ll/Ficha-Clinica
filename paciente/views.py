@@ -203,16 +203,16 @@ class ReporteExcel(TemplateView):
     def get(self, request, *args, **kwargs):
         query = Paciente.objects.all()
         wb = Workbook()
-        bandera = True
+        # bandera = True
         cont = 1
         controlador = 4
         for q in query:
-            if bandera:
-                ws = wb.active
-                ws.title = 'Hoja'+str(cont)
-                bandera = False
-            else:
-                ws = wb.create_sheet('Hoja'+str(cont))
+            # if bandera:
+            ws = wb.active
+            #     ws.title = 'Hoja'+str(cont)
+            #     bandera = False
+            # else:
+            ws = wb.create_sheet('Hoja'+str(cont))
             ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
             ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                      top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))

@@ -205,7 +205,7 @@ class ReporteExcel(TemplateView):
         rut = self.kwargs['rut']
         query = Paciente.objects.filter(rut = rut)
         historial = Historial.objects.filter(rut = rut)
-        signosvitales = SignosVitales.objects.filter(rut = rut)
+        signosvitales = SignosVitales.objects.filter(paciente_rut = rut)
         wb = Workbook()
         controlador = 4
         for q in query:

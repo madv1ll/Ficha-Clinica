@@ -644,11 +644,11 @@ class ReporteExcel(TemplateView):
                 ws.cell(row = controlador, column= 19).font = Font(name = 'Calibri', size = 10)
                 ws.cell(row = controlador, column= 19).value = sig.observaciones
 
-                ws.cell(row = controlador, column= 19).alignment = Alignment(horizontal = "center")
-                ws.cell(row = controlador, column= 19).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
+                ws.cell(row = controlador, column= 20).alignment = Alignment(horizontal = "center")
+                ws.cell(row = controlador, column= 20).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
-                ws.cell(row = controlador, column= 19).font = Font(name = 'Calibri', size = 10)
-                ws.cell(row = controlador, column= 19).value = sig.fecha_creacion.strftime('%d/%m/%Y')
+                ws.cell(row = controlador, column= 20).font = Font(name = 'Calibri', size = 10)
+                ws.cell(row = controlador, column= 20).value = sig.fecha_creacion.strftime('%d/%m/%Y')
                 controlador+=1
 
 

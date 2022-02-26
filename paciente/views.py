@@ -743,13 +743,13 @@ class ReporteExcel(TemplateView):
                 ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 2).font = Font(name = 'Calibri', size = 10)
-                ws.cell(row = controlador, column= 2).value = ev.fecha_evaluacion
+                ws.cell(row = controlador, column= 2).value = ev.fecha_evaluacion.strftime('%d/%m/%Y')
 
                 ws.cell(row = controlador, column= 3).alignment = Alignment(horizontal = "center")
                 ws.cell(row = controlador, column= 3).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 3).font = Font(name = 'Calibri', size = 10)
-                ws.cell(row = controlador, column= 3).value = ev.hora
+                ws.cell(row = controlador, column= 3).value = ev.hora.strftime('%H:%M:%S')
 
                 ws.cell(row = controlador, column= 4).alignment = Alignment(horizontal = "center")
                 ws.cell(row = controlador, column= 4).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),

@@ -204,7 +204,7 @@ class ReporteExcel(TemplateView):
     def get(self, request, *args, **kwargs):
         rut = self.kwargs['rut']
         query = Paciente.objects.filter(rut = rut)
-        hist = Historial.objects.filter(rut = rut)
+        historial = Historial.objects.filter(rut = rut)
         wb = Workbook()
         controlador = 4
         for q in query:
@@ -419,7 +419,7 @@ class ReporteExcel(TemplateView):
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 4).font = Font(name = 'Calibri', size = 10)
                 ws.cell(row = controlador, column= 4).value = hist.fecha_alta_clinica 
-            
+
         nombre_archivo = "ReporteExcel.xlsx"
         response = HttpResponse(content_type = "application/ms-excel")
         contenido = "attachment; filename = {0}".format(nombre_archivo)

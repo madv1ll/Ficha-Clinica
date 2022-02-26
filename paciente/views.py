@@ -265,10 +265,9 @@ class ReporteExcel(TemplateView):
             ws.cell(row = controlador, column= 4).font = Font(name = 'Calibri', size = 10)
             ws.cell(row = controlador, column= 4).value = q.papellido +' '+ q.sapellido
 
-        
+            #Nueva hoja
+            ws = wb.create_sheet('Historial')
             for hist in historial:
-                #Nueva hoja
-                ws = wb.create_sheet('Historial')
                 ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
                 ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                         top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
@@ -419,6 +418,7 @@ class ReporteExcel(TemplateView):
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 4).font = Font(name = 'Calibri', size = 10)
                 ws.cell(row = controlador, column= 4).value = hist.fecha_alta_clinica 
+                print('hola')
 
         nombre_archivo = "ReporteExcel.xlsx"
         response = HttpResponse(content_type = "application/ms-excel")

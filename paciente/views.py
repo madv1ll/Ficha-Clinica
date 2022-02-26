@@ -274,3 +274,4 @@ class ReporteExcel(TemplateView):
         response["Content-Disposition"] = contenido
         wb.save(response)
         return response
+    success_url = reverse_lazy('index')

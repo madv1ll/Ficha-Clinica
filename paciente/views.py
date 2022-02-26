@@ -461,7 +461,7 @@ class ReporteExcel(TemplateView):
                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
             ws['D3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
             ws['D3'].font = Font(name = 'Calibri', size = 10, bold= True)
-            ws['D3'] = 'presion_arterial' 
+            ws['D3'] = 'presion arterial' 
 
             ws['E3'].alignment = Alignment(horizontal= "center", vertical= "center")
             ws['E3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
@@ -510,7 +510,7 @@ class ReporteExcel(TemplateView):
                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
             ws['K3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
             ws['K3'].font = Font(name = 'Calibri', size = 10, bold= True)
-            ws['K3'] = 'frecuencia_cardiaca  '
+            ws['K3'] = 'frecuencia cardiaca  '
 
             ws['L3'].alignment = Alignment(horizontal= "center", vertical= "center")
             ws['L3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
@@ -531,7 +531,7 @@ class ReporteExcel(TemplateView):
                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
             ws['N3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
             ws['N3'].font = Font(name = 'Calibri', size = 10, bold= True)
-            ws['N3'] = 'presion_arterial_media'
+            ws['N3'] = 'presion arterial media'
 
             ws['O3'].alignment = Alignment(horizontal= "center", vertical= "center")
             ws['O3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
@@ -714,7 +714,7 @@ class ReporteExcel(TemplateView):
                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
             ws['B3'].fill = PatternFill(start_color= 'e3f2fd', end_color= 'e3f2fd', fill_type= "solid")
             ws['B3'].font = Font(name = 'Calibri', size = 10, bold= True)
-            ws['B3'] = 'fecha_evaluacion'
+            ws['B3'] = 'fecha evaluacion'
 
             ws['C3'].alignment = Alignment(horizontal= "center", vertical= "center")
             ws['C3'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),

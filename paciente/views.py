@@ -1,3 +1,4 @@
+import re
 from urllib import response
 from django.forms.models import model_to_dict
 from django.http import  JsonResponse
@@ -273,5 +274,6 @@ class ReporteExcel(TemplateView):
         contenido = "attachment; filename = {0}".format(nombre_archivo)
         response["Content-Disposition"] = contenido
         wb.save(response)
+        print(request)
         return response
 

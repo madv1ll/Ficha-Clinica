@@ -201,7 +201,8 @@ def nuevaEvolucion(request, rut):
     return render(request, 'evolucionForm.html', {'form':form})
 
 class ReporteExcel(TemplateView):
-    def get(self, request, rut, **kwargs):
+    def get(self, request, *args, **kwargs):
+        rut = self.kwargs['rut']
         query = Paciente.objects.filter(rut = rut)
         wb = Workbook()
         bandera = True
@@ -274,6 +275,5 @@ class ReporteExcel(TemplateView):
         contenido = "attachment; filename = {0}".format(nombre_archivo)
         response["Content-Disposition"] = contenido
         wb.save(response)
-        print(self)
         return response
 

@@ -268,6 +268,7 @@ class ReporteExcel(TemplateView):
             #Nueva hoja
             ws = wb.create_sheet('Historial')
             for hist in historial:
+                ws = wb.active
                 ws['B1'].alignment = Alignment(horizontal= "center", vertical= "center")
                 ws['B1'].border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                         top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))

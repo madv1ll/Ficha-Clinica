@@ -274,6 +274,6 @@ class ReporteExcel(TemplateView):
         contenido = "attachment; filename = {0}".format(nombre_archivo)
         response["Content-Disposition"] = contenido
         wb.save(response)
-        print(request)
+        print(self)
         return response
 

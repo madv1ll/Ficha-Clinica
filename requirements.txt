@@ -34,8 +34,6 @@ Keras-Preprocessing==1.1.2
 lazy-object-proxy==1.5.2
 Markdown==3.3.4
 mccabe==0.6.1
-nltk==3.6.2
-numpy==1.19.5
 oauthlib==3.1.0
 opt-einsum==3.3.0
 Pillow==8.2.0
@@ -62,3 +60,4 @@ virtualenv==20.4.4
 Werkzeug==1.0.1
 whitenoise==4.1.2
 wrapt==1.12.1
+openpyxl==3.0.9

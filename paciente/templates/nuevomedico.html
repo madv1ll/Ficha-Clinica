@@ -4,11 +4,8 @@
 {# CSS Bootstrap #}
 {% bootstrap_css %}
 {% block extrahead %}
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="{% static 'nuevomedico/images/icons/favicon.ico' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/bootstrap/css/bootstrap.min.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="icon" type="image/png" href="{% static path %}images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="{% static path %}vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animate/animate.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/css-hamburgers/hamburgers.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/animsition/css/animsition.min.css' %}">
@@ -72,7 +69,11 @@
 		</div>
 	</div>
 </form>
-
+<script src="{% static path %}vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/popper.js"></script>
+<script src="{% static path %}vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="{% static path %}vendor/select2/select2.min.js"></script>
+<script src="{% static path %}vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){

@@ -35,7 +35,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Usuario
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div id="user" class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" aria-current="page">Nombre Usuario: {{ user.username.title }}</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" aria-current="page" href="{% url 'logout' %}">Cerrar sesion</a>

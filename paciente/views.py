@@ -353,6 +353,15 @@ class ReporteExcel(TemplateView):
 
 
             for hist in historial: 
+                if hist.fecha_alta_clinica != None:
+                    fecha_alta_clinica = hist.fecha_alta_clinica.strftime('%d/%m/%Y')
+                else:
+                    fecha_alta_clinica = ""
+                if hist.fecha_alta_medica != None:
+                    fecha_alta_medica = hist.fecha_alta_medica.strftime('%d/%m/%Y')
+                else:
+                    fecha_alta_medica = ""
+
                 #tabla dinamica con los datos
                 ws.cell(row = controlador, column= 2).alignment = Alignment(horizontal = "center")
                 ws.cell(row = controlador, column= 2).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
@@ -400,13 +409,13 @@ class ReporteExcel(TemplateView):
                 ws.cell(row = controlador, column= 9).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 9).font = Font(name = 'Calibri', size = 10)
-                ws.cell(row = controlador, column= 9).value = hist.fecha_alta_medica.strftime('%d/%m/%Y')
+                ws.cell(row = controlador, column= 9).value = fecha_alta_medica
 
                 ws.cell(row = controlador, column= 10).alignment = Alignment(horizontal = "center")
                 ws.cell(row = controlador, column= 10).border = Border(left = Side(border_style= "thin"), right = Side(border_style= "thin"),
                                                                     top  = Side(border_style= "thin"), bottom = Side(border_style= "thin"))
                 ws.cell(row = controlador, column= 10).font = Font(name = 'Calibri', size = 10)
-                ws.cell(row = controlador, column= 10).value = hist.fecha_alta_clinica.strftime('%d/%m/%Y')
+                ws.cell(row = controlador, column= 10).value = fecha_alta_clinica
                 controlador+=1
 
 

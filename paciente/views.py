@@ -791,8 +791,10 @@ class ReportePDF(View):
         rut = self.kwargs['rut']
         template_name = 'reportePDF.html'
         paciente = Paciente.objects.filter(rut = rut)
+        historial = Historial.objects.filter( rut = rut)
         data = {
-            'paciente': paciente
+            'paciente': paciente,
+            'historial': historial
         }
         pdf = render_to_pdf(template_name, data)
         return HttpResponse(pdf, content_type='application/pdf')

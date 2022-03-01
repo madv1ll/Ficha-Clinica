@@ -792,7 +792,6 @@ class ReportePDF(View):
         template_name = 'reportePDF.html'
         paciente = Paciente.objects.filter(rut = rut)
         data = {
-            'count': Paciente.count(),
             'paciente': paciente
         }
         pdf = render_to_pdf(template_name, data)

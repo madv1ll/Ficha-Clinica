@@ -10,11 +10,44 @@
                     <td><b>Apellidos</b></td>
                 </tr>
                 <tr>
-                    {% for pac in paciente %}
+                    {{% for pac in paciente %}}
                         <td>{{ pac.rut }}</td>
                         <td>{{ pac.pnombre }}  {{ pac.snombre }}</td>
                         <td>{{ pac.papellido }}  {{ pac.sapellido }}</td>
-                    {% endfor %}
+                    {{% endfor %}}
+                </tr>
+        </tbody>
+    </table>
+
+    <!-- TABLA HISTORIAL -->
+    <table border="1">
+        <thead>
+            <th colspan="3" width="20%" style="background:#e3f2fd;">Historial Del Paciente</th>
+        </thead>
+        <tbody>
+                <tr>
+                    <td><b>Fecha</b></td>
+                    <td><b>Servicio</b></td>
+                    <td><b>Diagnostico</b></td>
+                    <td><b>Motivo Ingreso</b></td>
+                    <td><b>Enfermedad Actual</b></td>
+                    <td><b>Diagnostico de Admision</b></td>
+                    <td><b>Diagnostico Clinico Final</b></td>
+                    <td><b>Fecha Alta Medica</b></td>
+                    <td><b>Fecha Alta Clinica</b></td>
+                </tr>
+                <tr>
+                    {{% for hist in historial %}}
+                        <td>{{ hist.fecha|date:'d-m-Y' }}</td>
+                        <td>{{ hist.servicio }}</td>
+                        <td>{{ hist.diagnostico }}</td>
+                        <td>{{ hist.motivo_ingreso }}</td>
+                        <td>{{ hist.enfermedad_actual }}</td>
+                        <td>{{ hist.diagnostico_admision }}</td>
+                        <td>{{ hist.diagnostico_clinico_final }}</td>
+                        <td>{{ hist.fecha_alta_medica|date:'d-m-Y }}</td>
+                        <td>{{ hist.fecha_alta_clinica|date:'d-m-Y }}</td>
+                    {{% endfor %}}
                 </tr>
         </tbody>
     </table>

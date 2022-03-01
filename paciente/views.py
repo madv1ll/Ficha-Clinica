@@ -1,3 +1,4 @@
+from pyexpat import model
 import re
 from urllib import response
 from django.forms.models import model_to_dict
@@ -6,6 +7,9 @@ from django.db.models import query
 from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.views import View
+
+from paciente.utils import render_to_pdf
 from .models import Evaluacion, Historial, LugarAtencion, Medico, Paciente, SignosVitales
 from .forms import EvolucionForm, HistorialForm, MedicoForm, PacienteForm,  SignosForm
 from django.shortcuts import redirect
@@ -782,3 +786,14 @@ class ReporteExcel(TemplateView):
         wb.save(response)
         return response
 
+class ReportePDF(View):
+    def get(self, request, *args, **kwargs):
+        rut = self.kwargs['rut']
+        template_name = 'reportePDF.html'
+        paciente = Paciente.objects.filter(rut = rut)
+        data = {
+            'count': Paciente.count(),
+            'paciente': paciente
+        }
+        pdf = render_to_pdf(template_name, data)
+        return HttpResponse(pdf, content_type='application/pdf')

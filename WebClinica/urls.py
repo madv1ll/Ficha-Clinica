@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from paciente.views import Index,  NuevoSignosVitales, SignosViews, evolucion, historialDetalle, nuevaEvolucion, nuevoHistorialf, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, nuevoSignosVitales, signosDetalle, signosVitales, editarHistorial, editarSignos, ReporteExcel
+from paciente.views import Index,  NuevoSignosVitales, ReportePDF, SignosViews, evolucion, historialDetalle, nuevaEvolucion, nuevoHistorialf, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, nuevoSignosVitales, signosDetalle, signosVitales, editarHistorial, editarSignos, ReporteExcel
 from usuario.views import Login, logoutUser
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -32,4 +32,6 @@ urlpatterns = [
     path('Evolucion/nuevaEvolucion/<str:rut>', nuevaEvolucion, name='evolucionForm'),
     #Reporte Excel
     path('reporte/<str:rut>', ReporteExcel.as_view(), name='reporte'),
+    #Reporte PDF
+    path('reportePDF/<str:rut>', ReportePDF.as_view(), name='reportePDF'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

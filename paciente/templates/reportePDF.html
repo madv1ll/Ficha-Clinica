@@ -51,4 +51,79 @@
                 </tr>
         </tbody>
     </table>
+    <br><br>
+    <!-- TABLA SIGNOS -->
+    <table border="1">
+        <thead>
+            <th colspan="19" width="20%" style="background:#e3f2fd;">Signos Del Paciente</th>
+        </thead>
+        <tbody>
+                <tr>
+                    <td><b>Fecha</b></td>
+                    <td><b>Presion Arterial</b></td>
+                    <td><b>Presion Arterial Media</b></td>
+                    <td><b>Frecuencia Respiratoria</b></td>
+                    <td><b>Frecuencia Cardiaca</b></td>
+                    <td><b>Temperatura</b></td>
+                    <td><b>Saturacion de Oxigeno</b></td>
+                    <td><b>Peso</b></td>
+                    <td><b>Talla</b></td>
+                    <td><b>Evaluacion</b></td>
+                    <td><b>Miccion</b></td>
+                    <td><b>Vomito</b></td>
+                    <td><b>Flatos</b></td>
+                    <td><b>Dolor</b></td>
+                    <td><b>Estreñimiento</b></td>
+                    <td><b>Sueño</b></td>
+                    <td><b>Alimentacion</b></td>
+                    <td><b>alimentacion</b></td>
+                    <td><b>Observaciones</b></td>
+                </tr>
+                <tr>
+                    {% for sig in signos %}
+                        <td>{{ sig.fecha_creacion|date:'d-m-Y' }}</td>
+                        <td>{{ sig.presion_arterial }}</td>
+                        <td>{{ sig.presion_arterial_media }}</td>
+                        <td>{{ sig.respiracion }}</td>
+                        <td>{{ sig.frecuencia_cardiaca }}</td>
+                        <td>{{ sig.temperatura }}</td>
+                        <td>{{ sig.saturacion }}</td>
+                        <td>{{ sig.peso }}</td>
+                        <td>{{ sig.talla }}</td>
+                        <td>{{ sig.evaluacion }}</td>
+                        <td>{{ sig.miccion }}</td>
+                        <td>{{ sig.vomito }}</td>
+                        <td>{{ sig.flatos }}</td>
+                        <td>{{ sig.dolor }}</td>
+                        <td>{{ sig.estrennimiento }}</td>
+                        <td>{{ sig.suenno }}</td>
+                        <td>{{ sig.alimentacion }}</td>
+                        <td>{{ sig.higiene }}</td>
+                        <td>{{ sig.observaciones }}</td>
+                    {% endfor %}
+                </tr>
+        </tbody>
+    </table>
+    <!-- TABLA EVOLUCION -->
+    <table border="1">
+        <thead>
+            <th colspan="4" width="20%" style="background:#e3f2fd;">Evolucion Del Cuidador</th>
+        </thead>
+        <tbody>
+                <tr>
+                    <td><b>Fecha</b></td>
+                    <td><b>Hora</b></td>
+                    <td><b>Cuidador</b></td>
+                    <td><b>Descripcion</b></td>
+                </tr>
+                <tr>
+                    {% for evo in evolucion %}
+                        <td>{{ evo.fecha_evaluacion|date:'d-m-Y' }}</td>
+                        <td>{{ evo.hora|date:'H:i'}}</td>
+                        <td>{{ evo.cuidador }}</td>
+                        <td>{{ evo.descripcion }}</td>
+                    {% endfor %}
+                </tr>
+        </tbody>
+    </table>
 </body>

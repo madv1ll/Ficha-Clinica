@@ -137,26 +137,26 @@ class Historial(models.Model):
 
 class SignosVitales(models.Model):
     id_signosvitales          = models.AutoField('id signos vitales', primary_key=True)
-    temperatura               = models.CharField('Temperatura', null=True, max_length=50, blank=True)
-    respiracion               = models.CharField('Respiracion', null=True, max_length=50, blank=True)
+    fecha_creacion            = models.DateTimeField('Fecha registro', auto_now=True)
     presion_arterial          = models.CharField('Tension', null=True, max_length=50, blank=True)
+    presion_arterial_media    = models.CharField('Presión Arterial Media', null=True, max_length=50, blank=True)
+    respiracion               = models.CharField('Respiracion', null=True, max_length=50, blank=True)
+    frecuencia_cardiaca       = models.CharField('Frecuencia Cardiaca', null=True, max_length=50, blank=True)
+    temperatura               = models.CharField('Temperatura', null=True, max_length=50, blank=True)
+    saturacion                = models.CharField('Saturacion', null=True, max_length=50, blank=True)
+    peso                      = models.CharField('Peso', null=True, max_length=50, blank=True)
+    talla                     = models.CharField('Talla', null=True, max_length=50, blank=True)
     evaluacion                = models.CharField('Evaluacion', null=True, max_length=150, blank=True)
     miccion                   = models.CharField('Miccion', null=True, max_length=150, blank=True)
     vomito                    = models.CharField('Vomito', null=True, max_length=150, blank=True)
     flatos                    = models.CharField('Flatos', null=True, max_length=50, blank=True)
     dolor                     = models.CharField('Dolor', null=True, max_length=50, blank=True)
     estrennimiento            = models.CharField('Estreñimiento', null=True, max_length=100, blank=True)
-    frecuencia_cardiaca       = models.CharField('Frecuencia Cardiaca', null=True, max_length=50, blank=True)
-    saturacion                = models.CharField('Saturacion', null=True, max_length=50, blank=True)
     suenno                    = models.CharField('sueño', null=True, max_length=50, blank=True)
-    presion_arterial_media    = models.CharField('Presión Arterial Media', null=True, max_length=50, blank=True)
-    peso                      = models.CharField('Peso', null=True, max_length=50, blank=True)
-    talla                     = models.CharField('Talla', null=True, max_length=50, blank=True)
     alimentacion              = models.CharField('Alimentacion', null=True, max_length=50, blank=True)
     higiene                   = models.CharField('Higiene', null=True, max_length=50, blank=True)
     observaciones             = models.CharField('Observaciones', null=True, max_length=50, blank=True)
     paciente_rut              = models.ForeignKey(Paciente,on_delete=models.CASCADE)
-    fecha_creacion            = models.DateTimeField('Fecha registro', auto_now=True)
     class meta:
         verbose_name = 'Signos Vitales'
         verbose_name_plural = 'Signos Vitales'
@@ -168,8 +168,8 @@ class Evaluacion(models.Model):
     idevaluacion     = models.AutoField('Id evaluacion', primary_key=True)
     fecha_evaluacion = models.DateTimeField('Fecha de evaluacion', null=False, auto_now=True)
     hora             = models.DateTimeField('Hora evolucion', null=False, auto_now=True)
-    descripcion      = models.TextField('Descripcion', max_length=2000)
     cuidador         = models.CharField('Cuidador', max_length=30)
+    descripcion      = models.TextField('Descripcion', max_length=2000)
     rut              = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     class meta:

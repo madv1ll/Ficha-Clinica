@@ -788,13 +788,17 @@ class ReporteExcel(TemplateView):
 
 class ReportePDF(View):
     def get(self, request, *args, **kwargs):
-        rut = self.kwargs['rut']
+        rut           = self.kwargs['rut']
         template_name = 'reportePDF.html'
-        paciente = Paciente.objects.filter(rut = rut)
-        historial = Historial.objects.filter( rut = rut)
+        paciente      = Paciente.objects.filter(rut = rut)
+        historial     = Historial.objects.filter( rut = rut)
+        signos        = SignosVitales.objects.filter( paciente_rut = rut)
+        evolucion     = Evaluacion.objects.filter(rut = rut)
         data = {
-            'paciente': paciente,
-            'historial': historial
+            'paciente' : paciente,
+            'historial': historial,
+            'signos'   : signos,
+            'evolucion': evolucion
         }
         pdf = render_to_pdf(template_name, data)
         return HttpResponse(pdf, content_type='application/pdf')

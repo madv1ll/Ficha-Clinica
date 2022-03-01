@@ -10,11 +10,11 @@
                     <td><b>Apellidos</b></td>
                 </tr>
                 <tr>
-                    {{% for pac in paciente %}}
+                    {% for pac in paciente %}
                         <td>{{ pac.rut }}</td>
                         <td>{{ pac.pnombre }}  {{ pac.snombre }}</td>
                         <td>{{ pac.papellido }}  {{ pac.sapellido }}</td>
-                    {{% endfor %}}
+                    {% endfor %}
                 </tr>
         </tbody>
     </table>
@@ -37,7 +37,7 @@
                     <td><b>Fecha Alta Clinica</b></td>
                 </tr>
                 <tr>
-                    {{% for hist in historial %}}
+                    {% for hist in historial %}
                         <td>{{ hist.fecha|date:'d-m-Y' }}</td>
                         <td>{{ hist.servicio }}</td>
                         <td>{{ hist.diagnostico }}</td>
@@ -47,7 +47,7 @@
                         <td>{{ hist.diagnostico_clinico_final }}</td>
                         <td>{{ hist.fecha_alta_medica|date:'d-m-Y }}</td>
                         <td>{{ hist.fecha_alta_clinica|date:'d-m-Y }}</td>
-                    {{% endfor %}}
+                    {% endfor %}
                 </tr>
         </tbody>
     </table>

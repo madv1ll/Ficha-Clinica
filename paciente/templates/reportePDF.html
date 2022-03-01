@@ -10,7 +10,7 @@
                     <td><b>Apellidos</b></td>
                 </tr>
                 <tr>
-                    {{% for pac in paciente %}}
+                    {% for pac in paciente %}
                         <td>{{ pac.rut }}</td>
                         <td>{{ pac.pnombre }}  {{ pac.snombre }}</td>
                         <td>{{ pac.papellido }}  {{ pac.sapellido }}</td>

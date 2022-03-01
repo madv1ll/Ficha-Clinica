@@ -9,7 +9,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views import View
 
-from paciente.utils import render_to_pdf
+from .utils import render_to_pdf
 from .models import Evaluacion, Historial, LugarAtencion, Medico, Paciente, SignosVitales
 from .forms import EvolucionForm, HistorialForm, MedicoForm, PacienteForm,  SignosForm
 from django.shortcuts import redirect

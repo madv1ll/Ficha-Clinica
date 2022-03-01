@@ -1,11 +1,21 @@
 <body>
-    <h2>Reporte Paciente</h2>
     <table border="1">
         <thead>
-            <th>nombre: </th>
+            <th colspan="3" width="20%" style="background:#e3f2fd;">Datos Del Paciente</th>
         </thead>
         <tbody>
-            <td>hola</td>
+                <tr>
+                    <td><b>Rut</b></td>
+                    <td><b>Nombres</b></td>
+                    <td><b>Apellidos</b></td>
+                </tr>
+                <tr>
+                    {{% for pac in paciente %}}
+                        <td>{{ pac.rut }}</td>
+                        <td>{{ pac.pnombre }}  {{ pac.snombre }}</td>
+                        <td>{{ pac.papellido }}  {{ pac.sapellido }}</td>
+                    {{% endfor %}}
+                </tr>
         </tbody>
     </table>
 </body>

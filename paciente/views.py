@@ -119,7 +119,7 @@ class NuevoMedico(CreateView):
     template_name = 'nuevomedico.html'
     success_url = reverse_lazy('index')
 
-def listaCuidadoress(request):
+def listaCuidadores(request):
     usuario = Medico.objects.all()
     datos = {
         'usuario': usuario

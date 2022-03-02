@@ -12,7 +12,7 @@ class UserChangeForm(forms.ModelForm):
     the user, but replaces the password field with admin's
     password hash display field.
     """
-    password = ''
+    password = ReadOnlyPasswordHashField()
 
     class Meta:
         model = Medico

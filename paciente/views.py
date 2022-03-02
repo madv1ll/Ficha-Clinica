@@ -135,7 +135,7 @@ def editarCuidador(request, rut):
             return redirect('index')
     else:
         form = PacienteForm(instance=post)
-    return render(request, 'editarCuidador.html', {'form': form})
+    return render(request, 'nuevomedico.html', {'form': form})
 
 def editarHistorial(request, id):
     post = get_object_or_404(Historial, idhistorial=id)

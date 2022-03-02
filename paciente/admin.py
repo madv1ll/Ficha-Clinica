@@ -6,12 +6,13 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 admin.site.register(Paciente)
 admin.site.register(LugarAtencion)
 admin.site.register(Medico)
+
 class UserChangeForm(forms.ModelForm):
     """A form for updating users. Includes all the fields on
     the user, but replaces the password field with admin's
     password hash display field.
     """
-    password = ReadOnlyPasswordHashField()
+    password = ''
 
     class Meta:
         model = Medico

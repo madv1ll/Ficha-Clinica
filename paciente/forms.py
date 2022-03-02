@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import fields
 from .models import Evaluacion, Historial, Medico, Paciente, SignosVitales
-from django.contrib.auth.forms import AuthenticationForm
 
 class PacienteForm(forms.ModelForm):
     class Meta:

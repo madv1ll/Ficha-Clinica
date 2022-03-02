@@ -1,5 +1,4 @@
 from django import forms
-from django.forms import fields
 from .models import Evaluacion, Historial, Medico, Paciente, SignosVitales
 
 class PacienteForm(forms.ModelForm):

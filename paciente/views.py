@@ -134,7 +134,7 @@ def editarCuidador(request, rut):
             form.save()
             return redirect('index')
     else:
-        form = PacienteForm(instance=post)
+        form = MedicoForm(instance=post)
     return render(request, 'nuevomedico.html', {'form': form})
 
 def editarHistorial(request, id):

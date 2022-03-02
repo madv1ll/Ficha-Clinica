@@ -4,4 +4,4 @@ from .models import Paciente, Medico, LugarAtencion
 
 admin.site.register(Paciente)
 admin.site.register(LugarAtencion)
-admin.site.register(Medico)
+# admin.site.register(Medico)

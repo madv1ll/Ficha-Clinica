@@ -8,10 +8,24 @@
 {% block cuerpo %}
 
 {% for user in usuario %}
-    <ul>
-        <li>
-            nombre: {{ user.username }}
-        </li>
-    </ul>
-{% endfor %}
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th>Nombre Usuario</th>
+        </tr>
+        <tr>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in usuario %}
+        <tr>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <td><button class="btn">Editar</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

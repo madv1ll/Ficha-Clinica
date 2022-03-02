@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from paciente.views import Index,  NuevoSignosVitales, ReportePDF, SignosViews, evolucion, historialDetalle, nuevaEvolucion, nuevoHistorialf, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, nuevoSignosVitales, signosDetalle, signosVitales, editarHistorial, editarSignos, ReporteExcel
+from paciente.views import Index,  NuevoSignosVitales, ReportePDF, SignosViews, UsuariosLista, evolucion, historialDetalle, nuevaEvolucion, nuevoHistorialf, nuevoPaciente, editarPaciente, eliminarPaciente, historial, NuevoMedico, nuevoSignosVitales, signosDetalle, signosVitales, editarHistorial, editarSignos, ReporteExcel
 from usuario.views import Login, logoutUser
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -18,8 +18,9 @@ urlpatterns = [
     path('historialForm/nuevo/<str:rut>', nuevoHistorialf, name='nuevoHistorial'),
     path('historial/historialdetalle/<str:id>', historialDetalle, name='historialdetalle'),
     path('historial/editarHistorial/<str:id>', editarHistorial, name='EditarHistorial'),
-    #Cuentas
-    path('medico/nuevo', NuevoMedico.as_view(), name='nuevoMedico'),
+    #Cuidador
+    path('cuidador/nuevo', NuevoMedico.as_view(), name='nuevoMedico'),
+    path('cuidador/', UsuariosLista.as_view(), name='cuidadores'),
     path('accounts/login/', Login.as_view(), name='login'),
     path('logout/', login_required(logoutUser), name='logout'),
     #Signos Vitales

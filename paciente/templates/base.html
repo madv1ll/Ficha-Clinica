@@ -30,7 +30,7 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoPaciente' %}">Nuevo Paciente</a>
             {% if request.user.is_staff %}
-            <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoMedico' %}">Nuevo Cuidador</a>
+            <a class="nav-item nav-link active" aria-current="page" href="{% url 'cuidadores' %}">Cuidadores</a>
             {% endif %}
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Usuario

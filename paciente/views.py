@@ -802,3 +802,8 @@ class ReportePDF(View):
         }
         pdf = render_to_pdf(template_name, data)
         return HttpResponse(pdf, content_type='application/pdf')
+
+class UsuariosLista(ListView):
+    model = Medico
+    template_name = 'editarUsuario.html'
+    sucess_url = reverse_lazy('index')

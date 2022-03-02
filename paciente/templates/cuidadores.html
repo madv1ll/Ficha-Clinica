@@ -16,10 +16,12 @@
     </thead>
     <tbody>
         {% for user in usuario %}
+        {% if user.rut %}
         <tr>
             <td>{{ user.username }}</td>
             <td><button class="btn btn-primary" style="border: 1px solid #2e518b;background-color: #e3f2fd;color:black;" onclick="window.location.href='editar/{{ user.rut }}'">Editar</button></td>
         </tr>
+        {% endif %}
         {% endfor %}
     </tbody>
 </table>

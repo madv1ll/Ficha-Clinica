@@ -1,8 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from django.db.models.fields.related import ForeignKey
 from django.utils import timezone
-from django.contrib.auth.models import AbstractBaseUser, AbstractUser, BaseUserManager, User, UserManager
+from django.contrib.auth.models import  AbstractUser, UserManager
 
 
 class LugarAtencion(models.Model):

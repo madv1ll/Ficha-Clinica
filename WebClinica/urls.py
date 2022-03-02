@@ -27,7 +27,7 @@ urlpatterns = [
     path('logout/', login_required(logoutUser), name='logout'),
     #Signos Vitales
     path('SignosVitales/<str:rut>', login_required(signosVitales), name='signosVitales'),
-    path('SignosVitales/<str:rut>/NuevoSignosVitales', nuevoSignosVitales, name='signosVtalesForm'),
+    path('SignosVitales/NuevoSignosVitales/<str:rut>', nuevoSignosVitales, name='signosVtalesForm'),
     path('SignosVitales/signosdetalle/<str:id>', signosDetalle, name='signosdetalle'),
     path('SignosVitales/editarSignos/<str:id>', editarSignos, name='EditarSignosVitales'),
     #Evaluacion Cuidador

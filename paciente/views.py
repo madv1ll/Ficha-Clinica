@@ -115,7 +115,6 @@ def signosDetalle(request, id):
 
 class NuevoMedico(CreateView):
     model = Medico
-    accion = 'Nuevo'
     form_class = MedicoForm
     template_name = 'nuevomedico.html'
     success_url = reverse_lazy('index')
@@ -136,7 +135,7 @@ def editarCuidador(request, rut):
             return redirect('index')
     else:
         form = MedicoForm(instance=post)
-    return render(request, 'nuevomedico.html', {'form': form, 'accion':'Editar'})
+    return render(request, 'nuevomedico.html', {'form': form, 'editar':True})
 
 def editarHistorial(request, id):
     post = get_object_or_404(Historial, idhistorial=id)

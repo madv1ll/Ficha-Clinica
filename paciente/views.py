@@ -119,12 +119,23 @@ class NuevoMedico(CreateView):
     template_name = 'nuevomedico.html'
     success_url = reverse_lazy('index')
 
-def listaUsuarios(request):
+def listaCuidadoress(request):
     usuario = Medico.objects.all()
     datos = {
         'usuario': usuario
     }
-    return render(request, 'usuarios.html',datos)
+    return render(request, 'cuidadores.html',datos)
+
+def editarCuidador(request, rut):
+    post = get_object_or_404(Medico, rut = rut)
+    if request.method == "POST":
+        form = MedicoForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = PacienteForm(instance=post)
+    return render(request, 'editarCuidador.html', {'form': form})
 
 def editarHistorial(request, id):
     post = get_object_or_404(Historial, idhistorial=id)

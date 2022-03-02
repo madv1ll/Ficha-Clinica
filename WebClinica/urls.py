@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from paciente.views import Index, ReportePDF, NuevoMedico, ReporteExcel, evolucion, historialDetalle, listaUsuarios, nuevaEvolucion, nuevoHistorialf, nuevoPaciente
+from paciente.views import Index, ReportePDF, NuevoMedico, ReporteExcel, editarCuidador, evolucion, historialDetalle, listaCuidadores, nuevaEvolucion, nuevoHistorialf, nuevoPaciente
 from paciente.views import eliminarPaciente, historial, nuevoSignosVitales, signosDetalle, signosVitales, editarHistorial, editarSignos, editarPaciente
 from usuario.views import Login, logoutUser
 from django.contrib.auth.decorators import login_required
@@ -12,8 +12,8 @@ urlpatterns = [
     path('',login_required(Index.as_view()),name = 'index'),
     #Paciente CRUD
     path('paciente/nuevo',nuevoPaciente, name='nuevoPaciente'),
-    path('editarpaciente/<str:rut>/', login_required(editarPaciente), name='editarpaciente'),
-    path('eliminarpaciente/<str:rut>/',login_required(eliminarPaciente), name='eliminarpaciente'),
+    path('editarpaciente/<str:rut>', login_required(editarPaciente), name='editarpaciente'),
+    path('eliminarpaciente/<str:rut>',login_required(eliminarPaciente), name='eliminarpaciente'),
     #Historial Paciente
     path('historial/<str:rut>/', login_required(historial), name = 'historial_clinico'),
     path('historialForm/nuevo/<str:rut>', nuevoHistorialf, name='nuevoHistorial'),
@@ -21,11 +21,12 @@ urlpatterns = [
     path('historial/editarHistorial/<str:id>', editarHistorial, name='EditarHistorial'),
     #Cuidador
     path('cuidador/nuevo', NuevoMedico.as_view(), name='nuevoMedico'),
-    path('cuidador/', login_required(listaUsuarios), name='cuidadores'),
+    path('cuidador/', login_required(listaCuidadores), name='cuidadores'),
+    path('cuidador/editar/<str:rut>', login_required(editarCuidador), name='editarCuidador'),
     path('accounts/login/', Login.as_view(), name='login'),
     path('logout/', login_required(logoutUser), name='logout'),
     #Signos Vitales
-    path('SignosVitales/<str:rut>/', login_required(signosVitales), name='signosVitales'),
+    path('SignosVitales/<str:rut>', login_required(signosVitales), name='signosVitales'),
     path('SignosVitales/<str:rut>/NuevoSignosVitales', nuevoSignosVitales, name='signosVtalesForm'),
     path('SignosVitales/signosdetalle/<str:id>', signosDetalle, name='signosdetalle'),
     path('SignosVitales/editarSignos/<str:id>', editarSignos, name='EditarSignosVitales'),

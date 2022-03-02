@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{# CSS Bootstrap #}
+{% bootstrap_css %}
+{% block titulo %}Cuidadores{% endblock titulo %}
+{% block h1 %}Cuidadores{% endblock h1 %}
+{% block cuerpo %}
+
+{% for user in usuario %}
+    <ul>
+        <li>
+            nombre: {{ user.username }}
+        </li>
+    </ul>
+{% endfor %}
+{% endblock %}

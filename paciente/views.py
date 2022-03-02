@@ -1,16 +1,11 @@
-from pyexpat import model
-import re
-from urllib import response
 from django.forms.models import model_to_dict
 from django.http import  JsonResponse
-from django.db.models import query
-from django.http import request
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views import View
 
 from .utils import render_to_pdf
-from .models import Evaluacion, Historial, LugarAtencion, Medico, Paciente, SignosVitales
+from .models import Evaluacion, Historial,  Medico, Paciente, SignosVitales
 from .forms import EvolucionForm, HistorialForm, MedicoForm, PacienteForm,  SignosForm
 from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView
@@ -124,15 +119,12 @@ class NuevoMedico(CreateView):
     template_name = 'nuevomedico.html'
     success_url = reverse_lazy('index')
 
-class NuevoSignosVitales(CreateView):
-    model = SignosVitales
-    form_class = SignosForm
-    template_name = 'signosVitalesForm.html'
-    success_url = reverse_lazy('index')
-
-class SignosViews(ListView):
-    model = SignosVitales
-    template_name = 'signosVitales.html'
+def listaUsuarios(request):
+    usuario = Medico.objects.all()
+    datos = {
+        'usuario': usuario
+    }
+    return render(request, 'usuarios.html',datos)
 
 def editarHistorial(request, id):
     post = get_object_or_404(Historial, idhistorial=id)
@@ -802,8 +794,3 @@ class ReportePDF(View):
         }
         pdf = render_to_pdf(template_name, data)
         return HttpResponse(pdf, content_type='application/pdf')
-
-class UsuariosLista(ListView):
-    model = Medico
-    template_name = 'editarUsuario.html'
-    sucess_url = reverse_lazy('index')

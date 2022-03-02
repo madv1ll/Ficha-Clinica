@@ -14,8 +14,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
 {% endblock extrahead %}
-{% block titulo %}Nuevo Cuidador{% endblock titulo %}
-{% block h1 %}Nuevo Cuidador{% endblock h1 %}
+
+{% block titulo %}{{ accion }} Cuidador{% endblock titulo %}
+{% block h1 %}{{ accion }} Cuidador{% endblock h1 %}
 {% block cuerpo %}
 <form method="post">
 	{% csrf_token %}

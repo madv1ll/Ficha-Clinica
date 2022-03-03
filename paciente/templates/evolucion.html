@@ -52,6 +52,7 @@
             <th class="cell100 column2">Hora</th>
             <th class="cell100 column2">Cuidador</th>
             <th class="cell100 column1">Descripcion</th>
+            <th class="cell100 column2">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -61,6 +62,7 @@
             <td class="cell100 column2">{{evo.hora|date:'H:i'}}</td>
             <td class="cell100 column2">{{evo.cuidador}}</td>
             <td class="cell100 column1">{{evo.descripcion}}</td>
+            <button type="button" class="btn-historial" style="color:black" onclick="window.location.href='/reportePDF/{{evo.idevaluacion}}'">Ver Historial</button>
             </div>
             </td>
         </tr>

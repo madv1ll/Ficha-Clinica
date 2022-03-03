@@ -36,5 +36,5 @@ urlpatterns = [
     #Reporte Excel
     path('reporte/<str:rut>', ReporteExcel.as_view(), name='reporte'),
     #Reporte PDF
-    path('reportePDF/<str:rut>', ReportePDF.as_view(), name='reportePDF'),
+    path('reportePDF/<str:id>', ReportePDF.as_view(), name='reportePDF'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

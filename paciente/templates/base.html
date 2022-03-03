@@ -31,15 +31,21 @@
             <a class="nav-item nav-link active" aria-current="page" href="{% url 'nuevoPaciente' %}">Nuevo Paciente</a>
             {% if request.user.is_staff %}
             <a class="nav-item nav-link active" aria-current="page" href="{% url 'cuidadores' %}">Cuidadores</a>
-            {% endif %}
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Usuario
-              </a>
-              <div id="user" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" aria-current="page">Nombre Usuario: {{ user.username.title }}</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" aria-current="page" href="{% url 'logout' %}">Cerrar sesion</a>
-              </div>
+            </a>
+            <div id="user" class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" aria-current="page">Nombre Usuario: {{ user.username.title }}</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" aria-current="page" href="{% url 'logout' %}">Cerrar sesion</a>
+            </div>
+            {% else %}
+            <div id="user" class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" aria-current="page">Nombre Usuario: {{ user.username.title }}</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" aria-current="page" href="{% url 'logout' %}">Cerrar sesion</a>
+            </div>
+            {% endif %}
           </div>
         </div>
     </nav>

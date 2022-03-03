@@ -36,6 +36,9 @@
             </a>
             <div id="userAdmin" class="dropdown-menu" aria-labelledby="navbarDropdown"></div>
             {% else %}
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Usuario
+            </a>
             <div id="user" class="dropdown-menu" aria-labelledby="navbarDropdown">
             {% endif %}
                 <a class="dropdown-item" aria-current="page">Nombre Usuario: {{ user.username.title }}</a>

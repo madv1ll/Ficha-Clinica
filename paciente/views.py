@@ -32,9 +32,15 @@ class Index(CreateView):
     def post(self, request, *args, **kwargs):
         queryset = request.POST["buscar"]
         if queryset:
-            data = list(Paciente.objects.filter(Q(rut__icontains=queryset) | Q(pnombre__icontains=queryset) | Q(papellido__icontains=queryset) ).filter(nombreMedico = self.request.user.username).distinct().values())
+            if self.request.user.is_staff:
+                data = list(Paciente.objects.filter(Q(rut__icontains=queryset) | Q(pnombre__icontains=queryset) | Q(papellido__icontains=queryset) ).distinct().values())
+            else:
+                data = list(Paciente.objects.filter(Q(rut__icontains=queryset) | Q(pnombre__icontains=queryset) | Q(papellido__icontains=queryset) ).filter(nombreMedico = self.request.user.username).distinct().values())
         else:
-            data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).filter(nombreMedico = self.request.user.username).values())
+            if self.request.user.is_staff:
+                data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).values())
+            else:
+                data = list(Paciente.objects.filter(lugarAtencion=request.POST['id']).filter(nombreMedico = self.request.user.username).values())
         return JsonResponse({'lugaratencion':data})
     
     def get_context_data(self, **kwargs):

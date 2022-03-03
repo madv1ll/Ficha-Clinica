@@ -800,7 +800,7 @@ class ReportePDF(View):
     def get(self, request, *args, **kwargs):
         id           = self.kwargs['id']
         template_name = 'reportePDF.html'
-        evolucion     = Evaluacion.objects.filter(idevolucion = id)
+        evolucion     = Evaluacion.objects.filter(idevaluacion = id)
         data = {
             'evolucion': evolucion
         }

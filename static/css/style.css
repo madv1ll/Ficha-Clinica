@@ -134,6 +134,9 @@ body{
     z-index: 1;
 }
 
+#userAdmin{
+  left: 21em;
+}
 #user{
-  left: 24em;
+  left: 15em;
 }

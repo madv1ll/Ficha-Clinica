@@ -1,12 +1,15 @@
+{% load static %}
 <body class="m-0 row justify-content-center">
-    <div class="col-autotext-center">
+    <div class="col-auto text-right">
         <span>
             <img src="{% static path %}images/logo.png" alt="logo" class="logo-login">
         </span>
+    </div>
+    <div class="m-0 row justify-content-center">
         {% for evo in evolucion %}
-        <h2>REPORTE EVOLUCION DEL CUIDADOR FECHA {{ evo.fecha_evaluacion|date:'d-m-Y H:i' }}</h2>
+        <u><h2>REPORTE EVOLUCION DEL CUIDADOR FECHA {{ evo.fecha_evaluacion|date:'d-m-Y H:i' }}</h2>
         <h3>Hora: {{ evo.hora|date:'H:i' }}</h3>
-        <h3>Cuidador: {{ evo.cuidador }}</h3>
+        <h3>Cuidador: {{ evo.cuidador }}</h3></u>
         <p>{{ evo.descripcion }}</p>
         {% endfor %}
     </div>

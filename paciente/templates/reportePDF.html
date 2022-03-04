@@ -1,11 +1,10 @@
-{% load static %}
 <body class="m-0 row justify-content-center">
-    <div class="col-auto text-right">
+    <div align="right">
         <span>
-            <img src="{% static path %}images/logo.png" alt="logo" class="logo-login">
+            <img src="../../static/images/logo.png" alt="logo" class="logo-login">
         </span>
     </div>
-    <div class="m-0 row justify-content-center">
+    <div align="center">
         {% for evo in evolucion %}
         <u><h2>REPORTE EVOLUCION DEL CUIDADOR FECHA {{ evo.fecha_evaluacion|date:'d-m-Y H:i' }}</h2>
         <h3>Hora: {{ evo.hora|date:'H:i' }}</h3>

@@ -1,8 +1,13 @@
-<body>
-    {% for evo in evolucion %}
-    <h2>REPORTE EVOLUCION DEL CUIDADOR FECHA {{ evo.fecha_evaluacion|date:'d-m-Y H:i' }}</h2>
-    <h3>Hora: {{ evo.hora|date:'H:i' }}</h3>
-    <h3>Cuidador: {{ evo.cuidador }}</h3>
-    <p>{{ evo.descripcion }}</p>
-    {% endfor %}
+<body class="m-0 row justify-content-center">
+    <div class="col-autotext-center">
+        <span>
+            <img src="{% static path %}images/logo.png" alt="logo" class="logo-login">
+        </span>
+        {% for evo in evolucion %}
+        <h2>REPORTE EVOLUCION DEL CUIDADOR FECHA {{ evo.fecha_evaluacion|date:'d-m-Y H:i' }}</h2>
+        <h3>Hora: {{ evo.hora|date:'H:i' }}</h3>
+        <h3>Cuidador: {{ evo.cuidador }}</h3>
+        <p>{{ evo.descripcion }}</p>
+        {% endfor %}
+    </div>
 </body>

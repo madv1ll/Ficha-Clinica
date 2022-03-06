@@ -82,7 +82,7 @@ class Paciente(models.Model):
     Direccion         = models.CharField('Direccion del paciente', max_length=200)
     fecha_nacimiento  = models.DateTimeField('Fecha de Nacimiento', null=False)
     nombreMedicoAdmin = models.CharField('Nombre Medico', null=False, default='cuidador',max_length=45)
-    nombreMedico      = models.CharField('Nombre Medico', null=False,  default='cuidador',max_length=45)
+    nombreMedico      = models.ForeignKey(MedicoManager, on_delete=models.CASCADE)
     created_date      = models.DateTimeField('Fecha de ingreso', default=timezone.now)
     
     class meta:

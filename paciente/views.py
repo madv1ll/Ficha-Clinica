@@ -106,8 +106,10 @@ def cambiarCuidador(request, rut):
         form = PacienteForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
+            print('valido')
             return redirect('index')
     else:
+        print('invalido')
         form = PacienteForm(instance=post)
     return render(request, 'cambiarCuidador.html', {'form': form})
 

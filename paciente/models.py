@@ -152,7 +152,7 @@ class Evaluacion(models.Model):
     fecha_evaluacion = models.DateTimeField('Fecha de evaluacion', null=False, auto_now=True)
     hora             = models.DateTimeField('Hora evolucion', null=False, auto_now=True)
     cuidador         = models.CharField('Cuidador', max_length=30)
-    descripcion      = gcontent=HTMLField()
+    descripcion      = HTMLField()
     rut              = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     class meta:

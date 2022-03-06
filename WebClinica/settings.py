@@ -157,3 +157,4 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 600,
     'height': 400,
 }
+FORM_RENDERER = 'django.forms.renderers.DjangoTemplates'

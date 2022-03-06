@@ -1,7 +1,0 @@
-Crear login dejarlo como pagina principal
-crear formulario de registro
-crear editar y eliminar
-listar registros
-crear registro en historial del paciente
-
-

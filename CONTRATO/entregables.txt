@@ -1,4 +1,0 @@
--proyecto django
--base de datos mysql
--Manual de instalacion 
--manual de uso

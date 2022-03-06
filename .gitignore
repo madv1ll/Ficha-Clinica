@@ -130,3 +130,6 @@ dmypy.json
 
 #archivo settings se ignora para utilizar localhost
 WebClinica/settings.py
+
+#CARPETA LOCAL
+CONTRATO

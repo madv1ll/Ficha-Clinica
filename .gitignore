@@ -133,3 +133,6 @@ WebClinica/settings.py
 
 #CARPETA LOCAL
 CONTRATO
+
+#migraciones
+paciente\migrations

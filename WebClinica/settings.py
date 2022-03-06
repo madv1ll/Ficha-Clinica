@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'paciente.apps.PacienteConfig',
     'usuario',
     'bootstrap4',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -150,4 +151,9 @@ STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 AUTH_USER_MODEL =  'paciente.Medico'
 
-
+#configuracion texto enrriquecido
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'advanced',
+    'width': 600,
+    'height': 400,
+}

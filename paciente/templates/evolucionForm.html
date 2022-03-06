@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/vendor/daterangepicker/daterangepicker.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
+<script src="{% static 'tiny_mce/tiny_mce.js' %}"></script>
 {% endblock extrahead %}
 {% block titulo %}Nueva Evolucion{% endblock titulo %}
 {% block h1 %}Nueva Evolucion{% endblock h1 %}
@@ -48,13 +49,18 @@
 </form>
 </body>
 <script>
-
 	document.getElementById('id_cuidador').setAttribute("class", "input100")
 	document.getElementById('id_cuidador').setAttribute("placeholder", "Nombre Ciudador")
 
 	document.getElementById('id_descripcion').setAttribute("class", "input100")
 	document.getElementById('id_descripcion').setAttribute("placeholder", "Descripción")
-
+	
+    tinyMCE.init({
+        'mode':'textareas',    
+        'theme':'advanced',
+        'width':450,
+        'height':300
+    })
 </script>
 </html>
 {% endblock cuerpo %}

@@ -65,7 +65,7 @@ class Medico(AbstractUser):
         verbose_name_plural = 'Médico'
 
     def __str__(self):
-        return self.nombre+' '+self.apellido
+        return self.username
     
     def has_perm(self,perm,obj = None):
         return True
@@ -82,7 +82,7 @@ class Paciente(models.Model):
     Direccion         = models.CharField('Direccion del paciente', max_length=200)
     fecha_nacimiento  = models.DateTimeField('Fecha de Nacimiento', null=False)
     nombreMedicoAdmin = models.CharField('Nombre Medico', null=False, default='cuidador',max_length=45)
-    nombreMedico      = models.ForeignKey(MedicoManager, on_delete=models.CASCADE)
+    nombreMedico      = models.ForeignKey(Medico, on_delete=models.CASCADE)
     created_date      = models.DateTimeField('Fecha de ingreso', default=timezone.now)
     
     class meta:

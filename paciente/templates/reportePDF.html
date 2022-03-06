@@ -10,7 +10,7 @@
         {% for evo in evolucion %}
         <u><h2>REPORTE EVOLUCION DEL CUIDADOR {{ evo.fecha_evaluacion|date:'d-m-Y H:i' }}</h2>
         <b>Nombre Cuidador:</b> {{ evo.cuidador }}</u>
-        <p>{{ evo.descripcion|linebreaks}}</p>
-        {% endfor %}
     </div>
+    <p>{{ evo.descripcion|linebreaks}}</p>
+    {% endfor %}
 </body>

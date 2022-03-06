@@ -1,6 +1,5 @@
 from django import forms
 from .models import Evaluacion, Historial, Medico, Paciente, SignosVitales
-from django.forms import widgets
 
 class PacienteForm(forms.ModelForm):
     class Meta:

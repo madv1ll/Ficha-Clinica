@@ -25,7 +25,6 @@ INSTALLED_APPS = [
     'paciente.apps.PacienteConfig',
     'usuario',
     'bootstrap4',
-    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -150,11 +149,3 @@ COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 STATICFILES_STORAGE =  'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 AUTH_USER_MODEL =  'paciente.Medico'
-
-#configuracion texto enrriquecido
-TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'advanced',
-    'width': 600,
-    'height': 400,
-}
-FORM_RENDERER = 'django.forms.renderers.DjangoTemplates'

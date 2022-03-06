@@ -5,9 +5,8 @@ class PacienteForm(forms.ModelForm):
     cuidadores = Medico.objects.all()
     class Meta:
         model = Paciente
-        fields = ['lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento','Cuidador']
-        widgets = {'Cuidador':forms.Select(attrs={'class': 'form-control'})
-
+        fields = ['lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento','nombreMedico']
+        widgets = {'nombreMedico':forms.Select(attrs={'class': 'form-control'})
         }
 
 class MedicoForm(forms.ModelForm):

@@ -84,7 +84,6 @@ class Paciente(models.Model):
     nombreMedicoAdmin = models.CharField('Nombre Medico', null=False, default='cuidador',max_length=45)
     nombreMedico      = models.CharField('Nombre Medico', null=False,  default='cuidador',max_length=45)
     created_date      = models.DateTimeField('Fecha de ingreso', default=timezone.now)
-    Cuidador          = models.ForeignKey(Medico, default='', on_delete=models.CASCADE)
     
     class meta:
         verbose_name = 'Paciente'

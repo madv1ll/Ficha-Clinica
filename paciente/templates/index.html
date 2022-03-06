@@ -141,7 +141,7 @@ function cambiaSelect(){
                                             </div>
                                         </div>
                                     </div>
-                                </div>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" class="btn-historial" onclick="window.location.href='editarpaciente/`+data[i][j].rut+`'">Cambiar Cuidador</button>{% endif %}</td>
+                                </div>{% if request.user.is_staff %}<button type="button" style="color:black;width:100%" class="btn-historial" onclick="window.location.href='cambiarCuidador/`+data[i][j].rut+`'">Cambiar Cuidador</button>{% endif %}</td>
                             </tr>`
                 }
             }

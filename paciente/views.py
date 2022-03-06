@@ -100,6 +100,19 @@ def editarPaciente(request, rut):
         form = PacienteForm(instance=post)
     return render(request, 'editarpaciente.html', {'form': form})
 
+def cambiarCuidador(request, rut):
+    post = get_object_or_404(Paciente, rut=rut)
+    if request.method == "POST":
+        form = PacienteForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            print('valido')
+            return redirect('index')
+    else:
+        print('invalido')
+        form = PacienteForm(instance=post)
+    return render(request, 'cambiarCuidador.html', {'form': form})
+
 def eliminarPaciente(request,rut):
     paciente = Paciente.objects.filter(rut=rut)
     paciente.delete()

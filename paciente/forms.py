@@ -6,8 +6,8 @@ class PacienteForm(forms.ModelForm):
     class Meta:
         model = Paciente
         fields = ['lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento','nombreMedico']
-        widgets = {'nombreMedico':forms.Select(attrs={'class': 'form-control'})
-        }
+        CHOICES = (('Option 1', 'Option 1'),('Option 2', 'Option 2'),)
+        nombreMedico = forms.ChoiceField(choices=CHOICES)
 
 class MedicoForm(forms.ModelForm):
     password = forms.CharField(label= 'Contraseña', widget=forms.PasswordInput(

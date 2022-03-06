@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.utils import timezone
 from django.contrib.auth.models import  AbstractUser, UserManager
-
+from tinymce.models import HTMLField
 
 class LugarAtencion(models.Model):
     idLugarAtencion = models.AutoField(primary_key=True)
@@ -151,7 +151,7 @@ class Evaluacion(models.Model):
     fecha_evaluacion = models.DateTimeField('Fecha de evaluacion', null=False, auto_now=True)
     hora             = models.DateTimeField('Hora evolucion', null=False, auto_now=True)
     cuidador         = models.CharField('Cuidador', max_length=30)
-    descripcion      = models.TextField('Descripcion', max_length=2000)
+    descripcion      = HTMLField('Descripcion', max_length=2000)
     rut              = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     class meta:

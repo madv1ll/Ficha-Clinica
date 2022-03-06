@@ -17,8 +17,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/util.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'nuevomedico/css/main.css' %}">
 {% endblock extrahead %}
-{% block titulo %}Cambiar Cuidador{% endblock titulo %}
-{% block h1 %}Cambiar Cuidador{% endblock h1 %}
+{% block titulo %}Editar Paciente{% endblock titulo %}
+{% block h1 %}Editar Paciente{% endblock h1 %}
 {% block cuerpo %}
 <form method="post">
     {% csrf_token %}
@@ -27,12 +27,56 @@
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				
-                <div align="center"><strong>Nombre de Usuario del Cuidador:</strong></div>
-				<div class="wrap-input100 validate-input" data-validate="Ingrese nombre del cuidador">
+                <div align="center"><strong>Lugar Atenci&oacute;n</strong></div>
+				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.n_historial}}
+				</div>
+                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
 					<span class="focus-input100"></span>
 					{{form.nombreMedico}}
 				</div>
 
+                <div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.lugarAtencion}}
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Please enter your name">
+					<span class="focus-input100"></span>
+					{{form.rut}}
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your phone">
+					{{form.pnombre}}
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.snombre}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.papellido}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.sapellido}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.Direccion}}
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.especialidad}}
+					<span class="focus-input100"></span>
+				</div>
+				<div align="center"><strong>Fecha de Nacimiento</strong></div>
+                <div class="wrap-input100 validate-input" data-validate = "Please enter your message">
+					{{form.fecha_nacimiento}}
+					<span class="focus-input100"></span>
+				</div>
 				<div class="container-contact100-form-btn">
 					<button class="contact100-form-btn" type="submit">
 						<span>
@@ -45,8 +89,50 @@
 	</div>
 </form>
 
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
 </body>
 <script>
+    document.getElementById('id_lugarAtencion').setAttribute("class", "input100")
+	document.getElementById('id_lugarAtencion').setAttribute("style", "height: 60px;")
+	document.getElementById('id_lugarAtencion').setAttribute("placeholder", "Lugar de atencion")
+
+	document.getElementById('id_rut').setAttribute("class", "input100")
+	document.getElementById('id_rut').setAttribute("placeholder", "RUT")
+    document.getElementById('id_rut').setAttribute("type", "hidden")
+
+	document.getElementById('id_pnombre').setAttribute("class", "input100")
+	document.getElementById('id_pnombre').setAttribute("placeholder", "Primer Nombre")
+    document.getElementById('id_pnombre').setAttribute("type", "hidden")
+
+	document.getElementById('id_snombre').setAttribute("class", "input100")
+	document.getElementById('id_snombre').setAttribute("placeholder", "Segundo Nombre")
+    document.getElementById('id_snombre').setAttribute("type", "hidden")
+
+	document.getElementById('id_papellido').setAttribute("class", "input100")
+	document.getElementById('id_papellido').setAttribute("placeholder", "Primer Apellido")
+    document.getElementById('id_papellido').setAttribute("type", "hidden")
+
+	document.getElementById('id_sapellido').setAttribute("class", "input100")
+	document.getElementById('id_sapellido').setAttribute("placeholder", "Segundo Apellido")
+    document.getElementById('id_sapellido').setAttribute("type", "hidden")
+
+	document.getElementById('id_Direccion').setAttribute("class", "input100")
+	document.getElementById('id_Direccion').setAttribute("placeholder", "Dirección")
+    document.getElementById('id_Direccion').setAttribute("type", "hidden")
+
+    document.getElementById('id_fecha_nacimiento').setAttribute("class", "input100")
+	document.getElementById('id_fecha_nacimiento').setAttribute("placeholder", "Fecha nacimiento")
+	document.getElementById('id_fecha_nacimiento').setAttribute("type", "hidden")
+
+    document.getElementById('id_nombreMedico').setAttribute("class", "input100")
+	document.getElementById('id_nombreMedico').setAttribute("placeholder", "Nombre Usuario Cuidador")
 
 </script>
 </html>

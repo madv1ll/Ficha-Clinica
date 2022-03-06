@@ -3,9 +3,7 @@
 {# CSS Bootstrap #}
 {% bootstrap_css %}
 <body class="m-0 row justify-content-center">
-    <div align="right">
-        <img src="static/images/logo.png" alt="logo" >
-    </div>
+        <img src="static/images/logo.png" alt="logo" style="width:100%;text-align:right">
     <div align="center">
         {% for evo in evolucion %}
         <u><h2>REPORTE EVOLUCION DEL CUIDADOR {{ evo.fecha_evaluacion|date:'d-m-Y H:i' }}</h2>

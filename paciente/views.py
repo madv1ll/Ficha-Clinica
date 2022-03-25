@@ -72,6 +72,7 @@ def nuevoPaciente(request):
             post.nombreMedico = request.user.username
             post.nombreMedicoAdmin = 'cuidador'
             post.save()
+            print(form)
             return redirect ('index')
     else:
         form = PacienteForm

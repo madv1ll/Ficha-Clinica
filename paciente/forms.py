@@ -5,7 +5,7 @@ class PacienteForm(forms.ModelForm):
     cuidadores = Medico.objects.all()
     class Meta:
         model = Paciente
-        fields = ['lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento','nombreMedico']
+        fields = ['lugarAtencion','rut','pnombre','snombre','papellido','sapellido','Direccion','fecha_nacimiento']
 
 class MedicoForm(forms.ModelForm):
     password = forms.CharField(label= 'Contraseña', widget=forms.PasswordInput(

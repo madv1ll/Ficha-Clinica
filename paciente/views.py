@@ -73,9 +73,9 @@ def nuevoPaciente(request):
             post.nombreMedicoAdmin = 'cuidador'
             post.save()
             return redirect ('index')
-    else:
-        form = PacienteForm
-    return render(request, 'nuevopaciente.html', {'form':form})
+        else:
+            form = PacienteForm
+        return render(request, 'nuevopaciente.html', {'form':form})
 
 def nuevoHistorialf(request, rut):
     form = HistorialForm(request.POST)
